@@ -1,0 +1,50 @@
+@charset "utf-8";
+/* CSS Document */
+
+.marquee_1 {
+    top: 6em;
+    position: relative;
+    box-sizing: border-box;
+    animation: marquee 25s linear infinite;
+	/*background:#0CF;*/
+}
+
+.marquee_1:hover {
+    animation-play-state: paused;
+}
+
+/* Make it move! */
+
+
+@keyframes marquee {
+    0%   { top:   4em;  }
+    100% { top: -25em; }
+}
+
+/* Make it look pretty */
+.marquee_1 {
+	margin: 0;
+    padding: 0;
+    line-height:18px;
+}
+
+
+ul.marquee_1{text-align:justify;}
+ul.marquee_1 li{margin-bottom:20px; border-bottom:1px dashed #ccc; padding-bottom:15px; }
+ul.marquee_1 li img{width:120px; height:100px; margin-right:15px; border:1px solid #e6e6e6; background:#090; float:left; }
+ul.marquee_1 li .name{font-size:14px; display:block; margin-bottom:10px; font-weight:bold;}
+ul.marquee_1 li .name span{display:inline-block; float:right; font-size:12px; color:#999;} 
+
+.posted_job{/*background: #F90;*/ height:80px !important; overflow: hidden; position: relative;}
+.job_disc{display:block; margin-bottom:10px;}
+.job_disc .name{width:60%; float:left;}
+.job_disc span{width:5%; float:left;}
+.job_disc .place{width:35%; float:left;}
+
+
+@media all and (max-width:400px){
+	ul.marquee_1 li img{width:90px; height:75px;}
+	ul.marquee_1 li .name span{float:none; display:block;}
+}
+
+.feedback_name{display:block; margin-top:10px;}

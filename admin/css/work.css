@@ -1,0 +1,44 @@
+﻿.top-buffer{
+	margin-top: 10px;
+	margin-left: 0px;
+	text-align: center;
+}
+
+.mysrow{
+	padding:5px 0px 5px 0px;
+}
+
+.navbar-fixed-top, .navbar-fixed-bottom {
+    position: static!important;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    margin-bottom: 0;
+}
+
+.links{
+  font-size: 20px;
+  margin-top: 30px;
+  width: 100%;
+  background-color: cadetblue;
+  transition : background-color 1s;
+  border-radius: 1px;
+}
+
+a{
+	color: black;
+}
+
+.links:hover{
+	background-color: tomato;
+
+}
+
+
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+  line-height: 1;
+  width: 100%;
+}
+
+
+

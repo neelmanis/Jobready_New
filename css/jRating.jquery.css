@@ -1,0 +1,10 @@
+/**Div containing the color of the stars */
+.jRatingAverage {background-color:#ff7705; position:relative; top:0; left:0; z-index:2; height:100%;}
+.jRatingColor { background-color:#ffe400; /* bgcolor of the stars*/ position:relative; top:0; left:0; z-index:2; height:100%;}
+/** Div containing the stars **/
+.jStar { position:relative; left:0; z-index:3;}
+/** P containing the rate informations **/
+p.jRatingInfos { position: absolute; z-index:9999; background:#00006b; color:#fff; display:none; width:auto; height:auto; font-size:12px; text-align:center; font-weight:bold; padding:5px; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; top:50px;}
+p.jRatingInfos span.maxRate {color:#fff; font-weight:normal;}
+
+.rating_box{display:inline-block;  background:#fff; margin-left:10px; padding:0; min-height: 17px;}

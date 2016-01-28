@@ -1,0 +1,9 @@
+<?php $page=basename($_SERVER['PHP_SELF']);?>
+<div class="dashboard_left">
+    <div class="link <?php if($page=="trainer_dashboard.php"){?>active<?php }?>"><a href="trainer_dashboard.php" <?php if($page=="trainer_dashboard.php"){?>class="active"<?php }?>><img src="images/icon_dashboard.png" />Dashboard</a></div>
+    <div class="link <?php if($page=="trainer_profile.php"){?>active<?php }?>"><a href="trainer_profile.php" <?php if($page=="trainer_profile.php"){?>class="active"<?php }?>><img src="images/icon_profile.png" />Profile</a></div>
+    <div class="link <?php if($page=="training_cources.php"){?>active<?php }?>"><a href="training_cources.php" <?php if($page=="training_cources.php"){?>class="active"<?php }?>><img src="images/icon_tranings.png" />Trainings Courses</a></div>
+    <div class="link <?php if($page=="training_requests_from_candidates.php"){?>active<?php }?>"><a href="training_requests_from_candidates.php" <?php if($page=="training_requests_from_candidates.php"){?>class="active"<?php }?>><img src="images/icon_training_request.png" />Training requests from candidates  </a></div>
+    <div class="link <?php if($page=="trainer_candidates_feedback.php"){?>active<?php }?>"><a href="trainer_candidates_feedback.php" <?php if($page=="trainer_candidates_feedback.php"){?>class="active"<?php }?>><img src="images/icon_feedback.png" />Candidates feedback  </a></div>
+    <div class="link <?php if($page=="change_password.php"){?>active<?php }?>"><a href="change_password.php" <?php if($page=="change_password.php"){?>class="active"<?php }?>><img src="images/pass.png" />Change Password </a></div>
+</div>

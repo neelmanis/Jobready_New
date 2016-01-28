@@ -1,0 +1,6 @@
+
+http://phptechnicalgroups.blogspot.in/2013/09/easy-way-to-integration-of-ccavenue.html
+https://world.ccavenue.com/downloads/CCAVenueWorldIntegrationManual.pdf
+https://bharathiphp.wordpress.com/2013/11/22/ccavenue-payment-gateway-integration/
+http://stackoverflow.com/questions/13858882/cc-avenue-php-integration-not-working
+http://stackoverflow.com/questions/21301125/integrating-ccavenue-with-php

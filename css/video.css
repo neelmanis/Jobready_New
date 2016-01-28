@@ -1,0 +1,264 @@
+/* gallery wrapper */
+.startube-wrapper {
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+/* video player */
+.startube-player {
+	position: relative;
+	background: #010101;
+	padding-bottom: 56.25%;
+	height: 0; 
+	overflow: hidden;
+	margin-bottom:20px;
+}
+.startube-player iframe {
+	display: block;
+	margin: 0; padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* video title */
+.startube-title {
+	font-size: 17px;
+	line-height: 20px;
+}
+.startube-title a,
+.startube-title a:link,
+.startube-title a:visited,
+.startube-title a:active {
+	color: #404040;
+}
+.startube-title a:hover {
+	color: #b70e0e;
+}
+.startube-title span {
+	color: #b70e0e;
+}
+
+/* video details pane */
+.startube-details {
+	margin-bottom: 10px;
+	color: #888888;
+}
+
+/* categories list */
+ul.star-cats {
+	overflow: hidden;
+	list-style: none;
+	margin: 0 0 10px 0; padding: 2px 5px;
+	font-size: 11px;
+}
+ul.star-cats li {
+	list-style: none;
+	display: block; float: left;
+}
+ul.star-cats a {
+	display: block;
+	padding: 2px 3px;
+	color: #757575;
+	text-shadow: 0 1px #000000;
+}
+ul.star-cats a:hover {
+	color: #959595;
+}
+ul.star-cats a.active,
+ul.star-cats a.active:hover {
+	color: #eaeaea;
+}
+ul.star-cats {
+	background: #010101;
+}
+
+ul.star-thumbs {
+	clear: both;
+	overflow: hidden;
+	margin: 0; 
+	/*padding: 2%;
+	width: 100%;*/
+	/*background:#099;
+	text-align:center;
+	
+	-webkit-box-shadow: inset 0px 0px 20px -3px rgba(0,0,0,0.52);
+-moz-box-shadow: inset 0px 0px 20px -3px rgba(0,0,0,0.52);
+box-shadow: inset 0px 0px 20px -3px rgba(0,0,0,0.52);*/
+}
+ul.star-thumbs li {
+	/*float: left;*/
+	/*width: 48%;*/
+	padding: 10px 0 0 0;
+	/*margin-bottom: 5px;*/
+	/*margin-left:1%;
+	margin-right:1%;*/
+	list-style: none;
+	display:inline-block;
+	vertical-align:top;
+	/*border:4px solid #ccc;*/
+}
+
+ul.star-thumbs li p{padding:0 4px;}
+
+.vidTitle{
+	color:#000;
+	}
+
+ul.star-thumbs li p span{
+	display:block;
+	}
+ul.star-thumbs li p span.personName{
+	color:#000;}
+
+
+ul.star-thumbs li > a {
+	display: block;
+	/*margin-bottom:10px;
+
+	border:4px solid #fff;*/
+		border:1px solid  #fff;
+}
+
+ul.star-thumbs li > a:hover{/*border:4px solid #fcaf17;*/}
+
+ul.star-thumbs li > a.thumb:focus {
+	/*border:4px solid #CE3C44;*/
+	
+}
+
+ul.star-thumbs li.selected {
+	
+	/*background:#d8d8d8;*/
+	background:url(../images/thumb_slide/active_arrow.png) no-repeat center top;
+
+	
+}
+
+ul.star-thumbs li.selected  a{
+	border:1px solid #CF3C44;}
+
+
+ul.star-thumbs li > a > img {
+	border: none;
+	display: block;
+	width: 100%; 
+	height: auto;
+	
+	vertical-align:top;
+}
+
+/* page pagination controls */
+.startube-pager.above {
+}
+.startube-pager.below {
+}
+.startube-pager {
+	float: left; clear: both;
+	overflow: hidden;
+	margin: 5px 0;
+}
+.startube-pager a,
+.startube-pager span.active,
+.startube-pager span.skip {
+
+	display: block;
+	float: left;
+	margin-right: 3px;
+	padding: 3px 6px;
+	margin-bottom: 5px;
+	font-size:12px;
+	background:#c8c8c8;
+    transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+	
+	
+}
+
+
+.startube-pager a{
+	color:#000;}
+	
+.startube-pager a:hover{
+	color:#fff;
+	background:#000;}	
+
+.startube-pager span.skip {
+	padding: 3px 5px;
+}
+.startube-pager span.active {
+	cursor: pointer;
+	background:#CF3C44;
+	color:#FFF;
+}
+.startube-pager a.prev, .startube-pager a.next  {
+	text-indent:-999px;
+	overflow:hidden;
+	padding:3px 10px;
+}
+.startube-pager a.next {
+	background:#000 url(../images/vid_prev_next.png) no-repeat right center;
+	margin-left:0;
+}
+
+.startube-pager a.prev {
+	background:#000 url(../images/vid_prev_next.png) no-repeat left center;
+}
+
+.startube-pager a.next:hover{
+	background:#CF3C44 url(../images/vid_prev_next.png) no-repeat right center;
+	}
+	
+.startube-pager a.prev:hover{
+	background:#CF3C44 url(../images/vid_prev_next.png) no-repeat left center;
+	}	
+
+/* previous & next video controls */
+.startube-controls {
+    position: absolute; z-index: 1000;
+    left: 10px; bottom: 50px; display:none;
+}
+
+.startube-controls a {
+    display: inline-block;
+    margin-right: 2px;
+    width: 16px; height: 20px;
+    text-indent: -999999px;
+    opacity: 0;
+
+    transition: opacity .5s ease-in-out;
+    -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+}
+.startube-controls a.next { background: url(../images/next2.png) no-repeat; }
+.startube-controls a.prev { background: url(../images/prev2.png) no-repeat; }
+
+.startube-player:hover .startube-controls a { opacity: 0.3; }
+.startube-player:hover .startube-controls a:hover { opacity: 0.6; }
+.startube-player:hover .startube-controls a:active { opacity: 1; }
+
+/* media queries */
+@media screen and (min-width: 320px) {
+	ul.star-thumbs {width:90%; margin:0 auto;} 
+	
+	ul.star-thumbs li {
+		width: 32.5%;
+	}
+}
+@media screen and (min-width: 481px) {
+	ul.star-thumbs {width:80%; margin:0 auto;} 
+	ul.star-thumbs li {
+		width:30%;
+		margin:0 1%;
+		
+	}
+	.startube-controls a {
+	    width: 25px; height: 35px;
+    	margin-right: 5px;
+	}
+	.startube-controls a.next { background: url(../images/next.png) no-repeat; }
+	.startube-controls a.prev { background: url(../images/prev.png) no-repeat; }
+}

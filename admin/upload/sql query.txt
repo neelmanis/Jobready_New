@@ -1,0 +1,58 @@
+CREATE TABLE users 
+( 
+user_id varchar(200) NOT NULL AUTO_INCREMENT, 
+name varchar(200) NOT NULL, 
+email varchar(200) NOT NULL,
+password varchar(200) NOT NULL,
+phone_no varchar(200) NOT NULL,
+dob varchar(200),
+gender varchar(200),
+profile_pic varchar(200),
+address varchar(200),
+city varchar(200),
+state varchar(200),
+country varchar(200),
+pin_code varchar(200),
+blood_group varchar(200),
+latitude varchar(200),
+longitude varchar(200),
+sos_contact1 varchar(200),
+sos_contact2 varchar(200),
+sos_contact3 varchar(200),
+sos_contact4 varchar(200),
+sos_contact5 varchar(200),
+android_reg_key varchar(200),
+ios_reg_key varchar(200),
+isverified varchar(200),
+PRIMARY KEY (user_id) 
+)
+*****************************************************************
+
+
+CREATE TABLE doctors 
+( 
+ID varchar(200) NOT NULL AUTO_INCREMENT,
+First_Name varchar(200) NOT NULL,
+Last_Name varchar(200) NOT NULL,
+Age varchar(200),
+Gender varchar(200),
+Qualification varchar(200),
+Specilization varchar(200),
+Experience varchar(200), 
+Mobile_number varchar(200) NOT NULL, 
+Email_id varchar(200) NOT NULL,
+Clinic_Address varchar(200),
+Clinic_Contact_Number varchar(200),
+Clinic_Schedule varchar(200),
+Consultancy varchar(200),
+Country varchar(200), 
+State varchar(200), 
+City varchar(200),
+Area varchar(200), 
+Hospital_Name varchar(200),
+Hospital_address varchar(200), 
+Hospital_Contact_number varchar(200), 
+Hospital_Email varchar(200), 
+Hospital_website_URL varchar(200),
+PRIMARY KEY (ID)
+)

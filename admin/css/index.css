@@ -1,0 +1,48 @@
+﻿.top-buffer{
+	margin-top: 20px;
+	margin-left: 0px;
+	
+}
+
+.links{
+  font-size: 20px;
+  /*margin-top: 20px;*/
+  border-style: outset;
+  transition : background-color 1s;
+  border-radius: 1px;
+  text-align: center;
+
+}
+
+.links:hover{
+	background-color: tomato;
+
+}
+
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+  line-height: 1;
+  width: 100%;
+} 
+
+.box{
+  height: 150;
+  border-style: outset;
+  width: 100%;
+}
+
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: none repeat scroll 0 0 transparent;
+  cursor: inherit;
+  display: block;
+}
+
+
+
