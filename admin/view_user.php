@@ -1,29 +1,10 @@
-<?php include('header.php'); ?>
-<?php //include('navbar.php'); ?>
-
-<?php 
-if($_REQUEST['uid']!='')
-{
-$gotuidx= $_GET['uid'];
-//echo "--->".$gotuidx;
-
-$sqlx ="select a.id,a.type_of_actor,a.email,a.mobile_no,a.status,a.post_date,	b.fname,b.company_name,b.comapny_landline,b.gender,b.dob,b.address1,b.address2,b.address3,b.city,b.pincode,b.brief_profile,b.preffered_location,b.keyword_skill,b.upload_cv,c.area_of_interest,d.education,d.education_others,d.college,d.college_other,d.specialization,d.year_of_completion,d.percentage from job_registration a inner join job_profile b on a.id=b.registration_id inner join job_area_of_interest c on a.id=c.registration_id inner join job_education_profile d on a.id=d.registration_id where a.id='$gotuidx'";
-//echo $sqlx;
-$result2=mysql_query($sqlx);
-if($row2 = mysql_fetch_array($result2))
-{ 
-//print_r($row2);
-			
-$fname=stripslashes($row2['fname']);
-$mname=stripslashes($row2['mname']);
-$lname=stripslashes($row2['lname']);			
-$email=stripslashes($row2['email']);
-$mobile_no=stripslashes($row2['mobile_no']);			
-$role=stripslashes($row2['type_of_actor']);
-$co_name=stripslashes($row2['company_name']);
-$gender=stripslashes($row2['gender']);
-$mob=stripslashes($row2['mob']);
-$dob=stripslashes($row2['dob']);			
+<?php include('header.php'); ?>
+<?php //include('navbar.php'); ?><?php if($_REQUEST['uid']!=''){$gotuidx= $_GET['uid'];//echo "--->".$gotuidx;
+$sqlx ="select a.id,a.type_of_actor,a.email,a.mobile_no,a.status,a.post_date,	b.fname,b.company_name,b.comapny_landline,b.gender,b.dob,b.address1,b.address2,b.address3,b.city,b.pincode,b.brief_profile,b.preffered_location,b.keyword_skill,b.upload_cv,c.area_of_interest,d.education,d.education_others,d.college,d.college_other,d.specialization,d.year_of_completion,d.percentage from job_registration a inner join job_profile b on a.id=b.registration_id inner join job_area_of_interest c on a.id=c.registration_id inner join job_education_profile d on a.id=d.registration_id where a.id='$gotuidx'";//echo $sqlx;
+$result2=mysql_query($sqlx);
+if($row2 = mysql_fetch_array($result2)){ 
+//print_r($row2);
+$fname=stripslashes($row2['fname']);$mname=stripslashes($row2['mname']);$lname=stripslashes($row2['lname']);			$email=stripslashes($row2['email']);$mobile_no=stripslashes($row2['mobile_no']);			$role=stripslashes($row2['type_of_actor']);$co_name=stripslashes($row2['company_name']);$gender=stripslashes($row2['gender']);$mob=stripslashes($row2['mob']);$dob=stripslashes($row2['dob']);			
 $address_line1=stripslashes($row2['address1']);
 $address_line2=stripslashes($row2['address2']);
 $address_line3=stripslashes($row2['address3']);

@@ -72,11 +72,11 @@ function getEducation($conn,$id){
 	$row=$result->fetch_assoc();
 	return $row['education'];					
 }
-function getCollege($conn,$id){	$sql = "SELECT  institution FROM  master_institution  where id='$id'";		$result = $conn->query($sql);	$row=$result->fetch_assoc();	return $row['institution'];					}
-function getInterest($conn,$id){	$sql = "SELECT  area_of_interest FROM  master_interest_area  where id='$id'";		$result = $conn->query($sql);	$row=$result->fetch_assoc();	return $row['area_of_interest'];					}
+function getCollege($conn,$id){	$sql = "SELECT  institution FROM  master_institution  where id='$id'";		$result = $conn->query($sql);	$row=$result->fetch_assoc();	return $row['institution'];					}/*
+function getInterest($conn,$id){	$sql = "SELECT  area_of_interest FROM  master_interest_area  where id='$id'";		$result = $conn->query($sql);	$row=$result->fetch_assoc();	return $row['area_of_interest'];					}*/function getInterest($conn,$id){	$sql = "SELECT  subject FROM  master_area_of_interest  where id='$id'";		$result = $conn->query($sql);	$row=$result->fetch_assoc();	return $row['subject'];					} 
 function getUserName($conn,$registration_id){	$sql = "SELECT  fname FROM  job_profile  where registration_id='$registration_id'";		$result = $conn->query($sql);	$row=$result->fetch_assoc();	return $row['fname'];					}
 function getCompanyProfile($conn,$registration_id){	$sql = "SELECT  company_profile FROM  job_profile  where registration_id='$registration_id'";		$result = $conn->query($sql);	$row=$result->fetch_assoc();	return $row['company_profile'];					}
-function getAdminName($conn,$admin_id){	$sql = "SELECT  contact_name FROM  admin_master  where id='$admin_id'";		$result = $conn->query($sql);	$row=$result->fetch_assoc();	return $row['contact_name'];					}
+function getAdminName($conn,$admin_id){	$sql = "SELECT  contact_name FROM  admin_master  where id='$admin_id'";		$result = $conn->query($sql);	$row=$result->fetch_assoc();	return $row['contact_name'];					}function getAdminEmail($conn,$admin_id){	$sql = "SELECT  email_id FROM  admin_master  where id='$admin_id'";		$result = $conn->query($sql);	$row=$result->fetch_assoc();	return $row['email_id'];					}
 function getDesignation($conn,$registration_id){	$sql = "SELECT  designation FROM  job_profile  where id='$registration_id'";		$result = $conn->query($sql);	$row=$result->fetch_assoc();	return $row['designation'];					}
 function getUserMobile($conn,$registration_id){	$sql = "SELECT  mobile_no FROM  job_registration  where id='$registration_id'";		$result = $conn->query($sql);	$row=$result->fetch_assoc();	return $row['mobile_no'];					}
 function getUserEmail($conn,$registration_id){	$sql = "SELECT  email FROM  job_registration where id='$registration_id'";		$result = $conn->query($sql);	$row=$result->fetch_assoc();	return $row['email'];					}

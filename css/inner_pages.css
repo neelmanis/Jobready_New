@@ -281,6 +281,8 @@ ul.actor li a.trainer{background:url(../images/trainer.png) no-repeat center top
 ul.actor li a.trainer:hover{background:url(../images/trainer.png) no-repeat center bottom #ED1A21;}
 ul.actor li a.trainerActive{background:url(../images/trainer.png) no-repeat center bottom #ED1A21;}
 
+.pass{ width:70%; float:left;}
+.pass_sub{width:30%; float:left; margin-top:20px;}
 
 @media all and (max-width:999px){
 .page_title span, .inner_conainer{width:96%;}
@@ -344,6 +346,9 @@ ul.actor li a.trainerActive{background:url(../images/trainer.png) no-repeat cent
 .trainer_feedback{padding:15px;}
 .rating_wrap .rating_left, .rating_wrap .rating_right{display:block; float:none; margin-bottom:10px;}
 .trainer_feedback h5{font-size:20px;}
+
+.pass{ width:100%; float:left;}
+.pass_sub{width:90%; float:left; margin-top:0; margin-right:10%;}
 }
 
 @media all and (max-width:600px){

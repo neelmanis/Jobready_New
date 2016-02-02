@@ -109,12 +109,12 @@ $row=$result->fetch_assoc();
       
       
 	  
-	  <div class="textfield"> <span>Salary Min.<sup>*</sup></span>
+	  <div class="textfield"> <span>Salary Min.<sup></sup></span>
         <div class="fields">
           <input type="text" name="minimal" value="<?php echo $row['salary_from'];?>" />
         </div>
       </div>
-      <div class="textfield mar_left"> <span>Salary Max<sup>*</sup></span>
+      <div class="textfield mar_left"> <span>Salary Max<sup></sup></span>
         <div class="fields">
           <input type="text" name="maxval" value="<?php echo $row['salary_to'];?>" />
         </div>
@@ -125,7 +125,7 @@ $row=$result->fetch_assoc();
           <input type="text" name="job_from" id="configPicker1" value="<?php echo $row['job_from'];?>" />
         </div>
       </div>
-      <div class="textfield mar_left"> <span>Reporting  to<sup>*</sup></span>
+      <div class="textfield mar_left"> <span>Reporting  to<sup></sup></span>
         <div class="fields">
           <input type="text" name="job_to" value="<?php echo $row['job_to'];?>" />
         </div>

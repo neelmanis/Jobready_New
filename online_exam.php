@@ -2,6 +2,7 @@
 include("header.php");
 include("menu.php");
 $registration_id=$_SESSION['registration_id'];  
+$exam_type=$_SESSION['exam_type']='gen';
 ?>
 <?php 
 if(!empty($_SESSION['registration_id'])){
@@ -103,7 +104,6 @@ foreach($myarray as $ques){
 $questCt++;	
 }
 ?>
-	<input type="hidden" name="exam_type" value="gen"/>
       </form>
     </div>
   </div>

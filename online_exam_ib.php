@@ -2,7 +2,7 @@
 include("header.php");
 include("menu.php");
 $registration_id=$_SESSION['registration_id'];  
-
+$exam_type=$_SESSION['exam_type']='interest';
 @$category=$_POST['category'];
 ?>
 <?php 
@@ -105,7 +105,6 @@ foreach($myarray as $ques){
 $questCt++;	
 }
 ?>
-<input type="hidden" name="exam_type" value="interest"/>
       </form>
     </div>
   </div>

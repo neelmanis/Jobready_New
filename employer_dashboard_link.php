@@ -12,6 +12,6 @@
     <div class="link <?php if($page=="employer_interested_candidate.php"){?>active<?php }?>"><a href="employer_interested_candidate.php" <?php if($page=="employer_interested_candidate.php"){?>class="active"<?php }?>><img src="images/icon_interested_candidate.png" />Interested candidates </a></div>
     <div class="link <?php if($page=="employer_training_offered.php"){?>active<?php }?>"><a href="employer_training_offered.php" <?php if($page=="employer_training_offered.php"){?>class="active<?php }?>><img src="images/icon_tranings.png" />Trainings offered by JobbReady</a></div>
     <div class="link <?php if($page=="employer_recruiter_listing.php"){?>active<?php }?>"><a href="employer_recruiter_listing.php" <?php if($page=="employer_recruiter_listing.php.php"){?>class="active"<?php }?>><img src="images/icon_recruiter_login.png" />Manage Recruiter Login </a></div>
-    <div class="link <?php if($page=="change_password.php"){?>active<?php }?>"><a href="change_password.php" <?php if($page=="change_password.php"){?>class="active"<?php }?>><img src="images/pass.png" />Change Password </a></div>
+    <div class="link <?php if($page=="change_password.php"){?>active<?php }?>"><a href="change_password.php" <?php if($page=="change_password.php"){?>class="active"<?php }?>><img src="images/pass.png" />Change Login Credential  </a></div>
 </div>
 <?php }?>

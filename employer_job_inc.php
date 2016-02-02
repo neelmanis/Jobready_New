@@ -1,40 +1,6 @@
-<?php 
-session_start();
-ob_start();
-include('db.inc.php');
-include('functions.php');
-?>
-<?php 
-$action=$_POST['action'];
-if($action=="addjob"){
-$registration_id=$_SESSION['registration_id'];
-$url="employer_job.php";
-$error_msg="";
-$registration_id=$_SESSION['registration_id'];
-$post_date=date('Y-m-d h:i:s');
-
-$job_code=$_POST['job_code'];
-if($job_code=="")
-	$error_msg.="<li>Please Select Job Code</li>";
-		
-$designation=check_string($_POST['designation']);
-if($designation==1)
-		$error_msg.="<li>Enter Some Designation</li>";
-	else	
-		$designation=$_REQUEST['designation'];	
-
-$keyword=check_string($_POST['keyword']);
-if($keyword==1)
-		$error_msg.="<li>Enter Some keyword</li>";
-	else	
-		$keyword=$_REQUEST['keyword'];	
-		
-$job_desc=check_string($_POST['job_desc']);
-if($job_desc==1)
-		$error_msg.="<li>Enter Valid Description</li>";
-	else	
-		$job_desc=$_REQUEST['job_desc'];	
-
+<?php session_start();ob_start();include('db.inc.php');include('functions.php');?>
+<?php $action=$_POST['action'];if($action=="addjob"){$registration_id=$_SESSION['registration_id'];$url="employer_job.php";$error_msg="";$registration_id=$_SESSION['registration_id'];$post_date=date('Y-m-d h:i:s');$job_code=$_POST['job_code'];if($job_code=="")	$error_msg.="<li>Please Select Job Code</li>";$designation=check_string($_POST['designation']);if($designation==1)		$error_msg.="<li>Enter Some Designation</li>";	else			$designation=$_REQUEST['designation'];	$keyword=check_string($_POST['keyword']);if($keyword==1)		$error_msg.="<li>Enter Some keyword</li>";	else			$keyword=$_REQUEST['keyword'];	
+$job_desc=check_string($_POST['job_desc']);if($job_desc==1)		$error_msg.="<li>Enter Valid Description</li>";	else			$job_desc=$_REQUEST['job_desc'];	
 $co_profile=check_string($_POST['co_profile']);
 if($co_profile==1)
 		$error_msg.="<li>Enter Company profile</li>";
@@ -107,33 +73,20 @@ if($action=="showjobinterest"){
 	}
 	echo json_encode(array('url'=>$url,'error_msg'=>$error_msg));
 }
-if($action=="acceptjobinterest"){
-	$url="employer_interested_candidate.php";
-	$error_msg="";
-	$id=$_POST['id'];
-	if($conn->query("update job_student_job_interest set employer_acceptance='Y' where id='$id'")==TRUE)
-	{
-		$error_msg="success";
-	}
-	else
-	{
-		$error_msg="";
-		$url="error.php";
-	}
-	echo json_encode(array('url'=>$url,'error_msg'=>$error_msg));
-}
-
-if($action=="addRecruiter"){
-	$url="employer_recruiter_listing.php";
-	$error_msg="";
+if($action=="acceptjobinterest"){
+	$url="employer_interested_candidate.php";
+	$error_msg="";
+	$id=$_POST['id'];	if($conn->query("update job_student_job_interest set employer_acceptance='Y' where id='$id'")==TRUE)	{		$error_msg="success";	}	else	{		$error_msg="";		$url="error.php";	}	echo json_encode(array('url'=>$url,'error_msg'=>$error_msg));}
+if($action=="candidatecontact"){	$url="employer_candidates_contacted.php";	$error_msg="";	$id=$_POST['id'];	if($conn->query("update job_student_job_interest set candidate_interviewed='Y' where id='$id'")==TRUE)	{		$error_msg="success";	}	else	{		$error_msg="";		$url="error.php";	}	echo json_encode(array('url'=>$url,'error_msg'=>$error_msg));}
+if($action=="addRecruiter"){
+	$url="employer_recruiter_listing.php";
+	$error_msg="";
 	$registration_id=$_SESSION['registration_id'];
-	
-	$check_name=check_string($_POST['name']);
-	if($check_name==1 || $_POST['name']=="Name")
-		$error_msg.="<li>Please enter name</li>";
-	else	
-		$name=$_POST['name'];
-	
+	$check_name=check_string($_POST['name']);
+	if($check_name==1 || $_POST['name']=="Name")
+		$error_msg.="<li>Please enter name</li>";
+	else	
+		$name=$_POST['name'];	
 	$check_designation=check_string($_POST['designation']);
 	if($check_designation==1 || $_POST['designation']=="Designation")
 		$error_msg.="<li>Please enter designation</li>";
@@ -156,27 +109,24 @@ if($action=="addRecruiter"){
 		$error_msg.="<li>Please enter password</li>";
 	else	
 		$password=md5($_POST['password']);	
-		
-	$post_date=date('Y-m-d h:i:s');
+		$post_date=date('Y-m-d h:i:s');
 	$ip_address=$_SERVER['REMOTE_ADDR']?:($_SERVER['HTTP_X_FORWARDED_FOR']?:$_SERVER['HTTP_CLIENT_IP']);
-	
-		
-	if($error_msg=="")
-	{
-		if(!isset($_POST['recruiter_id']) && $_POST['recruiter_id']=='')
+	
+	if($error_msg=="")
+	{		if(!isset($_POST['recruiter_id']) && $_POST['recruiter_id']=='')
 		{
 		$result = $conn->query("select * from job_registration where email='$email'");
 		if($result->num_rows>0)
 			$error_msg="<li>You have been already registered with this email id</li>";
 		
-		else if($conn->query("insert into job_registration set registration_type='A',type_of_actor='F',refer_registration_id='$registration_id',email='$email',password='$password', mobile_no='$mobile',post_date='$post_date',modified_date='$post_date',ip_address='$ip_address',status=1")==TRUE)
-			{
+		else if($conn->query("insert into job_registration set registration_type='A',type_of_actor='F',refer_registration_id='$registration_id',email='$email',password='$password', mobile_no='$mobile',post_date='$post_date',modified_date='$post_date',ip_address='$ip_address',status=1")==TRUE)
+			{
 				$recruiter_id=$conn->insert_id;
-				$conn->query("update job_profile set fname='$name',designation='$designation' where registration_id='$recruiter_id'");
-			}
-			else
-			{
-				$error_msg="<li>Soory there is some problem ..Kindly contact with admin</li>";	
+				$conn->query("update job_profile set fname='$name',designation='$designation' where registration_id='$recruiter_id'");
+			}
+			else
+			{
+				$error_msg="<li>Soory there is some problem ..Kindly contact with admin</li>";	
 				$url="error.php";
 			}
 		}
@@ -184,10 +134,6 @@ if($action=="addRecruiter"){
 		{
 			$recruiter_id=$_POST['recruiter_id'];
 			$conn->query("update job_registration set registration_type='A',type_of_actor='F',refer_registration_id='$registration_id',email='$email',password='$password', mobile_no='$mobile',modified_date='$post_date',ip_address='$ip_address' where id='$recruiter_id'");
-			$conn->query("update job_profile set fname='$name',designation='$designation' where id='$recruiter_id'");
-		}
-		
-	}
-	echo json_encode(array('url'=>$url,'error_msg'=>$error_msg));
-}
+		$conn->query("update job_profile set fname='$name',designation='$designation' where id='$recruiter_id'");		}	}
+	echo json_encode(array('url'=>$url,'error_msg'=>$error_msg));}if($action=="sendoffer"){	$url="employer_candidates_contacted.php";	$error_msg="";		if($_POST['offered']=="")		$error_msg.="<li>Please Choose offered</li>";	else			$offered=$_REQUEST['offered'];			$check_description=check_string($_POST['comment']);	if($check_description==1 || $_POST['comment']=="comment")		$error_msg.="<li>Please enter Comment</li>";	else	$comment=$_POST['comment'];		$candidate_id=$_POST['candidate_id'];	if($error_msg=="")	{	$conn->query("update job_student_job_interest set candidate_offered='$offered',comment='$comment' where id='$candidate_id'");	}	echo json_encode(array('url'=>$url,'error_msg'=>$error_msg));}
 ?>
