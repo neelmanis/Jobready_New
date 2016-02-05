@@ -66,8 +66,8 @@ $(document).ready(function () {
 </script>
 <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Date Picker End  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
 <?php 
-$jobId = $_REQUEST['jobId'];
-$result=$conn->query("select * from master_job where registration_id='$registration_id' and id='$jobId'");
+$uid = $_REQUEST['uid'];
+$result=$conn->query("select * from master_job where registration_id='$registration_id' and id='$uid'");
 $row=$result->fetch_assoc();
 ?>
 
@@ -77,76 +77,74 @@ $row=$result->fetch_assoc();
 <div class="inner_conainer" >
   <?php include("employer_dashboard_link.php");?>
   <div class="dashboard_right fade_anim">
-    <div class="content_head">add job</div>
+    <div class="content_head">View job</div>
     <ul class="login" style="display:none;"></ul>
     <div class="form_wrap">
     <form action="" name="addTraining" id="addTraining" method="post">
       <div class="textfield"> <span>Job Code<sup>*</sup></span>
         <div class="fields">
-          <input type="text" name="job_code" id="job_code" value="<?php echo $row['job_code'];?>" />
+          <input type="text" name="job_code" id="job_code" value="<?php echo $row['job_code'];?>" disabled/>
         </div>
       </div>
       <div class="textfield mar_left"> <span>Designation<sup>*</sup></span>
         <div class="fields">
-          <input type="text" name="designation" id="designation" value="<?php echo $row['designation'];?>" />
+        <input type="text" name="designation" id="designation" value="<?php echo $row['designation'];?>" disabled/>
         </div>
       </div>
       <div class="textfield_1"> <span>keywords<sup>*</sup></span>
         <div class="fields">
-        	<input class="tags" type="text" name="keyword" id="keyword" value="<?php echo $row['keyword'];?>"/>
+	<textarea name="keyword" id="keyword" disabled/><?php echo $row['keyword'];?></textarea>
         </div>
       </div>
       <div class="textfield_1"> <span>Job description<sup>*</sup></span>
         <div class="fields">
-          <textarea name="job_desc" id="job_desc"><?php echo $row['job_desc'];?></textarea>
+          <textarea name="job_desc" id="job_desc" disabled><?php echo $row['job_desc'];?></textarea>
         </div>
       </div>
       <div class="textfield_1"> <span>Company Profile<sup>*</sup></span>
         <div class="fields">
-          <textarea name="co_profile" id="co_profile"><?php if($jobId!=""){echo $row['co_profile'];}else{ echo getCompanyProfile($conn,$registration_id);}?></textarea>
+          <textarea name="co_profile" id="co_profile" disabled><?php if($jobId!=""){echo $row['co_profile'];}else{ echo getCompanyProfile($conn,$registration_id);}?></textarea>
         </div>
       </div>
-      
-      
-	  
+     
 	  <div class="textfield"> <span>Salary Min.<sup></sup></span>
         <div class="fields">
-          <input type="text" name="minimal" value="<?php echo $row['salary_from'];?>" />
+          <input type="text" name="minimal" value="<?php echo $row['salary_from'];?>" disabled/>
         </div>
       </div>
       <div class="textfield mar_left"> <span>Salary Max<sup></sup></span>
         <div class="fields">
-          <input type="text" name="maxval" value="<?php echo $row['salary_to'];?>" />
+          <input type="text" name="maxval" value="<?php echo $row['salary_to'];?>" disabled/>
         </div>
       </div>
 	
       <div class="textfield"> <span>Expected Start date <sup>*</sup></span>
         <div class="fields">
-          <input type="text" name="job_from" id="configPicker1" value="<?php echo $row['job_from'];?>" />
+          <input type="text" name="job_from" id="configPicker1" value="<?php echo $row['job_from'];?>" disabled/>
         </div>
       </div>
       <div class="textfield mar_left"> <span>Reporting  to<sup></sup></span>
         <div class="fields">
-          <input type="text" name="job_to" value="<?php echo $row['job_to'];?>" />
+          <input type="text" name="job_to" value="<?php echo $row['job_to'];?>" disabled />
         </div>
       </div>
 	  
       <div class="textfield"> <span>Job Category<sup>*</sup></span>
         <div class="fields">
-          <select name="area_of_interest" id="area_of_interest">
+          <select name="area_of_interest" id="area_of_interest" disabled/>
           <option value="">--Select Category--</option>
 			<?php 
-            	$result1=$conn->query("select * from master_interest_area where status=1");
+            	$result1=$conn->query("select * from master_area_of_interest where status=1");
             	while($row1=$result1->fetch_assoc()){
             ?>
-            	<option value="<?php echo $row1['id'];?>" <?php if($row1['id']==$row['area_of_interest'])echo 'selected="selected"';?>><?php echo $row1['area_of_interest'];?></option>
+            	<option value="<?php echo $row1['id'];?>" <?php if($row1['id']==$row['area_of_interest'])echo 'selected="selected"';?>><?php echo $row1['subject'];?></option>
             <?php }?>
           </select>
         </div>
       </div>
       <div class="textfield mar_left"> <span>Location<sup>*</sup></span>
         <div class="fields">
-        <select name="job_location" id="job_location">
+        <select name="job_location" id="job_location" disabled/>
             <option value="">---Select City/Town---</option>
             <?php 
             $city_result=$conn->query("select * from master_city where status=1");
@@ -158,44 +156,10 @@ $row=$result->fetch_assoc();
         </div>
       </div>
         <div class="clear"></div>
-        <input type="hidden" name="action" value="addjob"/>
-        <input type="hidden" name="jobId" id="jobId" value="<?php echo $_REQUEST['jobId'];?>"/>
-        <input type="submit" name="" value="Job Submission" class="view_more"/>
-        <div class="clear"></div>
       </form>
       
-      <div class="clear" style="height:50px;"></div>
-      <div class="content_head">posted job</div>
-      <div class="table_job" id="no-more-tables-job">
-        <div class="clear"></div>
-        <table class="table-bordered-job table-striped table-condensed-job cf" id="example">
-          <thead>
-            <tr>
-              <th>Designation </th>
-              <th> Job description </th>
-              <th> Job Location</th>
-              <th> view</th>
-              <th> edit </th>
-            </tr>
-          </thead>
-          <tbody>
-			<?php 
-			$result=$conn->query("select * from master_job where registration_id='$registration_id' and status=1");
-			while($row=$result->fetch_assoc()){
-			?>
-            <tr>
-              <td data-title="Post"><?php echo $row['designation'];?></td>
-              <td data-title="Job description"><?php echo $row['job_desc'];?></td>
-              <td data-title="Job Location"><?php echo getCityName($conn,$row['job_location']);?></td>
-              <td data-title="view"><a href="view_employer_job.php?uid=<?php echo $row['id'];?>"><img src="images/view_icon.png" /></a></td>
-              <td data-title="Edit"><a href="employer_job.php?jobId=<?php echo $row['id'];?>"><img src="images/edit_icon.png" /></a></td>
-            </tr>
-            <?php }?>
-          </tbody>
-        </table>
-        <div class="clear"></div>
-      </div>
-      <div class="clear"></div>
+      
+      
     </div>
   </div>
   <div class="clear"></div>

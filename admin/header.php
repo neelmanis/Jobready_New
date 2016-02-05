@@ -94,18 +94,40 @@ ob_start();
 			  <li class="dropdown">
 			  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manage Exam <b class="caret"></b></a>
 			  <ul class="dropdown-menu">
-              <!--<li><a href="subject.php">&nbsp;Manage Subjects</a></li>			  -->
 			  <li>
 			  <a href="general_question.php">&nbsp;Manage Questions</a>
 			  </li>			  
-			  <li><a href="#">&nbsp;Manage Tests</a></li>
-			  <li><a href="#">&nbsp;Manage Results</a></li>
+			  <!--<li><a href="#">&nbsp;Manage Tests</a></li>
+			  <li><a href="#">&nbsp;Manage Results</a></li>-->
 		      </ul>
               </li>
 			  <li class="dropdown">
 			  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manage Training <b class="caret"></b></a>
 			  <ul class="dropdown-menu">
               <li><a href="training_offered_jobready.php">Trainings Offered By Jobbready</a></li>
+			  </ul>
+              </li>
+			  <li class="dropdown">
+			  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manage CMS <b class="caret"></b></a>
+			  <ul class="dropdown-menu">              
+			  <li class="dropdown-submenu">
+				<a tabindex="-1" href="#">Why Jobbready</a>
+				<ul class="dropdown-menu">
+				  <li><a href="#">JobbReady in Media</a></li>
+				  <li><a href="#">Employment Scenario Updates </a></li>
+				</ul>
+			  </li>
+			  <li class="dropdown-submenu">
+				<a tabindex="-1" href="#">Resources</a>
+				<ul class="dropdown-menu">
+				  <li><a href="#">Interview Tips</a></li>
+				  <li><a href="#">Soft skills at Work</a></li>
+				  <li><a href="#">Sample CVs</a></li>
+				  <li><a href="#">Trainings</a></li>
+				  <li><a href="#">Self help Articles</a></li>
+				</ul>
+			  </li>
+			  <li><a href="#">Contact</a></li>
 			  </ul>
               </li>
 			  <li><a href="logout.php">&nbsp;Logout</a></li>

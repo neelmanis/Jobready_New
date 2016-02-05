@@ -194,7 +194,7 @@ while($interest_row=$interest_result->fetch_assoc())
                   <div class="fields">
                     <select name="[]" id="ms" multiple="multiple">
 						<?php 
-                        	$result=$conn->query("select * from master_interest_area where is_compulsory='0' and status='1'");
+                        	$result=$conn->query("select * from master_interest_area where status='1'");
 							while($row=$result->fetch_assoc()){
                         ?>
                         <option value="<?php echo $row['id'];?>" <?php if(preg_match('/'.$row['id'].'/',$area_of_interest)){?>selected="selected" <?php }?>><?php echo $row['area_of_interest'];?></option>

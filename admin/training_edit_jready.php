@@ -80,11 +80,11 @@ $data[] = $row;
 }
 return $data;
 }
-$neelxz = fetch('SELECT `id`,`subject`, `status` FROM `master_area_of_interest` WHERE `status`=1 ORDER BY subject ASC');
+$neelxz = fetch('SELECT `id`,`area_of_interest`, `status` FROM `master_interest_area` WHERE `status`=1 ORDER BY area_of_interest ASC');
 ?>
 <select class="form-control" name="aoi">
 <?php for($i=0;$i<count($neelxz);$i++) { ?>
-<option value="<?php echo $neelxz[$i]['id'];?>" <?php if($neelxz[$i]['id']== $aoi) echo 'selected="selected"' ;?>><?php echo $neelxz[$i]['subject'] ; ?></option>
+<option value="<?php echo $neelxz[$i]['id'];?>" <?php if($neelxz[$i]['id']== $aoi) echo 'selected="selected"' ;?>><?php echo $neelxz[$i]['area_of_interest'] ; ?></option>
 <?php  } ?>
 </select>
 </div>

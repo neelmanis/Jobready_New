@@ -2,9 +2,9 @@
 <?php
 function getaoi($getid)
 {
-	$query=mysql_query("SELECT `subject` FROM `master_area_of_interest` WHERE id='$getid'");
+	$query=mysql_query("SELECT `area_of_interest` FROM `master_interest_area` WHERE id='$getid'");
 	$result=mysql_fetch_array($query);
-	return $result['subject'];
+	return $result['area_of_interest'];
 }
 ?>
 

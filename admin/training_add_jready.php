@@ -47,12 +47,12 @@ header("Location:training_offered_jobready.php");
 <select class="form-control" name="aoi">
 <option value="">--Select Category--</option>
 <?php
-$neelxz="SELECT `id`,`subject`, `status` FROM `master_area_of_interest` WHERE status='1' ORDER BY subject ASC";
+$neelxz="SELECT `id`,`area_of_interest`, `status` FROM `master_interest_area` WHERE status='1' ORDER BY area_of_interest ASC";
 $result = mysql_query($neelxz);
 while($mysqlrow=mysql_fetch_array($result))
 {
 $getID=$mysqlrow['id'];
-$areas_of_interest=$mysqlrow['subject'];
+$areas_of_interest=$mysqlrow['area_of_interest'];
 echo "<option value='".$getID ."'>$areas_of_interest</option>";
 }
 ?>

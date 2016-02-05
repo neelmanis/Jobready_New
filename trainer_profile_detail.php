@@ -18,7 +18,7 @@ $row=$result->fetch_assoc();
             <div class="det"><?php echo getUserName($conn,$row['registration_id']);?></div>
         </div>
         <div class="info">
-            <div class="head">Trainign Category</div>
+            <div class="head">Training Category</div>
             <div class="dvdr">:</div>
             <div class="det"><?php echo getInterest($conn,$row['area_of_interest']);?></div>
         </div>

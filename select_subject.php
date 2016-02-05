@@ -6,6 +6,7 @@ $registration_id=$_SESSION['registration_id'];
 
 <!---------------------------------- container starts -------------------------------->
 <div class="page_title"><span>welcome <?php echo getUserName($conn,$registration_id)?></span></div>
+
 <div class="inner_conainer">
 <div class="exam_wrap fade_anim">
    

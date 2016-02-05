@@ -44,7 +44,7 @@ if($result)
 </thead>
 <tbody>
 <?php 
-$sqlx="SELECT * FROM `job_student_job_interest` WHERE `admin_id`!=0";
+$sqlx="SELECT * FROM `job_student_job_interest` WHERE 1";
 $result = mysql_query($sqlx)or die(mysql_error());
 while($row=mysql_fetch_array($result)){
 $id=$row['id'];

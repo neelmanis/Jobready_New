@@ -20,10 +20,10 @@ $(document).ready(function(){
 			type:"POST",
 			url:"employer_job_inc.php",
 			data:formData,
-			dataType:"JSON",
+		//	dataType:"JSON",
 			success:function(data)
 			{
-				//alert(data);
+				alert(data);
 				console.log(data);
 				if($.trim(data.error_msg)!="")	
 					errors.html(data.error_msg);	
@@ -47,7 +47,12 @@ $(document).ready(function(){
 	$registration_id=$_REQUEST['registration_id'];
 	$result=$conn->query("select * from job_registration where id='$registration_id'");
 	$row=$result->fetch_assoc();
+	$registration_type=$row['registration_type'];
    ?>
+   <div class="textfield">
+    Admin<input type="radio" name="admin_type" value="A" <?php if($registration_type=='A')	{echo "checked";}?> />
+	Superadmin<input type="radio" name="admin_type"  value="SA" <?php if($registration_type=='SA'){echo "checked";}?> />
+    </div>
   <div class="textfield">
   	  <input type="hidden" name="action" id="" value="addRecruiter"/>
       <input type="text" name="name" onfocus="if(this.value=='Name')value='';" onblur="if(this.value=='')value='Name';" value="<?php echo ($registration_id ? getUserName($conn,$row['id']) : 'Name');?>" />

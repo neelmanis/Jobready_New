@@ -4,6 +4,10 @@ include("menu.php");
 $registration_id=$_SESSION['registration_id'];  
 $exam_type=$_SESSION['exam_type']='interest';
 @$category=$_POST['category'];
+
+if(empty($_POST['category'])) {
+ $_SESSION['Error'] = "You left one or more of the required fields.";
+}
 ?>
 <?php 
 if(!empty($_SESSION['registration_id'])){
