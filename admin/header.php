@@ -1,4 +1,5 @@
 <?php 
+error_reporting(0);
 ob_start();
 session_start();
 ?>
@@ -58,10 +59,7 @@ $(function(){
 </head>
 <?php  //include('dbcon.php'); ?>
 <body>
-<?php
-include('common_tools.php');	
-ob_start();
-?>  
+<?php include('common_tools.php');?>  
  <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
@@ -113,21 +111,21 @@ ob_start();
 			  <li class="dropdown-submenu">
 				<a tabindex="-1" href="#">Why Jobbready</a>
 				<ul class="dropdown-menu">
-				  <li><a href="#">JobbReady in Media</a></li>
-				  <li><a href="#">Employment Scenario Updates </a></li>
+				  <li><a href="cms_why_jb_media.php">JobbReady in Media</a></li>
+				  <li><a href="esu.php">Employment Scenario Updates </a></li>
 				</ul>
 			  </li>
 			  <li class="dropdown-submenu">
 				<a tabindex="-1" href="#">Resources</a>
 				<ul class="dropdown-menu">
-				  <li><a href="#">Interview Tips</a></li>
-				  <li><a href="#">Soft skills at Work</a></li>
-				  <li><a href="#">Sample CVs</a></li>
+				  <li><a href="ques_ans.php">Interview Tips</a></li>
+				  <li><a href="skw.php">Soft skills at Work</a></li>
+				  <li><a href="sample_cv.php">Sample CVs</a></li>
 				  <li><a href="#">Trainings</a></li>
-				  <li><a href="#">Self help Articles</a></li>
+				  <li><a href="sha.php">Self help Articles</a></li>
 				</ul>
 			  </li>
-			  <li><a href="#">Contact</a></li>
+			  <!--<li><a href="contact.php">Contact</a></li>-->
 			  </ul>
               </li>
 			  <li><a href="logout.php">&nbsp;Logout</a></li>

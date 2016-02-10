@@ -1,7 +1,9 @@
 <?php 
 include("header.php");
-include("menu.php");
-$registration_id=$_SESSION['registration_id'];  
+	$registration_id=$_SESSION['registration_id'];
+	if(!isset($_SESSION['registration_id']) || actor_type($conn,$registration_id)!="S")
+			header('location:index.php');
+include("menu.php"); 
 $exam_type=$_SESSION['exam_type']='gen';
 ?>
 <?php 
@@ -140,6 +142,5 @@ $questCt++;
 }
 ?>
 <!-- -------------------------------- container ends ------------------------------ -->
-<div class="ad_banner"><a href="#"><img src="images/ad_banner.jpg" alt="" /></a></div>
 <?php include("footer.php");?>
 </body></html>

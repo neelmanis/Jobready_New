@@ -1,6 +1,10 @@
 <?php include("header.php");?>
+<?php 
+	$registration_id=$_SESSION['registration_id'];
+	if(!isset($_SESSION['registration_id']) || actor_type($conn,$registration_id)!="F")
+			header('location:index.php');
+?>
 <?php include("menu.php");?>
-<?php  $registration_id=$_SESSION['registration_id'];?>
 <script type="text/javascript">
 $(document).ready(function(){
 $("form" ).on( "submit", function( event ) {
@@ -71,7 +75,6 @@ $result=$conn->query("select * from master_job where registration_id='$registrat
 $row=$result->fetch_assoc();
 ?>
 
-
 <!-- -------------------------------- container starts ------------------------------ -->
 <div class="page_title"><span>welcome <?php echo getUserName($conn,$registration_id)?></span></div>
 <div class="inner_conainer" >
@@ -106,8 +109,6 @@ $row=$result->fetch_assoc();
           <textarea name="co_profile" id="co_profile"><?php if($jobId!=""){echo $row['co_profile'];}else{ echo getCompanyProfile($conn,$registration_id);}?></textarea>
         </div>
       </div>
-      
-      
 	  
 	  <div class="textfield"> <span>Salary Min.<sup></sup></span>
         <div class="fields">
@@ -157,6 +158,11 @@ $row=$result->fetch_assoc();
         </select>
         </div>
       </div>
+	  <div class="textfield"> <span>Min. Experience<sup></sup></span>
+        <div class="fields">
+          <input type="number" name="min_exp" value="<?php echo $row['min_exp'];?>" />
+        </div>
+      </div>
         <div class="clear"></div>
         <input type="hidden" name="action" value="addjob"/>
         <input type="hidden" name="jobId" id="jobId" value="<?php echo $_REQUEST['jobId'];?>"/>
@@ -201,7 +207,6 @@ $row=$result->fetch_assoc();
   <div class="clear"></div>
 </div>
 <!-- -------------------------------- container ends ------------------------------ -->
-<div class="ad_banner"><a href="#"><img src="images/ad_banner.jpg" alt="" /></a></div>
 <?php include("footer.php");?>
 </body>
 </html>

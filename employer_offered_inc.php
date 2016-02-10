@@ -48,7 +48,7 @@ $(document).ready(function(){
         <ul class="login" style="display:none;"></ul>
         <div class="form_details fade_anim">
 		<div class="textfield">
-         <input type="checkbox" name="offered" value="Y"/> Offered
+         Offered <input type="checkbox" name="offered" value="Y"/> 
         </div>
         <div class="textfield">
         <textarea name="comment" id="comment" placeholder="Message" ></textarea>

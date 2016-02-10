@@ -1,12 +1,13 @@
 <?php 
-include("header.php");
-include("menu.php");
-$registration_id=$_SESSION['registration_id'];  
+include("header.php"); 
+	$registration_id=$_SESSION['registration_id'];
+	if(!isset($_SESSION['registration_id']) || actor_type($conn,$registration_id)!="S")
+			header('location:index.php');
+include("menu.php"); 
 ?>
 
 <!---------------------------------- container starts -------------------------------->
 <div class="page_title"><span>welcome <?php echo getUserName($conn,$registration_id)?></span></div>
-
 <div class="inner_conainer">
 <div class="exam_wrap fade_anim">
    
@@ -33,6 +34,5 @@ echo "<option value='".$sub_id ."'>$get_subject</option>";
 </div>
 </div>
 
-<div class="ad_banner"><a href="#"><img src="images/ad_banner.jpg" alt="" /></a></div>
 <?php include("footer.php");?>
 </body></html>

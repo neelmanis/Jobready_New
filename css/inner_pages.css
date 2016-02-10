@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 
-.page_title{width:100%; background:#e1e4e6; padding:40px 0; margin-bottom:20px;}
+.page_title{width:100%; background:#e1e4e6; padding:13px 0; margin-bottom:20px;}
 .page_title span{width:1000px; margin:0 auto; display:block; font-size:17px; text-transform:uppercase; color:#595959; font-weight:bold;}
 
 .page_subtitle{ display:block;  margin-bottom:15px; font-size:18px; color:#595959; display:block;}
@@ -162,17 +162,23 @@
 .info .dvdr{width:5%; /*background:#090;*/ float:left; text-align:center;}
 .info .det{width:65%; /*background:#F90;*/ float:left;}
 
-.add_info{float:right; margin:15px 15px 15px 0; text-transform:uppercase; font-size:14px;}
+
 .common_button{ padding:5px 10px !important; width:100px !important; border-radius:15px !important; outline:0 !important; border:0 !important; cursor:pointer; }
 .common_button:hover{ background:#00006B; border-radius:5px !important; color:#fff;cursor:pointer;}
-input[type="button"]{ padding:5px 10px; width:100px; border-radius:15px; }
+input[type="button"]{ padding:5px 10px; width:auto; border-radius:15px; }
 input[type="button"]:hover{ background:#00006B; border-radius:5px; color:#fff;}
 
 input[type="submit"]{ padding:5px 10px; width:100px; border-radius:15px; font-size:12px;  font-size:14px; margin-left:10px; background: #ddd; }
 input[type="submit"]:hover{ background:#00006B; border-radius:5px; color:#fff;}
 
+.add_info{float:right; margin:15px 15px 15px 0; text-transform:uppercase; font-size:14px;}
 .add_info a{ min-width:100px !important; border-radius:15px; background:#ddd; font-size:14px; text-align:center; display:block; padding:5px 2px; color:#000; float:left;}
-.add_info a:hover{ background:#00006B; border-radius:5px; color:#fff;} 
+.add_info a:hover{ background:#00006B; border-radius:5px; color:#fff;}
+
+
+.apply{float:left; margin:15px 15px 15px 0; text-transform:uppercase; font-size:14px;}
+.apply a{ min-width:100px !important; border-radius:15px; background:#ddd; font-size:14px; text-align:center; display:block; padding:5px 2px; color:#000; float:left;}
+.apply a:hover{ background:#00006B; border-radius:5px; color:#fff;}  
 
 .add_new{float:right; margin:15px 0;}
 .add_new input[type="button"]{ padding:5px 10px; width: auto; border-radius:15px; background:#ed1a21; color:#fff; float:left; }
@@ -368,6 +374,14 @@ ul.feedback_wrap li{ display:block; padding:60px 10px 10px;}
 
 }
 
+/*  05 FEB FOR FRONTEND PAGES */
+ul.media{text-align:justify;}
+ul.media li{margin-bottom:20px; border-bottom:1px dashed #ccc; padding-bottom:15px; }
+ul.media li img{width:120px; height:100px; margin-right:15px; border:1px solid #e6e6e6; background:#090; float:left; }
+ul.media li .name{font-size:14px; display:block; margin-bottom:10px; font-weight:bold;}
+ul.media li .name span{display:inline-block; float:right; font-size:12px; color:#999;} 
+ul.media li .name a{ margin-left:50px; color:#000;}
+
 @media all and (max-width:400px){
 .form_wrap .textfield select{width:115%;}
 .search_other input[type="text"]{ width:48%;}
@@ -378,3 +392,5 @@ ul.feedback_wrap li{ display:block; padding:60px 10px 10px;}
 }
 
 .profile_info_wrap{  padding:0 25px; width:550px;}
+
+.other_exam{display:block; background:#00006B; padding:5px; color:#fff; margin-bottom:15px;}

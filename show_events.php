@@ -9,7 +9,7 @@ $row=$result->fetch_assoc();
 
 
 <!-- -------------------------------- container starts ------------------------------ -->
-<div class="page_title"><span><?php echo $row['type'];?></span></div>
+<div class="page_title"><span>Upcoming Events ( <?php echo $row['type'];?> )</span></div>
 <div class="inner_conainer">
 		<div class="info_wrap">
         <div class="info">
@@ -29,11 +29,10 @@ $row=$result->fetch_assoc();
         </div>        
         <div class="clear"></div>
     </div>
-     
+     <div class="add_info"><a href='javascript:history.back(1);'>Back</a></div>
      <div class="clear"></div>
     
 </div>
 <!-- -------------------------------- container ends ------------------------------ -->
-<div class="ad_banner"><a href="#"><img src="images/ad_banner.jpg" alt="" /></a></div>
 <?php include("footer.php");?>
 </body></html>

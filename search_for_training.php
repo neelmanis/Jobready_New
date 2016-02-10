@@ -15,7 +15,7 @@ else
 	}
 }
 
-$sql="select * from job_training_list where status='1'";
+$sql="select * from job_training_list where status='1' and registration_id!=0";
 if(isset($_SESSION['area_of_interest']) && $_SESSION['area_of_interest']!='')
 {	$area_of_interest=$_SESSION['area_of_interest'];
 	$sql.=" and area_of_interest='$area_of_interest'";
@@ -75,7 +75,7 @@ jQuery(function($) {
 </script>
 <!-- -------------------------------- container starts ------------------------------ -->
 
-<div class="page_title"><span>Search for trainer</span></div>
+<div class="page_title"><span>Search for Training</span></div>
 <div class="inner_conainer fade_anim">
 <form action="" name="search_for_trainer" method="post">
   <div class="table_main  editinfo" id="no-more-tables">
@@ -93,7 +93,7 @@ jQuery(function($) {
 			<select name="area_of_interest" id="area_of_interest">
 				<option value="">Please Select Category</option>
 				<?php 
-					$result=$conn->query("select * from master_interest_area where is_compulsory='0' and status=1");
+					$result=$conn->query("select * from master_interest_area where status=1");
 					while($row=$result->fetch_assoc()){
 				?>
 				<option value="<?php echo $row['id'];?>" <?php if($_SESSION['area_of_interest']==$row['id']){?> selected="selected"<?php }?>><?php echo $row['area_of_interest'];?></option>
@@ -117,7 +117,7 @@ jQuery(function($) {
       <thead>
         <tr>
           <th>Training Category</th>
-          <th>Training Name</th>
+          <th>Trainer Name</th>
           <th>Training Brief</th>
 		  <th colspan="2">Action</th>
         </tr>
@@ -130,15 +130,26 @@ jQuery(function($) {
         <?php while($row=$result->fetch_assoc()){?>
             <tr class="paginate">
             <td data-title="Training Category"><?php echo getInterest($conn,$row['area_of_interest']);?></td>
-            <td data-title="Training Name"><?php echo getUserName($conn,$row['registration_id']);?></td>
+            <td data-title="Training Name"><a href="candidate_trainer_profile.php?registration_id=<?php echo $row['registration_id'];?>"><?php echo getUserName($conn,$row['registration_id']);?></a></td>
             <td data-title="Training Brief"><?php echo $row['description'];?></td>
-			<?php if(isset($_SESSION['registration_id'])):?>
-            	<td data-title="Action"><a href="#" class="showinterest <?php echo $row1['id']." ".$row['registration_id']." ".$registration_id;?>">Show Interest</a></td>
-			<?php else : ?>
-				<td data-title="Action"><a class="fancybox fancybox.ajax fade" href="login_signup_form.php?redirect_url=<?php echo basename($_SERVER['PHP_SELF']);?>">Show Interest</a></td>
-			<?php endif;?>
-            <td data-title="Action"><a href="trainer_profile_detail.php?id=<?php echo $row['id'];?>" target="_blank">View</a></td>
             
+        	 <?php if(isset($_SESSION['registration_id'])):?>
+          		<?php if(actor_type($conn,$registration_id)=="S"):?>
+                    <td data-title="Action">
+                    	<a href="#" class="showinterest <?php echo $row['id']." ".$row['registration_id']." ".$registration_id;?>">Show Interest</a>
+                    </td>
+          		<?php else:?>
+                    <td data-title="">
+                        <a href="#" onclick="return(window.confirm('Only Candidate can show interest..!!'));" class="contact">Contact</a>
+                    </td>
+				<?php endif ;else :?>
+                    <td data-title="Action">
+                        <a class="fancybox fancybox.ajax fade" href="login_signup_form.php?redirect_url=<?php echo basename($_SERVER['PHP_SELF']);?>">Show Interest</a>
+                     </td>
+			<?php endif;?>
+            
+            
+            <td data-title="Action"><a href="training_profile_detail.php?id=<?php echo $row['id'];?>">View</a></td>
           </tr>
         <?php }?>
       </tbody>
@@ -146,15 +157,8 @@ jQuery(function($) {
   </div>
     <div class="clear"></div>
 	<div id="page-nav"></div>
-  <!--<div class="pagination">
-    <div class="prev"><a href="#"><</a></div>
-    <a href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a>
-    <div class="next"><a href="#">></a></div>
-    <div class="clear"></div>
-  </div>-->
   <div class="clear"></div>
 </div>
 <!-- -------------------------------- container ends ------------------------------ -->
-<div class="ad_banner"><a href="#"><img src="images/ad_banner.jpg" alt="" /></a></div>
 <?php include("footer.php");?>
 </body></html>

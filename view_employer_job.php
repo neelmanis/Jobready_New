@@ -69,9 +69,9 @@ $(document).ready(function () {
 $uid = $_REQUEST['uid'];
 $result=$conn->query("select * from master_job where registration_id='$registration_id' and id='$uid'");
 $row=$result->fetch_assoc();
+$aoi=$row['area_of_interest'];
+$location=$row['job_location'];
 ?>
-
-
 <!-- -------------------------------- container starts ------------------------------ -->
 <div class="page_title"><span>welcome <?php echo getUserName($conn,$registration_id)?></span></div>
 <div class="inner_conainer" >
@@ -80,92 +80,77 @@ $row=$result->fetch_assoc();
     <div class="content_head">View job</div>
     <ul class="login" style="display:none;"></ul>
     <div class="form_wrap">
-    <form action="" name="addTraining" id="addTraining" method="post">
-      <div class="textfield"> <span>Job Code<sup>*</sup></span>
+      <div class="textfield"> <span>Job Code</span>:
         <div class="fields">
-          <input type="text" name="job_code" id="job_code" value="<?php echo $row['job_code'];?>" disabled/>
+          <?php echo $row['job_code'];?>
         </div>
       </div>
-      <div class="textfield mar_left"> <span>Designation<sup>*</sup></span>
+      <div class="textfield mar_left"> <span>Designation</span>:
         <div class="fields">
-        <input type="text" name="designation" id="designation" value="<?php echo $row['designation'];?>" disabled/>
+        <?php echo $row['designation'];?>
         </div>
       </div>
-      <div class="textfield_1"> <span>keywords<sup>*</sup></span>
+      <div class="textfield_1"> <span>keywords</span>:
         <div class="fields">
-	<textarea name="keyword" id="keyword" disabled/><?php echo $row['keyword'];?></textarea>
+	<?php echo $row['keyword'];?>
         </div>
       </div>
-      <div class="textfield_1"> <span>Job description<sup>*</sup></span>
+      <div class="textfield_1"> <span>Job description</span>:
         <div class="fields">
-          <textarea name="job_desc" id="job_desc" disabled><?php echo $row['job_desc'];?></textarea>
+          <?php echo $row['job_desc'];?>
         </div>
       </div>
-      <div class="textfield_1"> <span>Company Profile<sup>*</sup></span>
+      <div class="textfield_1"> <span>Company Profile</span>:
         <div class="fields">
-          <textarea name="co_profile" id="co_profile" disabled><?php if($jobId!=""){echo $row['co_profile'];}else{ echo getCompanyProfile($conn,$registration_id);}?></textarea>
+          <?php if($jobId!=""){echo $row['co_profile'];}else{ echo getCompanyProfile($conn,$registration_id);}?>
         </div>
       </div>
      
-	  <div class="textfield"> <span>Salary Min.<sup></sup></span>
+	  <div class="textfield"> <span>Salary Min.<sup></sup></span>:
         <div class="fields">
-          <input type="text" name="minimal" value="<?php echo $row['salary_from'];?>" disabled/>
+          <?php echo $row['salary_from'];?>
         </div>
       </div>
-      <div class="textfield mar_left"> <span>Salary Max<sup></sup></span>
+      <div class="textfield mar_left"> <span>Salary Max<sup></sup></span>:
         <div class="fields">
-          <input type="text" name="maxval" value="<?php echo $row['salary_to'];?>" disabled/>
+          <?php echo $row['salary_to'];?>
         </div>
       </div>
 	
-      <div class="textfield"> <span>Expected Start date <sup>*</sup></span>
+      <div class="textfield"> <span>Expected Start date </span>:
         <div class="fields">
-          <input type="text" name="job_from" id="configPicker1" value="<?php echo $row['job_from'];?>" disabled/>
+          <?php echo $row['job_from'];?>
         </div>
       </div>
-      <div class="textfield mar_left"> <span>Reporting  to<sup></sup></span>
+      <div class="textfield mar_left"> <span>Reporting  to<sup></sup></span>:
         <div class="fields">
-          <input type="text" name="job_to" value="<?php echo $row['job_to'];?>" disabled />
+         <?php echo $row['job_to'];?>
         </div>
       </div>
-	  
-      <div class="textfield"> <span>Job Category<sup>*</sup></span>
+	  <div class="textfield"> <span>Job Category</span>:
         <div class="fields">
-          <select name="area_of_interest" id="area_of_interest" disabled/>
-          <option value="">--Select Category--</option>
-			<?php 
-            	$result1=$conn->query("select * from master_area_of_interest where status=1");
-            	while($row1=$result1->fetch_assoc()){
-            ?>
-            	<option value="<?php echo $row1['id'];?>" <?php if($row1['id']==$row['area_of_interest'])echo 'selected="selected"';?>><?php echo $row1['subject'];?></option>
-            <?php }?>
-          </select>
+			<?php echo getInterest($conn,$aoi);	?>
         </div>
       </div>
-      <div class="textfield mar_left"> <span>Location<sup>*</sup></span>
+      
+	  <div class="textfield mar_left"> <span>Location</span>:
         <div class="fields">
-        <select name="job_location" id="job_location" disabled/>
-            <option value="">---Select City/Town---</option>
-            <?php 
-            $city_result=$conn->query("select * from master_city where status=1");
-            while($city_row=$city_result->fetch_assoc()){
-            ?>
-              <option value="<?php echo $city_row['id'];?>" <?php if($city_row['id']==$row['job_location'])echo 'selected="selected"';?> ><?php echo $city_row['city'];?></option>
-              <?php }?>
-        </select>
+        <?php echo getCityName($conn,$location);?>
         </div>
       </div>
+	  <div class="textfield"> <span>Min. Experience</span>:
+        <div class="fields">
+          <?php echo $row['min_exp'];?>
+        </div>
+      </div><br/>
+	  <div class="apply"><a href='javascript:history.back(1);'>Back</a></div>
         <div class="clear"></div>
-      </form>
-      
-      
-      
+		
     </div>
   </div>
   <div class="clear"></div>
 </div>
 <!-- -------------------------------- container ends ------------------------------ -->
-<div class="ad_banner"><a href="#"><img src="images/ad_banner.jpg" alt="" /></a></div>
 <?php include("footer.php");?>
 </body>
 </html>

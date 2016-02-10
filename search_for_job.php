@@ -47,13 +47,12 @@ $('.showjobinterest').live('click',function(){
 var clas=$(this).attr('class').split(' ');
 var job_id=clas[1];
 var employer_registraion_id=clas[2];
-var admin_id=clas[3];
-var registration_id=clas[4];	
+var registration_id=clas[3];	
 	if(confirm("Are you sure you want to show interest?")){
 		$.ajax({
 				type:"POST",
 				url:"employer_job_inc.php",
-				data:"action=showjobinterest&&job_id="+job_id+"&&employer_registraion_id="+employer_registraion_id+"&&admin_id="+admin_id+"&&registration_id="+registration_id,
+				data:"action=showjobinterest&&job_id="+job_id+"&&employer_registraion_id="+employer_registraion_id+"&&registration_id="+registration_id,
 				dataType:"JSON",
 				success:function(data)
 				{
@@ -163,16 +162,21 @@ jQuery(function($) {
           <td data-title="Area of Interest"><?php echo getInterest($conn,$row['area_of_interest']);?></td>
           <td data-title="Job Location "><?php echo getCityName($conn,$row['job_location']);?></td>
 		  <?php if(isset($_SESSION['registration_id'])):?>
-          <td data-title="">
-          	<a href="#" class="showjobinterest <?php echo $row['id']." ".$row['registration_id']." ".$row['admin_id']." ".$registration_id;?> contact">Contact</a>
-          </td>
-		<?php else : ?>
+          <?php if(actor_type($conn,$registration_id)=="S"):?>
+              <td data-title="">
+                <a href="#" class="showjobinterest <?php echo $row['id']." ".$row['registration_id']." ".$registration_id;?> contact">Contact</a>
+              </td>
+          	<?php else:?>
+            	<td data-title="">
+                	<a href="#" onclick="return(window.confirm('Only Candidate can contact..!!'));" class="contact">Contact</a>
+                </td>
+		<?php endif ;else : ?>
 		<td data-title="Action">
         	<a class="fancybox fancybox.ajax fade" href="login_signup_form.php?redirect_url=<?php echo basename($_SERVER['PHP_SELF']);?>">Show Interest</a>
          </td>
 		<?php endif;?>
         <td data-title="">
-          	<a href="job_profile.php?id=<?php echo $row['id'];?>" class="contact" target="_blank">View</a>
+          	<a href="job_profile.php?id=<?php echo $row['id'];?>" class="contact">View</a>
          </td>
         </tr>
          <?php }?>
@@ -192,6 +196,5 @@ jQuery(function($) {
   <div class="clear"></div>
 </div>
 <!-- -------------------------------- container ends ------------------------------ -->
-<div class="ad_banner"><a href="#"><img src="images/ad_banner.jpg" alt="" /></a></div>
 <?php include("footer.php");?>
 </body></html>

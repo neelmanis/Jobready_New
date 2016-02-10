@@ -13,7 +13,6 @@ $result=$conn->query("select contact_name,email_id from admin_master where id='$
 $row=$result->fetch_assoc();
 $admin_name=$row['contact_name'];
 $email=$row['email_id'];
-//print_r($row);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"> 
@@ -36,13 +35,13 @@ if(empty($description)){
 $_SESSION['fail_msg']= "Please Enter Your Comment.";
 }else{
 
-/*********************          Email Script Start      ************************/
+/********************* Email Script Start************************/
 $to = "$email";
-$subject = "Account Credential Details";
+$subject = "Jobbreay Enquiry Details";
 $body = '<table width="100%" height="auto" cellspacing="0" cepadding="0" border="0" align="center" style=" font-family:Arial, Helvetica, sans-serif; font-size:14px; ">    
     <tr>
     <td width="19" ></td>
-    <td colspan="2" style="padding:10px; color:#FFFFFF; font-weight:bold;"><img src="images/logo.png" style="width:125px;"/> </td>
+    <td colspan="2" style="padding:10px; color:#FFFFFF; font-weight:bold;"><img src="http://digitalagencymumbai.com/jobready/images/logo.png" style="width:125px;"/> </td>
     <td width="19" >&nbsp;</td>
     </tr>
     <tr>
@@ -90,7 +89,8 @@ $_SESSION['fail_msg']="";
 <!--Send Mail to Admin For Training Stop ---->
 <form action="" name="sendmail" id="sendmail" method="post">
 <input type="hidden" name="action" value="sendmail"/> 
-<input type="hidden" name="mail" value="<?php echo $email; ?>"/>       
+<input type="hidden" name="mail" value="<?php echo $email; ?>"/> 
+<input type="hidden" name="users" value="<?php echo $admin_name; ?>"/>       
     <div class="add_training">
         <ul class="login" style="display:none;"></ul>
         <div class="form_details fade_anim">

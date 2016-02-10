@@ -1,0 +1,10 @@
+<?php include("header.php");?>
+<?php include("menu.php");?>
+<div class="page_title"><span> Corporate </span></div>
+<div class="inner_conainer fade_anim">
+    Lorem ipsum dolor sit amet, porta venenatis iaculis ut mauris feugiat tellus, aenean vestibulum duis turpis, nibh a orci id, non tincidunt vitae vestibulum nam mollis tempor. Mi metus eu odio, quam mauris sed etiam velit laborum fringilla. Molestie dignissim ullamco, vestibulum consequat vivamus mi ipsum quam velit, urna malesuada enim hac, pellentesque justo nullam nullam nec ipsum. Sagittis in. Bibendum proin eget. Corrupti semper dictum, fusce sit vestibulum molestie malesuada sed quis, lacus porta pellentesque dignissim. Nullam ac, tincidunt adipiscing fermentum, ante vestibulum malesuada, non tortor cras interdum conubia. Non in vehicula enim etiam morbi donec. Odio egestas fusce, praesent ipsum suspendisse proin, felis eu ipsum erat, donec tortor nullam dictum felis pede. Ut mauris, vestibulum vulputate.
+Pede enim amet, vitae purus urna. Enim scelerisque turpis, dolor in accumsan eu cras dui nibh, suspendisse tortor sit sagittis morbi duis mollis, eleifend rutrum ipsum cras fusce. Amet sed orci tellus vel, aptent pede curabitur vel. Sed lacus, nunc nunc id elit sollicitudin est dictumst, natoque sodales erat quam quis vestibulum, interdum odio litora et et interdum sit, rutrum a fringilla. Auctor eros dui pharetra in, ipsum odio sodales. Nunc eu justo. Id luctus lacinia cursus. Aenean libero interdum commodo nunc, consequat wisi egestas sit pede cras pellentesque, ac leo in, mi elit faucibus diam metus lectus in, est malesuada. Auctor velit turpis neque fames, fusce ac hac amet augue illum. Luctus quam netus vestibulum purus condimentum, nunc in suspendisse feugiat, eleifend quam pretium facilisis eu volutpat, gravida convallis et enim ipsum mauris.
+</div>
+<!-- -------------------------------- container ends ------------------------------ -->
+<?php include("footer.php");?>
+</body></html>

@@ -6,7 +6,7 @@ elseif($actor_type=='T'){$url="trainer_dashboard.php";}
 elseif($actor_type=='F'){$url="employer_dashboard.php";}
 else{$url="select_actor.php";}
 ?>
-<!-- -------------------------------- header starts ------------------------------ -->
+<!---------------------------------- header starts -------------------------------->
 <div class="header_wrap">
     <div class="header fade_anim">
         <div class="logo"><a href="index.php"><img src="images/logo.png" alt="" /></a></div>
@@ -24,8 +24,8 @@ else{$url="select_actor.php";}
             <div class="menu_wrap fade_anim">
                 <div id='cssmenu'>
                         <ul>
-                            <li><a href='#'>home</a></li>
-                            <li><a href='#'>Corporate</a></li>
+                            <li><a href='index.php'>home</a></li>
+                            <li><a href='corporate.php'>Corporate</a></li>
                             <li><a href='#'>Our Services</a>							
 							<ul>
 								<li><a href="search_for_training.php">Search For Training</a></li>
@@ -36,18 +36,18 @@ else{$url="select_actor.php";}
 							</li>
 							<li><a href='#'>Why JobbReady?</a>
 							<ul>
-								<li><a href="#">Need for JobbReady?</a></li>
-								<li><a href="#">JobbReady in Media</a></li>
-                                <li><a href="#">Employment Scenario Updates</a></li>
+								<li><a href="need_jobbready.php">Need for JobbReady?</a></li>
+								<li><a href="jobbready_media.php">JobbReady in Media</a></li>
+                                <li><a href="esu.php">Employment Scenario Updates</a></li>
 							</ul>
 							</li>
                            <li><a href='#'>Resources</a>
 							<ul>
-								<li><a href="#">Interview Tips</a></li>
-								<li><a href="#">Soft skills at Work </a></li>
-                                <li><a href="#">Sample CVs</a></li>
+								<li><a href="tips.php">Interview Tips</a></li>
+								<li><a href="skw.php">Soft skills at Work </a></li>
+                                <li><a href="sample_cv.php">Sample CVs</a></li>
 								<li><a href="#">Trainings</a></li>
-								<li><a href="#">Self help Articles</a></li>
+								<li><a href="sha.php">Self help Articles</a></li>
 							</ul>
 						   </li>
                            <li><a href='contact_us.php'>Contact</a> </li>

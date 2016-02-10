@@ -10,7 +10,6 @@ $(document).ready(function(){
 		var tabIndex = parseInt($submitButton.data('block')) + 1;
 		var formData = new FormData(this);
 		var errors = $this.prev('.login');
-		
 		$.ajax({
 			  type:"POST",
 			  url:"student_trainer_registration_inc.php",
@@ -100,9 +99,10 @@ while($interest_row=$interest_result->fetch_assoc())
       <!--Horizontal Tab-->
       <div id="horizontalTab">
         <ul class="resp-tabs-list" id="tab">
-          <li>PERSONAL INFORMATION</li>
-          <li>PROFILE INFORMATION</li>
-          <li>EDUCATIONAL INFORMATION</li>
+          <li>PERSONAL INFO</li>
+          <li>PROFILE INFO</li>
+          <li>EDUCATIONAL INFO</li>
+          <li>EMPLOYEMENT INFO</li>
         </ul>
         <div class="resp-tabs-container">
           <!-- ----------------- tab 1 starts ----------- -->
@@ -132,11 +132,6 @@ while($interest_row=$interest_result->fetch_assoc())
                     <input type="text" name="dob" id="configPicker1" value="<?php echo $dob;?>" />
                   </div>
                 </div>
-                <!--<div class="textfield mar_left"> <span>Mobile Number<sup>*</sup></span>
-                  <div class="fields">
-                    <input type="text" name="mobile_no" id="mobile_no" value="<?php echo $mobile_no;?>" />
-                  </div>
-                </div>-->
                 <div class="textfield mar_left"> <span>Address 1<sup>*</sup></span>
                   <div class="fields">
                     <input type="text" name="address1" id="address1" value="<?php echo $address1;?>"  />
@@ -152,7 +147,7 @@ while($interest_row=$interest_result->fetch_assoc())
                     <input type="text" name="address3" id="address3" value="<?php echo $address3;?>" />
                   </div>
                 </div>
-                <div class="textfield"> <span>PIN Code <sup>*</sup></span>
+                <div class="textfield"> <span>PinCode <sup>*</sup></span>
                   <div class="fields">
                     <input type="text" name="pincode" id="pincode" value="<?php echo $pincode;?>" />
                   </div>
@@ -202,11 +197,6 @@ while($interest_row=$interest_result->fetch_assoc())
                     </select>
                   </div>
                 </div>
-                <!--<div class="textfield mar_left"> <span>Preferred Locations<sup>*</sup></span>
-                  <div class="fields">
-                    <input type="text" name="preffered_location" id="preffered_location" value="<?php echo $preffered_location?>" />
-                  </div>
-                </div>-->
 				<div class="textfield mar_left"> <span>Preferred Locations<sup>*</sup></span>
                   <div class="fields">
 					<select name="preffered_location" id="preffered_location">
@@ -341,7 +331,7 @@ while($interest_row=$interest_result->fetch_assoc())
                 </table>
                 <div class="add_info">
                   <a href="<?php echo $url;?>">Skip</a>
-                  <input type="submit" value="SUBMIT" class="register" data-block="2" />
+                  <input type="submit" value="NEXT" class="register" data-block="2" />
                 </div>
                 <div class="clear"></div>
               </div>
@@ -350,6 +340,92 @@ while($interest_row=$interest_result->fetch_assoc())
             </form>
           </div>
           <!-- ----------------- tab 3 ends ----------- -->
+          
+          <!-- ----------------- tab 4 start ----------- -->
+          <div>
+          <form action="" name="" id="" method="post">
+          <ul class="employmentError login"></ul>
+          <input type="hidden" name="regis_step" id="regis_step" value="employment_info" />
+            <div class="quest_box  fade_anim">
+              <div class="table_main" id="no-more-tables">
+                <table class="table-bordered table-striped table-condensed cf">
+                  <thead>
+                    <tr bgcolor="#868686" style="color:#fff;">
+                      <th> Employer Name </th>
+                      <th> Start Month </th>
+                      <th> Start Year </th>
+                      <th> Last Designation </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td data-title="Employer name">
+                      <input type="text" name="employer_name" id="employer_name" />
+                      </td>
+                      <td data-title="Start Month">
+                        <select name="start_month" id="start_month">
+                        <option value="">--Select Month--</option>
+                          <?php 
+						  $query=$conn->query("select * from job_month");
+						  while($row=$query->fetch_assoc()){
+						  ?>
+                          <option value="<?php echo $row['month'];?>"><?php echo $row['month'];?></option>
+                          <?php }?>
+                        </select>
+                      </td>
+                      <td data-title="Start year">
+                      <input type="text" name="start_year" id="start_year" />
+                      </td>
+                      <td data-title="Last Designation">
+                      	<input type="text" name="last_designation" id="last_designation" />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="add_info">
+                  <input type="button" value="ADD" id="addEmp" />
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="clear"></div>
+              <div class="table_main" id="no-more-tables">
+                <table class="table-bordered table-striped table-condensed cf">
+                  <thead>
+                     <tr bgcolor="#868686" style="color:#fff;">
+                      <th> Employer Name </th>
+                      <th> Start Month </th>
+                      <th> Start year </th>
+                      <th>Last Designation </th>
+                      <th> remove </th>
+                    </tr>
+                  </thead>
+                  <tbody id="employmentDetails">
+                  <?php 
+					$result=$conn->query("select * from job_employment_profile where registration_id='$registration_id'");
+					while($row=$result->fetch_assoc()){
+				  ?>
+                    <tr>
+                      <td data-title="Education"><?php echo $row['employer_name'];?></td>
+                      <td data-title="Start Month"><?php echo $row['start_month'];?></td>
+                      <td data-title="Start year"><?php echo $row['start_year'];?></td>
+                      <td data-title="Last Designation"><?php echo $row['last_designation'];?>Last Designation</td>
+                      <td data-title="Remove"><a href="#"><img src="images/remove_iocn.png" class="deleteEmp <?php echo $row['id'];?>"  /></a></td>
+                    </tr>
+                   <?php }?>
+                  </tbody>
+                </table>
+                <div class="add_info">
+                  <a href="<?php echo $url;?>">Skip</a>
+                  <input type="submit" value="Submit" class="register" data-block="3" />
+                </div>
+                <div class="clear"></div>
+              </div>
+            </div>
+            <div class="clear"></div>
+            </form>
+          </div>
+          <!-- ----------------- tab 4 end ----------- -->
+          
         </div>
         <div class="clear"></div>
       </div>
@@ -358,7 +434,6 @@ while($interest_row=$interest_result->fetch_assoc())
   </div>
 </div>
 <!-- -------------------------------- container ends ------------------------------ -->
-<div class="ad_banner"><a href="#"><img src="images/ad_banner.jpg" alt="" /></a></div>
 <?php include("footer.php");?>
 </body>
 </html>

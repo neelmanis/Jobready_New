@@ -20,11 +20,10 @@ $(document).ready(function(){
 			type:"POST",
 			url:"employer_job_inc.php",
 			data:formData,
-		//	dataType:"JSON",
+			dataType:"JSON",
 			success:function(data)
 			{
-				alert(data);
-				console.log(data);
+				//alert(data);
 				if($.trim(data.error_msg)!="")	
 					errors.html(data.error_msg);	
 				else
@@ -50,8 +49,10 @@ $(document).ready(function(){
 	$registration_type=$row['registration_type'];
    ?>
    <div class="textfield">
-    Admin<input type="radio" name="admin_type" value="A" <?php if($registration_type=='A')	{echo "checked";}?> />
-	Superadmin<input type="radio" name="admin_type"  value="SA" <?php if($registration_type=='SA'){echo "checked";}?> />
+    Admin &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="registration_type" value="A" <?php if($registration_type=='A')	{echo "checked";}?> />
+    </div>
+    <div class="textfield">
+	Superadmin<input type="radio" name="registration_type"  value="SA" <?php if($registration_type=='SA'){echo "checked";}?> />
     </div>
   <div class="textfield">
   	  <input type="hidden" name="action" id="" value="addRecruiter"/>
