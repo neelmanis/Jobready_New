@@ -101,7 +101,7 @@ $salary_to=$mysqlrow['salary_to'];
 $job_from=$mysqlrow['job_from'];
 $job_to=$mysqlrow['job_to'];
 $aoi=$mysqlrow['area_of_interest'];
-echo $get_location=$mysqlrow['job_location'];
+$get_location=$mysqlrow['job_location'];
 $status=$mysqlrow['status'];
 if($mysqlrow['status']=="1"){$active="selected";}
 if($mysqlrow['status']=="0"){$inactive="selected";}

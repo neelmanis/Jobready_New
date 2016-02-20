@@ -135,6 +135,7 @@ if($action=="addRecruiter"){
 		$error_msg.="<li>Please enter designation</li>";
 	else	
 		$designation=$_POST['designation'];	
+		
 	if($_POST['email']=="Email")
 		$error_msg.="<li>Please enter email id</li>";
 	else	
@@ -169,8 +170,8 @@ if($action=="addRecruiter"){
 		else
 		{
 			$recruiter_id=$_POST['recruiter_id'];
-			$conn->query("update job_registration set registration_type='$admin_type',type_of_actor='F',refer_registration_id='$referenceId',email='$email',password='$password', mobile_no='$mobile',modified_date='$post_date',ip_address='$ip_address' where id='$recruiter_id'");
-		$conn->query("update job_profile set fname='$name',designation='$designation' where id='$recruiter_id'");
+			$conn->query("update job_registration set registration_type='$admin_type',type_of_actor='F',refer_registration_id='$referenceId',email='$email',password='$password', mobile_no='$mobile',modified_date='$post_date',ip_address='$ip_address' where id='$recruiter_id'"); 
+		$conn->query("update job_profile set fname='$name',designation='$designation' where registration_id='$recruiter_id'");
 		}
 	}
 	echo json_encode(array('url'=>$url,'error_msg'=>$error_msg));
@@ -195,7 +196,7 @@ $conn->query("update job_student_job_interest set candidate_offered='$offered',c
 	echo json_encode(array('url'=>$url,'error_msg'=>$error_msg));
 }
 // Send Mail to Jobbready For Training
-/* if($action=="sendcontact"){
+if($action=="sendcontact"){  
 	$url="employer_training_offered.php";
 	$error_msg="";
 	$check_description=check_string($_POST['description']);
@@ -203,12 +204,51 @@ $conn->query("update job_student_job_interest set candidate_offered='$offered',c
 		$error_msg.="<li>Please enter description</li>";
 	else
 	$description=$_POST['description'];
-	$users=$_POST['users'];
-	$mail=$_POST['mail'];
-	 if($error_msg=="")
+	
+	$admin_mail=$_POST['admin_mail'];
+	$co_u_name=$_POST['co_u_name'];
+	
+	$co_name=$_POST['company_name'];
+	$user_mail=$_POST['user_mail'];
+	if($error_msg=="")
 	{	
-echo 'send mail';
+$to = "$admin_mail";
+$subject = "Jobbreay Enquiry Details";
+$body = '<table width="100%" height="auto" cellspacing="0" cepadding="0" border="0" align="center" style=" font-family:Arial, Helvetica, sans-serif; font-size:14px; ">    
+    <tr>
+    <td width="19" ></td>
+    <td colspan="2" style="padding:10px; color:#FFFFFF; font-weight:bold;"><img src="http://digitalagencymumbai.com/jobready/images/logo.png" style="width:125px;"/> </td>
+    <td width="19" >&nbsp;</td>
+    </tr>
+    <tr>
+    <td bgcolor="#ED1A21" style="padding:10px;">&nbsp;</td>
+    <td colspan="2" bgcolor="#ED1A21" style="padding:10px; font-size:30px; text-align:center; color:#fff;">Welcome to Jobb Ready</td>
+   <td bgcolor="#ED1A21" style="padding:10px;">&nbsp;</td>
+    </tr>   
+
+    <tr>
+    <td >&nbsp;</td>
+    <td colspan="2">
+    <table width="1000px" border="0" cellspacing="0" cellpadding="0" align="center">  
+    <tr>
+<td valign="top"  style="padding:10px; line-height:20px; font-family:Arial, Helvetica, sans-serif; font-size:14px;">
+<strong style="font-size:18px;">Thanks for Contact Jobb Ready</strong>
+<p>Company:'.$co_name.' </p>
+<p>Contact person:'.$co_u_name.' </p>
+<p>Email: '.$user_mail.'</p>
+<p>Comment: '.$description.'</p>
+    </td>
+    </tr>    
+    </table>
+    </td>
+    </tr>    
+   </table>';
+$headers  = 'MIME-Version: 1.0'."\n"; 
+$headers .= 'Content-type: text/html; charset=iso-8859-1'."\n";
+$headers .= 'From:JobbReady <do-not-reply@jobbready.com>'."\n";
+mail($to, $subject, $body, $headers);
 	} 
 	echo json_encode(array('url'=>$url,'error_msg'=>$error_msg));
-} */
+	
+} 
 ?>
