@@ -43,6 +43,11 @@ $row=$result->fetch_assoc();
             <div class="dvdr">:</div>
             <div class="det"><?php echo $row['job_code'];?></div>
         </div>
+		<div class="info">
+            <div class="head">Job Title</div>
+            <div class="dvdr">:</div>
+            <div class="det"><?php echo $row['job_title'];?></div>
+        </div>
         <div class="info">
             <div class="head">Designation</div>
             <div class="dvdr">:</div>
@@ -70,11 +75,14 @@ $row=$result->fetch_assoc();
             <div class="dvdr">:</div>
             <div class="det"><?php echo getCityName($conn,$row['job_location']);?></div>
         </div>
+		<div class="info">
+            <div class="head">Positions</div>
+            <div class="dvdr">:</div>
+            <div class="det"><?php echo $row['no_job'];?></div>
+        </div>
         <div class="clear"></div>
     </div>
-	
-	
-	    
+  
 		<?php if(isset($_SESSION['registration_id'])):?>
         <?php if(actor_type($conn,$registration_id)=="S"):?>
 		<div class="info">
@@ -87,11 +95,9 @@ $row=$result->fetch_assoc();
 				<?php endif ;else : ?>		
 				<div class="apply"><a class="fancybox fancybox.ajax fade" href="login_signup_form.php?redirect_url=job_profile.php?id=<?php echo $id;?>">Apply</a></div>
 				<?php endif;?>
-				<div class="apply"><a href='javascript:history.back(1);'>Back</a></div>
+				<!--<div class="apply"><a href='javascript:history.back(1);'>Back</a></div>-->
 			</div>
         </div>
-	 
-	 
 	 
      <div class="clear"></div>
      <!--<div class="add_info"><a href='javascript:history.back(1);'>Back</a></div>  -->

@@ -51,19 +51,19 @@ $row=$result->fetch_assoc();
           <input type="text" name="company_name" id="company_name" value="<?php echo $row['company_name'];?>" />
         </div>
       </div>
-	  <div class="textfield mar_left"> <span>Company Profile<sup>*</sup></span>
-        <div class="fields">
-          <textarea name="company_profile" id="company_profile" rows="10" cols="40"><?php echo $row['company_profile'];?></textarea>
-        </div>
-      </div>
-      <div class="textfield"> <span>Contact Person Name<sup>*</sup></span>
+	  <div class="textfield mar_left"> <span>Contact Person Name<sup>*</sup></span>
         <div class="fields">
           <input type="text" name="fname" id="fname" value="<?php echo $row['fname'];?>" />
         </div>
       </div>
-      <div class="textfield mar_left"> <span>Contact Person Email<sup>*</sup></span>
+      <div class="textfield"> <span>Contact Person Email<sup>*</sup></span>
         <div class="fields">
           <input type="text" name="company_contact_email" id="company_contact_email" value="<?php echo $row['company_contact_email'];?>" />
+        </div>
+      </div>
+      <div class="textfield mar_left"> <span>Office Phone</span>
+        <div class="fields">
+          <input type="text" name="comapny_landline" id="comapny_landline" value="<?php echo $row['comapny_landline'];?>" />
         </div>
       </div>
     <!--  <div class="textfield"> <span>Contact Person Mobile No<sup>*</sup></span>
@@ -71,29 +71,34 @@ $row=$result->fetch_assoc();
           <input type="text" name="mobile_no" id="mobile_no" value="<?php echo $row['mobile_no'];?>" />
         </div>
       </div>-->
-      <div class="textfield"> <span>Office Phone</span>
-        <div class="fields">
-          <input type="text" name="comapny_landline" id="comapny_landline" value="<?php echo $row['comapny_landline'];?>" />
-        </div>
-      </div>
-      <div class="textfield mar_left"> <span>Company Address 1 <sup>*</sup></span>
+      <div class="textfield"> <span>Company Address 1<sup>*</sup></span>
         <div class="fields">
           <input type="text" name="address1" id="address1" value="<?php echo $row['address1'];?>" />
         </div>
       </div>
-      <div class="textfield"> <span>Company Address 2<sup>*</sup> </span>
+      <div class="textfield mar_left"> <span>Company Address 2 <sup>*</sup></span>
         <div class="fields">
           <input type="text" name="address2" id="address2" value="<?php echo $row['address2'];?>" />
         </div>
       </div>
-      <div class="textfield mar_left"> <span>Company Address 3</span>
+      <div class="textfield"> <span>Company Address 3</span>
         <div class="fields">
           <input type="text" name="address3" id="address3" value="<?php echo $row['address3'];?>" />
         </div>
       </div>
-      <div class="textfield mar_left"> <span>Pincode <sup>*</sup></span>
+      <div class="textfield mar_left"> <span>Pincode <sup>*</sup> </span>
         <div class="fields">
           <input type="text" name="pincode" id="pincode" value="<?php echo $row['pincode'];?>" />
+        </div>
+      </div>
+      <div class="textfield mar_left"> <span>Company Profile <sup>*</sup></span>
+        <div class="fields">
+          <textarea name="company_profile" id="company_profile" style="width: 733px; height: 71px;"><?php echo $row['company_profile'];?></textarea>
+        </div>
+      </div>
+      <div class="textfield"> 
+        <div class="fields">
+          
         </div>
       </div>
       <input type="submit" value="Submit" class="common_button" />
@@ -103,7 +108,6 @@ $row=$result->fetch_assoc();
   </form>
 </div>
 <!-- -------------------------------- container ends ------------------------------ -->
-<div class="ad_banner"><a href="#"><img src="images/ad_banner.jpg" alt="" /></a></div>
 <?php include("footer.php");?>
 </body>
 </html>

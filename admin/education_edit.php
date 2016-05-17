@@ -19,7 +19,7 @@ if($mysqlrow['status']=="0"){$inactive="selected";}
 $savedetails=$_POST['savedetails'];
 if($savedetails=='saveapp')
 {
-$education=trim($_POST['education']);
+$education=trim(strtoupper($_POST['education']));
 $edu_status=trim($_POST['education_status']);
 
 if(preg_match('/^[0-9 .\-]+$/i', $education))

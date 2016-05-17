@@ -41,7 +41,7 @@ $sqly="UPDATE `master_general_question` SET `sub_id`='$subject',`modified_date`=
 $mysqlresults = mysql_query($sqly)or die(mysql_error());
  //print $sqly;
 if($mysqlresults){
-header('location:general_question.php');
+header('location:general_question.php?action=view');
 ?>
 <?php
 }}
@@ -58,7 +58,8 @@ header('location:general_question.php');
 <select class="form-control" name="subject">
 <option value="">--Select Subject--</option>
 <?php
-$sqlx="SELECT `id`, `subject`, `is_compulsory`, `status` FROM `master_subject_list` WHERE `status`='1' AND is_compulsory='1' ORDER BY subject ASC";
+$sqlx="SELECT `id`, `subject`, `is_compulsory`, `status` FROM `master_subject_list` WHERE `status`='1' ORDER BY subject ASC";
+//$sqlx="SELECT `id`, `subject`, `is_compulsory`, `status` FROM `master_subject_list` WHERE `status`='1' AND is_compulsory='1' ORDER BY subject ASC";
 //$neelxz="SELECT `id`, `area_of_interest` FROM `master_interest_area` WHERE `status`=1 ORDER BY area_of_interest ASC";
 $result = mysql_query($sqlx);
 while($mysqlrow=mysql_fetch_array($result)){ ?>

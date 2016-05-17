@@ -127,9 +127,10 @@ if($regis_step=="profile_info")
 		$error_msg.="<li>Please enter valid text in your profile</li>";
 	else
 		$brief_profile=$_POST['brief_profile'];
+	$brief_profile = ereg_replace( "\n","<br/>", $_POST['brief_profile']);
 		
-	$keyword_skill_flag=check_string($_POST['keyword_skill']);
-	if($keyword_skill_flag==1)
+	$keyword_skill_flag=$_POST['keyword_skill'];
+	if($keyword_skill_flag=="")
 		$error_msg.="<li>Please enter valid text in your keyword</li>";
 	else
 		$keyword_skill=$_POST['keyword_skill'];
@@ -224,7 +225,7 @@ if($_REQUEST['action']=="addEducation")
 	  <td data-title="Education">'.getEducation($conn,$row['education']).'</td>
 	  <td data-title="Institutions">'.getCollege($conn,$row['college']).'</td>
 	  <td data-title="Year">'.$row['year_of_completion'].'</td>
-	  <td data-title="%">'.$row['percentage'].'%</td>
+	  <td data-title="%">'.$row['percentage'].'</td>
 	  <td data-title="Major">'.$row['specialization'].'</td>
 	  <td data-title="Remove"><a href="#"><img src="images/remove_iocn.png" class="deleteEdu '.$row['id'].'" /></a></td>
 	</tr>';

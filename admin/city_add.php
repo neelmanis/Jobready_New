@@ -3,19 +3,28 @@
 $savedetails=$_POST['savedetails'];
 if($savedetails=='saveapp')
 {
-$city=trim($_POST['city']);
+$city=trim(strtoupper($_POST['city']));
 $status=trim($_POST['status']);
+
+$sqlx="SELECT city from master_city  WHERE city='$city'";
+$result = mysql_query($sqlx);
+$mysqlrow=mysql_fetch_array($result);
+$getCity=$mysqlrow['city'];
+//print_r($mysqlrow); 
 
 if(empty($city))
 {$signup_error="Please Enter City";}
 elseif(preg_match('/^[0-9 .\-]+$/i', $city)) 
 {$signup_error= 'City Name is not valid';}
+elseif($getCity == $city)
+{$signup_error="City Name Already Exist";}
 else{
 $neelx="INSERT INTO `master_city`(`id`, `post_date`, `city`, `status`) VALUES ('',NOW(),'$city','$status')";
 $mysqlresults = mysql_query($neelx)or die(mysql_error());
 if($mysqlresults){
 header('location:city.php');
-}}}
+}
+}}
 ?>
 
 <div class="container">

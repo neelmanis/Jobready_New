@@ -56,14 +56,14 @@ $total_interview=$row2['total'];
           <div class="marquee_1">
             <!----  Start getting list of training offered by jobready  ---->
             <?php 
-					$results=$conn->query("SELECT `area_of_interest`, `admin_id` FROM `job_training_list` WHERE admin_id!='0' and status=1 order by id desc");
+					$results=$conn->query("SELECT `area_of_interest`, `title` FROM `job_training_list` WHERE admin_id!='0' and status=1 order by id desc");
 					while($rows=$results->fetch_assoc()){
 
 					?>
             <div class="job_disc">
-              <div class="name"><?php echo getAdminName($conn,$rows['admin_id']);?></div>
-              <span>- </span>
-              <div class="place"><?php echo getInterest($conn,$rows['area_of_interest']);?></div>
+              <div class="name"><?php echo $rows['title'];?></div>
+              <?php /*?><span>- </span>
+              <div class="place"><?php echo getInterest($conn,$rows['area_of_interest']);?></div><?php */?>
             </div>
             <?php }?>
           </div>

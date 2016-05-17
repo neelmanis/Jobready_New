@@ -7,8 +7,8 @@ $getuid=$_REQUEST['uid'];
 <?php
 $neelx="SELECT * FROM `master_subject_list` Where `id`= $getuid";
 $result = mysql_query($neelx);
-while($mysqlrow=mysql_fetch_array($result))
-{ //print_r($mysqlrow);
+$mysqlrow=mysql_fetch_array($result);
+ //print_r($mysqlrow);
 $subject=$mysqlrow['subject'];
 $is_compulsory=$mysqlrow['is_compulsory'];
 if($is_compulsory=="1"){$comp="selected";}
@@ -18,7 +18,7 @@ $limit=$mysqlrow['limit'];
 $status=$mysqlrow['status'];
 if($mysqlrow['status']=="1"){$active="selected";}
 if($mysqlrow['status']=="0"){$inactive="selected";}
-}
+
 ?>
 
 <?php

@@ -1,8 +1,8 @@
 <?php 
 include("header.php");
-	$registration_id=$_SESSION['registration_id'];
-	if(!isset($_SESSION['registration_id']) || actor_type($conn,$registration_id)!="S")
-			header('location:index.php');
+$registration_id=$_SESSION['registration_id'];
+if(!isset($_SESSION['registration_id']) || actor_type($conn,$registration_id)!="S")
+		header('location:index.php');
 include("menu.php"); 
 $exam_type=$_SESSION['exam_type']='gen';
 ?>
@@ -18,7 +18,7 @@ if(!empty($_SESSION['registration_id'])){
 <div class="page_title"><span>welcome <?php echo getUserName($conn,$registration_id)?></span></div>
 <?php 
 $myarray=array();		
-$result = $conn->query("SELECT * FROM `master_subject_list` where is_compulsory = '1'");
+$result = $conn->query("SELECT * FROM `master_subject_list` where is_compulsory = '1' and status='1'");
 $sumLimit = 0;
 $sumDuration = 0;
 $questCt = 1;
@@ -142,5 +142,18 @@ $questCt++;
 }
 ?>
 <!-- -------------------------------- container ends ------------------------------ -->
+<script type="text/javascript">
+$(function(){
+var questCt='<?php echo $questCt;?>'; 
+var sumLimit='<?php echo $sumLimit;?>';
+if(questCt<sumLimit)
+{
+	alert("there is some technical problem..Kndly try after some time.");
+	setTimeout(function() {
+             window.location = "exam_score.php";
+          },1000);
+}
+});
+</script>
 <?php include("footer.php");?>
 </body></html>

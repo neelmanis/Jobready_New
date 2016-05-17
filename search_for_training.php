@@ -15,14 +15,14 @@ else
 	}
 }
 
-$sql="select * from job_training_list where status='1' and registration_id!=0";
+$sql="select * from job_training_list where status='1' ";
 if(isset($_SESSION['area_of_interest']) && $_SESSION['area_of_interest']!='')
 {	$area_of_interest=$_SESSION['area_of_interest'];
 	$sql.=" and area_of_interest='$area_of_interest'";
 }
 if(isset($_SESSION['keyword']) && $_SESSION['keyword']!='')
 { $keyword=$_SESSION['keyword'];
-	$sql.=" and description like '%$keyword%'";
+	$sql.=" and (description like '%$keyword%' || title like '%$keyword%')";
 }
 ?>
 <script type="text/javascript">
@@ -40,7 +40,10 @@ var registration_id=clas[3];
 				dataType:"JSON",
 				success:function(data)
 				{
-					window.location.href=data.url;
+					if($.trim(data.error_msg)!="success")
+						alert(data.error_msg);
+					else
+						window.location.href=data.url;
 				}
 			});
 	}
@@ -58,7 +61,7 @@ var registration_id=clas[3];
 jQuery(function($) {
     var pageParts = $(".paginate");
     var numPages = pageParts.length;
-    var perPage = 3;
+    var perPage = 10;
     pageParts.slice(perPage).hide();
     $("#page-nav").pagination({
         items: numPages,
@@ -116,10 +119,10 @@ jQuery(function($) {
     <table class="table-bordered-job table-striped table-condensed-job cf">
       <thead>
         <tr>
-          <th>Training Category</th>
+          <th>Training Search Result</th>
+          <!-- <th>Training Title</th>
           <th>Trainer Name</th>
-          <th>Training Brief</th>
-		  <th colspan="2">Action</th>
+		  <th colspan="2">Action</th> -->
         </tr>
       </thead>
       <tbody>
@@ -129,27 +132,29 @@ jQuery(function($) {
 		?>
         <?php while($row=$result->fetch_assoc()){?>
             <tr class="paginate">
-            <td data-title="Training Category"><?php echo getInterest($conn,$row['area_of_interest']);?></td>
-            <td data-title="Training Name"><a href="candidate_trainer_profile.php?registration_id=<?php echo $row['registration_id'];?>"><?php echo getUserName($conn,$row['registration_id']);?></a></td>
-            <td data-title="Training Brief"><?php echo $row['description'];?></td>
-            
-        	 <?php if(isset($_SESSION['registration_id'])):?>
-          		<?php if(actor_type($conn,$registration_id)=="S"):?>
-                    <td data-title="Action">
-                    	<a href="#" class="showinterest <?php echo $row['id']." ".$row['registration_id']." ".$registration_id;?>">Show Interest</a>
-                    </td>
-          		<?php else:?>
-                    <td data-title="">
-                        <a href="#" onclick="return(window.confirm('Only Candidate can show interest..!!'));" class="contact">Contact</a>
-                    </td>
-				<?php endif ;else :?>
-                    <td data-title="Action">
-                        <a class="fancybox fancybox.ajax fade" href="login_signup_form.php?redirect_url=<?php echo basename($_SERVER['PHP_SELF']);?>">Show Interest</a>
-                     </td>
-			<?php endif;?>
-            
-            
-            <td data-title="Action"><a href="training_profile_detail.php?id=<?php echo $row['id'];?>">View</a></td>
+
+            <td colspan="3">
+              <h2 style="float: left;padding-bottom: 5px;"><a href="training_profile_detail.php?id=<?php echo $row['id'];?>" target="_blank"><?php echo ($row['title']);?></a></h2> 
+              <span style="float:left;padding:7px;">(<?php echo getInterest($conn,$row['area_of_interest']);?>)</span>
+			  <?php if(isset($_SESSION['registration_id'])):?>
+              <?php if(actor_type($conn,$registration_id)=="S"):?>
+<p data-title="Action">
+                            <a href="#" class="showinterest <?php echo $row['id']." ".$row['registration_id']." ".$registration_id;?> contact" style="float: right;padding-right: 25px;margin-bottom: 5px;">Contact</a></p>
+                    <?php else:?>
+                          <p data-title="">
+                              <a href="#" onclick="return(window.confirm('Only Candidate can show interest..!!'));" class="contact" style="float: right;padding-right: 25px;margin-bottom: 5px;">Contact</a>                          </p>
+                    <?php endif ;else :?>
+                          <p data-title="Action">
+                              <a class="contact fancybox fancybox.ajax fade" href="login_signup_form.php?redirect_url=<?php echo basename($_SERVER['PHP_SELF']);?> " style="float: right;padding-right: 25px;margin-bottom: 5px;">Show Interest</a>                          </p>
+              <?php endif;?>
+              <hr style="clear: both;">
+              <p>
+                <?php
+                if(getUserName($conn,$row['registration_id'])!=""){?>
+                <a href="candidate_trainer_profile.php?registration_id=<?php echo $row['registration_id'];?>"><?php echo getUserName($conn,$row['registration_id']);?></a><?php } else {?> Jobbready Training <?php } ?>
+              </p>
+              <p>
+                Description : <?php echo ($row['description']);?> </p> </td>
           </tr>
         <?php }?>
       </tbody>

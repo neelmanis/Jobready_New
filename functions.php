@@ -108,8 +108,16 @@ function getUserName($conn,$registration_id)
 	return $row['fname'];					
 }
 
+function getCompanyName($conn,$registration_id)
+{
+	$sql = "SELECT  company_name FROM  job_profile  where registration_id='$registration_id'";	
+	$result = $conn->query($sql);
+	$row=$result->fetch_assoc();
+	return $row['company_name'];					
+}
 function getCompanyProfile($conn,$registration_id)
 {
+	$registration_id=getReferenceId($conn,$registration_id);
 	$sql = "SELECT  company_profile FROM  job_profile  where registration_id='$registration_id'";	
 	$result = $conn->query($sql);
 	$row=$result->fetch_assoc();
@@ -134,7 +142,6 @@ function getAdminEmail($conn,$admin_id)
 
 function getDesignation($conn,$registration_id)
 {
-/*	$sql = "SELECT  designation FROM  job_profile  where id='$registration_id'";	*/
 	$sql = "SELECT  designation FROM  job_profile  where registration_id='$registration_id'";	
 	$result = $conn->query($sql);
 	$row=$result->fetch_assoc();
@@ -334,4 +341,16 @@ function getReferenceId($conn,$registration_id)
 	else
 	return $row['id'];
 }
+function getTotScore($conn,$attempt_id,$registration_id)
+{
+	$neely=$conn->query("select * from scores where attempt_id='$attempt_id' and registration_id='$registration_id'");
+	$total_marks_obtain=0;
+	$total_marks=0;
+	while($rows=$neely->fetch_assoc()){
+	$total_marks_obtain=$total_marks_obtain+$rows['total_marks_obtain'];
+	$total_marks=$total_marks+$rows['total_marks'];	
+	}
+	return $right_per=ceil($total_marks_obtain/$total_marks*100);
+}
+
 ?>

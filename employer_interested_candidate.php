@@ -11,7 +11,8 @@ include("menu.php");
 $(document).ready(function() {
     $('#example').DataTable({
     "bLengthChange": false,
-	"iDisplayLength": 10
+	"iDisplayLength": 10,
+	"order": [[0, "desc"]]
 	});
 });
 </script>
@@ -50,6 +51,7 @@ var id=clas[2];
       <table class="table-bordered-job table-striped table-condensed-job cf" id="example">
         <thead>
           <tr>
+		    <th> Date </th>
             <th> Jobcode </th>
             <th> Candidate Name </th>
             <th> Contact</th>
@@ -61,14 +63,30 @@ var id=clas[2];
             $result=$conn->query("select * from job_student_job_interest where employer_registraion_id='$registration_id' and employer_acceptance='P'");
             $num=$result->num_rows;
 			while($row=$result->fetch_assoc()){
+				$post_date=$row['post_date'];
+				$date=date('d-m-Y',strtotime($post_date));
         ?>
           <tr>
+			<td data-title="Date"><?php echo $date;?></td>
             <td data-title="Jobcode"><?php echo getJobDetails($conn,$row['job_id'],'job_code');?></td>
             <td data-title="Candidate Name">
             	<a href="candidate_trainer_profile.php?registration_id=<?php echo $row['registration_id'];?>"><?php echo getUserName($conn,$row['registration_id']);?></a>
             </td>
             <td data-title="Contact"><?php echo getUserMobile($conn,$row['registration_id']);?></td>
-            <td data-title=""><a href="#" class="contact acceptjobinterest <?php echo $row['id'];?>">Contact</a></td>
+            <td data-title="">
+            <table border="0" class="innertable" width="100%;">
+            <tr>
+            <td><a href="#" class="contact acceptjobinterest <?php echo $row['id'];?>">Contact</a></td>
+            <td>
+            <a class="contact fancybox fancybox.ajax fade feedback_icon" href="view_feedback.php?employer_registraion_id=<?php echo $row['employer_registraion_id'];?>&candidate_id=<?php echo $row['registration_id'];?>">View FeedBack</a>
+            
+            
+            </td>
+            </tr>
+            </table>
+<!--            <a href="#" class="contact acceptjobinterest <?php echo $row['id'];?>">Contact</a>
+            <a href="#" class="contact acceptjobinterest <?php echo $row['id'];?>">View FeedBack</a>-->
+            </td>
           </tr>
           <?php }?>
         </tbody>

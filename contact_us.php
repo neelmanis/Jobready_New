@@ -130,9 +130,9 @@ $_SESSION['fail_msg']="";
              <input type="text" id="phone" name="phone" Placeholder="Mobile No." value="<?php echo $phone;?>"/>
                 </div>
                 <div class="clear"></div>
-                <div class="textfield_1">
+             <!--   <div class="textfield_1">
             <textarea id="address" name="address" placeholder="Address"><?php echo $address;?></textarea>
-                </div>
+                </div>-->
                 <div class="textfield_1">
                     <textarea id="enquiry" name="enquiry" placeholder="Enquiry"><?php echo $enquiry;?></textarea>
                 </div>    

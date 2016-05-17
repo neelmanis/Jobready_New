@@ -106,7 +106,7 @@ ul.opening li span{font-size:16px; display:block; font-weight:bold;}
 @media all and (max-width:768px){
 .home_container{height:auto;}	
 .home_video, .current_opening{width:100%;}	
-.home_video{height:250px;}
+/*.home_video{height:250px;}*/
 .title{font-size:16px; margin-bottom:15px;}
 ul.opening li{margin-bottom:10px;}
 ul.opening li span{font-size:14px; display:block; font-weight:bold;}

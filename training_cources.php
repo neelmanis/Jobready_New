@@ -86,16 +86,21 @@ $(document).ready(function() {
          <table class="table-bordered-job table-striped table-condensed-job" id="example">
           <thead>
               <tr>
+				  <th width="12%"> Date </th>
 				  <th width="21%"> Title</th>
-                  <th width="21%"> Training Category</th>
+                  <th width="15%"> Training Category</th>
                   <th width="64%"> Brief Description </th>
                   <th width="12%"> Document</th>
                   <th width="9%">Delete</th>
               </tr>
           </thead>
             <tbody>
-            <?php while($row=$result->fetch_assoc()){?>
+            <?php while($row=$result->fetch_assoc()){ 
+				$post_date=$row['post_date'];
+				$date=date('d-m-Y',strtotime($post_date));
+			?>
             <tr>
+				<td data-title="Date"><?php echo $date;?></td>
 				<td data-title="Training Title"><?php echo $row['title'];?></td>
                 <td data-title="Training Category"><?php echo getInterest($conn,$row['area_of_interest']);?></td>
                 <td data-title="Brief Description"><?php echo $row['description'];?></td>

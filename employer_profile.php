@@ -20,7 +20,7 @@
       <!--Horizontal Tab-->
       <div id="horizontalTab">
         <ul class="resp-tabs-list">
-          <li>COMPANY NFORMATION </li>
+          <li>COMPANY INFORMATION </li>
         </ul>
         <div class="resp-tabs-container">
           <!-- ----------------- tab 1 starts ----------- -->
@@ -45,7 +45,7 @@
                 <div class="info">
                   <div class="head"> Contact Person Email</div>
                   <div class="dvdr">:</div>
-                  <div class="det"><?php echo $row['company_contact_email'];?></div>
+                  <div class="det"><?php echo getUserEmail($conn,$registration_id);?></div>
                 </div>
                 <div class="info">
                   <div class="head">Mobile Number</div>

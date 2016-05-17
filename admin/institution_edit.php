@@ -1,42 +1,7 @@
-<?php 
-include('header.php');  
-//echo "---><br/>".$username.$gotuid;
-$getuid=$_REQUEST['uid'];
-?>
-
-<?php
-$neelxz="SELECT * FROM `master_institution` Where `id`= $getuid";
-$result = mysql_query($neelxz);
-while($mysqlrow=mysql_fetch_array($result))
-{ //print_r($mysqlrow);
-$user_institution=$mysqlrow['institution'];
-$status=$mysqlrow['status'];
-if($mysqlrow['status']=="1"){$active="selected";}
-if($mysqlrow['status']=="0"){$inactive="selected";}
-}
-?>
-<?php
-$savedetails=$_POST['savedetails'];
-if($savedetails=='saveapp')
-{
-$u_institution=trim($_POST['u_institution']);
-$ins_status=trim($_POST['institution_status']);
-
-if(preg_match('/^[0-9 .\-]+$/i', $u_institution))
-{$signup_error= 'Institution Name is not valid';}
-else{
-$neelx="UPDATE `master_institution` SET `modified_date`=NOW(),`institution`='$u_institution',`status`='$ins_status' WHERE `id` ='$getuid' " ;
-$mysqlresults = mysql_query($neelx)or die(mysql_error());
- //print $neelx;
-if($mysqlresults){
-header('location:institution.php');
-?>
-<?php
-}}}
-?>
-
-<div class="container">
-<h4 class="page-header">
+<?php include('header.php');  //echo "---><br/>".$username.$gotuid;$getuid=$_REQUEST['uid'];?>
+<?php$neelxz="SELECT * FROM `master_institution` Where `id`= $getuid";$result = mysql_query($neelxz);$mysqlrow=mysql_fetch_array($result); //print_r($mysqlrow);$user_institution=$mysqlrow['institution'];$status=$mysqlrow['status'];if($mysqlrow['status']=="1"){$active="selected";}if($mysqlrow['status']=="0"){$inactive="selected";}?><?php$savedetails=$_POST['savedetails'];if($savedetails=='saveapp'){$u_institution=trim(strtoupper($_POST['u_institution']));$ins_status=trim($_POST['institution_status']);if(empty($u_institution)){$signup_error="Please Enter Institution";}
+elseif(preg_match('/^[0-9 .\-]+$/i', $u_institution)){$signup_error= 'Institution Name is not valid';}else{$neelx="UPDATE `master_institution` SET `modified_date`=NOW(),`institution`='$u_institution',`status`='$ins_status' WHERE `id` ='$getuid' " ;$mysqlresults = mysql_query($neelx)or die(mysql_error()); //print $neelx;if($mysqlresults){header('location:institution.php');?><?php}}}?>
+<div class="container"><h4 class="page-header">
 <span class="glyphicon glyphicon-user"></span>&nbsp;Update Institution <?php if(isset($signup_error)){ echo '<span style="color: red;" />'.$signup_error.'</span>';} ?></h4>
 <form action=""  method="post" name="newapp" id="newapp" onsubmit="return checkForm(this);">
 <input type="hidden" name="savedetails" value="saveapp">

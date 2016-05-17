@@ -25,9 +25,8 @@ if($active_result)
 <thead>
 <tr>
 <th>ID</th>                                            
-<th width="100">Post Date</th> 
-<th width="100">Title</th> 
-<th>Description</th>                                                       
+<th>Post Date</th> 
+<th width="300">Title</th>                                                       
 <th>Action</th>
 </tr>
 </thead>
@@ -40,16 +39,11 @@ while($row=mysql_fetch_array($result)){
 //print_r($row);
 $getid=$row['id'];
 $title=$row['title'];
-$desc=$row['desc'];
-/*************************** Limit character ***/
-$limit=60;
-$post = substr($desc, 0, $limit); 
 ?>
 <tr>
 <td><?php echo $getid; ?></td>                              
 <td ><?php echo $row['post_date']; ?></td>
 <td ><?php echo $row['title']; ?></td>
-<td><?php echo $post; ?></td>
 <?php $status=$row['status']; ?>
 <td width="150">
  <?php if($status == 1) { ?> <a href="cms_why_jb_media.php?id=<?php echo $getid; ?>&status=0&action=active" onClick="return(window.confirm('Are you sure you want to Deactivate.'));" class="btn btn-success">Active</a><?php } else { ?><a  href="cms_why_jb_media.php?id=<?php echo $getid; ?>&status=1&action=active" onClick="return(window.confirm('Are you sure you want to Activate.'));" class="btn btn-warning">Inactive</a><?php } ?>

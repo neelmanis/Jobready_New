@@ -12,6 +12,12 @@ function getCityName($getid)
 	$result = mysql_fetch_array($sql);
 	return $result['city'];					
 }
+function getFirmName($getid)
+{
+	$sql = mysql_query("SELECT  fname FROM  job_profile  where registration_id='$getid'");	
+	$result = mysql_fetch_array($sql);
+	return $result['fname'];					
+}
 ?>
 
 <?php
@@ -36,13 +42,14 @@ if($active_result)
 <table cellpadding="0" cellspacing="0" border="0" class="table  table-bordered" id="example">
 <thead>
 <tr>
-<th>ID</th>                                            
+<th>ID</th>
+<th>Firm</th>                                           
 <th>Job Code</th>
+<th>Job Title</th>
 <th>Designation</th>
-<th>Salary From (Rs.)</th>
-<th>Salary To (Rs.)</th>
+<!--<th>Salary From (Rs.)</th>
+<th>Salary To (Rs.)</th>-->
 <th>Job From</th>
-<th>Reporting To</th>
 <th>Interest Area</th>
 <th>Location</th>                                                             
 <th>Action</th>
@@ -51,22 +58,24 @@ if($active_result)
 
 <tbody>
 <?php 
-$neelx="SELECT `id`, `job_code`, `designation`, `salary_from`, `salary_to`, `job_from`, `job_to`, `area_of_interest`, `job_location`, `status` FROM `master_job` WHERE 1";
+$neelx="SELECT `id`,`registration_id`, `job_code`, `designation`,`job_title`, `salary_from`, `salary_to`, `job_from`, `job_to`, `area_of_interest`, `job_location`, `status` FROM `master_job` WHERE 1";
 $result = mysql_query($neelx)or die(mysql_error());
 while($row=mysql_fetch_array($result)){
 //print_r($row);
 $getid=$row['id'];
 $aoiID=$row['area_of_interest'];
+$registration_id=$row['registration_id'];
 ?>
 
 <tr>
 <td><?php echo $getid; ?></td>                              
+<td><?php echo getFirmName($registration_id); ?></td>
 <td><?php echo $row['job_code']; ?></td>
+<td><?php echo $row['job_title']; ?></td>
 <td><?php echo $row['designation']; ?></td>
-<td><?php echo $row['salary_from']; ?></td>
-<td><?php echo $row['salary_to']; ?></td>
+<!--<td><?php echo $row['salary_from']; ?></td>
+<td><?php echo $row['salary_to']; ?></td>-->
 <td><?php echo $row['job_from']; ?></td>
-<td><?php echo $row['job_to']; ?></td>
 <td><?php echo getaoi($aoiID); ?></td>
 <td><?php echo getCityName($row['job_location']); ?></td>
 <?php $status=$row['status']; ?>			  

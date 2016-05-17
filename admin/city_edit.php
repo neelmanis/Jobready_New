@@ -6,22 +6,24 @@ $getuid=$_REQUEST['uid'];
 <?php
 $neelxz="SELECT * FROM `master_city` Where `id`= $getuid";
 $result = mysql_query($neelxz);
-while($mysqlrow=mysql_fetch_array($result))
-{ //print_r($mysqlrow);
+$mysqlrow=mysql_fetch_array($result);
+ //print_r($mysqlrow);
 $city=$mysqlrow['city'];
 $status=$mysqlrow['status'];
 if($mysqlrow['status']=="1"){$active="selected";}
 if($mysqlrow['status']=="0"){$inactive="selected";}
-}
 ?>
 
 <?php
 $savedetails=$_POST['savedetails'];
 if($savedetails=='saveapp')
 {
-$city=trim($_POST['city']);
+$city=trim(strtoupper($_POST['city']));
 $status=trim($_POST['status']);
-if(preg_match('/^[0-9 .\-]+$/i', $city))
+
+if(empty($city))
+{$signup_error="Please Enter City";}
+elseif(preg_match('/^[0-9 .\-]+$/i', $city))
 {$signup_error= 'City Name is not valid';}
 else{
 $neelx="UPDATE `master_city` SET `modified_date`=NOW(),`city`='$city',`status`='$status' WHERE `id` ='$getuid'";

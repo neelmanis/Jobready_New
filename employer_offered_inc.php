@@ -39,11 +39,11 @@ $(document).ready(function(){
 </head>
 <body>
 <div class="add_training">
-  <div class="pop_head">add recruiter</div>
+  <div class="pop_head">Give Feedback</div>
   <ul class="recruiterError"></ul>
-  <form action="" name="" id="recruiterForm"  method="post" autocomplete="off">
-<input type="hidden" name="action" value="sendoffer"/> 
-<input type="hidden" name="candidate_id" value="<?php echo $uid;?>"/>      
+    <form action="" name="" id="recruiterForm"  method="post" autocomplete="off">
+    <input type="hidden" name="action" value="sendoffer"/> 
+    <input type="hidden" name="candidate_id" value="<?php echo $uid;?>"/>      
     <div class="add_training">
         <ul class="login" style="display:none;"></ul>
         <div class="form_details fade_anim">
@@ -51,7 +51,7 @@ $(document).ready(function(){
          Offered <input type="checkbox" name="offered" value="Y"/> 
         </div>
         <div class="textfield">
-        <textarea name="comment" id="comment" placeholder="Message" ></textarea>
+        <textarea name="comment" id="comment" placeholder="Feedback" ></textarea>
         </div>
         <div class="textfield fade">
         <input type="submit" name="seveRecruiter" id="seveRecruiter" value="Save"/>

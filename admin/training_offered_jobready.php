@@ -41,7 +41,7 @@ if($active_result)
 <tbody>				 
 
 <?php 
-$neelx="SELECT `id`, `area_of_interest`, `title`,`description`, `doc`, `post_date`, `status` FROM `job_training_list` WHERE admin_id='$gotuid'";
+$neelx="SELECT `id`, `area_of_interest`, `title`,`description`, `doc`, `post_date`, `status` FROM `job_training_list` WHERE 1";
 $result = mysql_query($neelx)or die(mysql_error());
 while($row=mysql_fetch_array($result)){
 $getid=$row['id'];
@@ -52,8 +52,8 @@ $aoiID=$row['area_of_interest'];
 <td><?php echo $getid; ?></td>                              
 <td><?php echo getaoi($aoiID); ?></td>
 <td><?php echo $row['title']; ?></td>
-<td><?php echo $row['description']; ?></td>
-<!--<td><?php echo $row['doc']; ?></td>-->
+<td><?php echo preg_replace("/(<br\s*\/?>\s*)+/", '',$row['description']); ?></td>
+<!--<td><?php echo $row['description']; ?></td>-->
 <td><?php echo $row['post_date']; ?></td>
 <?php $status=$row['status']; ?>	  
 <td width="130">

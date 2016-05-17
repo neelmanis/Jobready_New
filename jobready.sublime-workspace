@@ -1,0 +1,898 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"res",
+				"resize	.resize()"
+			],
+			[
+				"marg",
+				"margin-bottom"
+			],
+			[
+				"th",
+				"thead	Tag"
+			],
+			[
+				"pad",
+				"padding-bottom"
+			],
+			[
+				"st",
+				"style	Tag"
+			],
+			[
+				"in",
+				"initial"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"border-col",
+				"border-color"
+			],
+			[
+				"col",
+				"color"
+			],
+			[
+				"mar",
+				"margin-bottom"
+			],
+			[
+				"bor",
+				"border-width"
+			],
+			[
+				"min",
+				"min-width"
+			],
+			[
+				"border-left",
+				"border-left-width"
+			],
+			[
+				"n",
+				"none"
+			],
+			[
+				"border-",
+				"border-left"
+			],
+			[
+				"border",
+				"border-width"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"u",
+				"u	Tag"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
+				"FONT",
+				"font-size"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"g",
+				"gallery"
+			],
+			[
+				"pro",
+				"projectupdate"
+			],
+			[
+				"l",
+				"location"
+			],
+			[
+				"p",
+				"projectupdate"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"background-",
+				"background-image"
+			],
+			[
+				"im",
+				"img-responsive"
+			],
+			[
+				"le",
+				"letter-spacing"
+			],
+			[
+				"border-bottom-",
+				"border-bottom-width"
+			],
+			[
+				"border-b",
+				"border-bottom-style"
+			],
+			[
+				"te",
+				"title	Attr"
+			],
+			[
+				"cel",
+				"cellspacing	Attr"
+			],
+			[
+				"t",
+				"table	Tag"
+			],
+			[
+				"slide",
+				"slideUp"
+			],
+			[
+				"owl",
+				"owl-example2"
+			],
+			[
+				"owl-em",
+				"owl-example"
+			],
+			[
+				"owl-example",
+				"owl-example2"
+			],
+			[
+				"i",
+				"id	Attr"
+			],
+			[
+				"tab",
+				"table"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"font-",
+				"font-size"
+			],
+			[
+				"border-to",
+				"border-top-color"
+			],
+			[
+				"c",
+				"color"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"border-c",
+				"border-color"
+			],
+			[
+				"s",
+				"span	Tag"
+			],
+			[
+				"bore",
+				"border-width"
+			],
+			[
+				"my",
+				"myFunction"
+			],
+			[
+				"fn",
+				"function"
+			],
+			[
+				"h",
+				"h3	Tag"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"bank",
+				"background-image"
+			],
+			[
+				"border-t",
+				"border-top-style"
+			],
+			[
+				"pdd",
+				"padding-bottom"
+			],
+			[
+				"li",
+				"li	Tag"
+			],
+			[
+				"ma",
+				"max-width"
+			],
+			[
+				"on",
+				"onchange	Attr"
+			],
+			[
+				"fo",
+				"float"
+			],
+			[
+				"f",
+				"float"
+			],
+			[
+				"border-s",
+				"border-style"
+			],
+			[
+				"border-r",
+				"border-radius"
+			],
+			[
+				"bac",
+				"background"
+			],
+			[
+				"list",
+				"list-style-type"
+			],
+			[
+				"pading",
+				"padding-top"
+			],
+			[
+				"op",
+				"option	Tag"
+			],
+			[
+				"fon",
+				"font-weight"
+			],
+			[
+				"box",
+				"box-shadow"
+			],
+			[
+				"for",
+				"form	Tag"
+			],
+			[
+				"po",
+				"pointer"
+			],
+			[
+				"pa",
+				"padding-left"
+			],
+			[
+				"none",
+				"none"
+			],
+			[
+				"margi",
+				"margin-left"
+			],
+			[
+				"background-c",
+				"background-color"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"fun",
+				"function"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.php",
+			"settings":
+			{
+				"buffer_size": 7614,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "css/mystyle.css",
+			"settings":
+			{
+				"buffer_size": 14179,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 104.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"Snippet: f",
+				"Snippet: for (…) {…}"
+			]
+		],
+		"width": 512.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"//kwms/D/wamp/www/Jobready"
+	],
+	"file_history":
+	[
+		"//kwms/D/wamp/www/Jobready/css/history.css",
+		"//kwms/D/wamp/www/Jobready/search_for_job.php",
+		"//kwms/D/wamp/www/Jobready/view_feedback.php",
+		"//kwms/D/wamp/www/Jobready/search_for_training.php",
+		"/D/IP messages/ipmsg.log",
+		"/C/wamp/www/Jobready/search_for_job.php",
+		"//kwms/D/wamp/www/iijs/faqnew.php",
+		"//kwms/D/wamp/www/iijs/photo_gallery.php",
+		"//kwms/D/wamp/www/Jobready/admin/general_question.php",
+		"//kwms/D/wamp/www/Jobready/admin/institution.php",
+		"/C/wamp/www/samyakth/js/main.js",
+		"/D/Kalpesh/newsletter/16 March 2015/Final/Newsletter/GJEPC_Fianal.html",
+		"/C/wamp/www/samyakth/css/mian.css",
+		"/C/wamp/www/samyakth/bliss.html",
+		"/C/wamp/www/samyakth/cats.html",
+		"/C/wamp/www/samyakth/contactus.html",
+		"/C/wamp/www/samyakth/index.html",
+		"/C/wamp/www/samyakth/source/jquery.fancybox.js",
+		"/C/Users/admin/Desktop/Desktop/emailer/20nox2015/index.html",
+		"/C/Users/admin/Desktop/exhibition_permissions.php",
+		"//kwms/D/wamp/www/gjepc_new_home_page/v3/admin/exhibition_permission.php",
+		"//kwms/D/wamp/www/gjepc_new_home_page/v3/exhibition_permissions.php",
+		"/C/wamp/www/samyakth/bkpbliss.html",
+		"//kwms/D/wamp/www/gjepc_new_home_page/v3/award.php",
+		"//kwms/D/wamp/www/gjepc_new_home_page/v3/award.html",
+		"/C/wamp/www/samyakth/projinfo.html",
+		"/C/Users/admin/Desktop/Desktop/fancyapps-fancyBox-v2.1.5-0-ge2248f4/fancyapps-fancyBox-18d1712/demo/index.html",
+		"/C/wamp/www/gcint/v1/JS/main.js",
+		"/C/wamp/www/gcint/v1/CSS/main.css",
+		"//k21/C/inetpub/wwwroot/samyakth/css/style.css",
+		"//k21/C/inetpub/wwwroot/samyakth/index.html",
+		"//kwms/D/wamp/www/gjepc_new_home_page/v3/index.php",
+		"//kwms/D/wamp/www/gjepc_new_home_page/v3/css/gjpec.css",
+		"/C/wamp/www/temp gjepc/index.php",
+		"/C/wamp/www/gjepc/GJEPC INDIA.html",
+		"/C/wamp/www/whp/v2/JS/main.js",
+		"/C/wamp/www/whp/v2/CSS/camera.css",
+		"/C/wamp/www/whp/v2/CSS/mian.css",
+		"/C/wamp/www/whp/v2/index.html",
+		"/C/wamp/www/whp/v2/productlist.html",
+		"/C/wamp/www/whp/v2/productdetail.html",
+		"/C/wamp/www/gcint/v2/CSS/main.css",
+		"/C/wamp/www/whp/v2/CSS/bootstrap.css",
+		"/C/Users/admin/Desktop/emailer/02nox2015/index.html",
+		"/C/wamp/www/temp gjepc/ddesex.php",
+		"/C/Users/admin/Desktop/ramesh whp demo/index.html",
+		"/E/Camera-master/Camera-master/demo/basic.htm",
+		"/C/wamp/www/WHP/CSS/bootstrap-theme.css",
+		"/C/Users/admin/Desktop/Bootstrap-Vertical-Image-Showcase-master/Bootstrap-Vertical-Image-Showcase-master/index.html",
+		"/C/Users/admin/Desktop/emailer/Diwali/index.html",
+		"/C/wamp/www/whp/JS/owl.carousel.js",
+		"/C/wamp/www/whp/JS/main.js",
+		"/C/Users/admin/Desktop/Bootstrap-Vertical-Image-Showcase-master/Bootstrap-Vertical-Image-Showcase-master/js/script.js",
+		"/C/wamp/www/whp/CSS/mian.css",
+		"/C/wamp/www/whp/productdetail.html",
+		"/C/Users/admin/Desktop/Bootstrap-Vertical-Image-Showcase-master/Bootstrap-Vertical-Image-Showcase-master/css/style.css",
+		"/C/wamp/www/whp/productlist.html",
+		"/C/wamp/www/whp/index.html",
+		"//kwms/d/wamp/www/signature/container2.php",
+		"//kwms/d/wamp/www/signature/index.php",
+		"//kwms/d/wamp/www/iijs/index.php",
+		"//kwms/D/wamp/www/gjepc_new_home_page/v3/committee_administration.php",
+		"//kwms/D/wamp/www/gjepc_new_home_page/v3/fotter.php",
+		"//kwms/D/wamp/www/iijs/index.php",
+		"//kwms/D/wamp/www/gjepc_new_home_page/v3/coa.php",
+		"/C/wamp/www/whp/whp.sublime-project",
+		"//kwms/D/wamp/www/gjepc_new_home_page/v3/national_exbhition_sub_committee.php",
+		"//kwms/D/wamp/www/gjepc_new_home_page/v3/international_exbhition_sub_committee.php",
+		"//kwms/D/wamp/www/gjepc_new_home_page/v3/top.php",
+		"/C/Users/admin/Desktop/demo/index.html",
+		"/C/Users/admin/Desktop/02.11.2015/New folder/editorial/Editoral.html",
+		"/C/Users/admin/Desktop/02.11.2015/New folder/Index.html",
+		"/C/Users/admin/Desktop/02nox2015/index.html",
+		"/C/Users/admin/Desktop/02.11.2015/Editoral.html",
+		"/C/Users/admin/Desktop/02.11.2015/mailerindex.html",
+		"/C/Users/admin/Desktop/Stall_Allotentk/index.html",
+		"/C/Users/admin/Desktop/v26/28oct/index.html",
+		"/C/wamp/www/whp/sss/sss.js",
+		"/C/wamp/www/whpmd/index.html",
+		"/D/Kalpesh/Sublime Text Build 3083/Data/Packages/User/Preferences.sublime-settings",
+		"/C/wamp/www/whp/sss/sss.min.js",
+		"/C/wamp/www/whp/JS/owl.carousel.min.js",
+		"/D/MOTIOSWL/v13/index.html",
+		"/D/MOTIOSWL/v13/css/inner_page.css",
+		"/D/MOTIOSWL/v13/css/mystyle.css",
+		"/D/MOTIOSWL/v13/investor_dashboard.html",
+		"/D/MOTIOSWL/v13/css/easy-responsive-tabs_inner.css",
+		"/D/MOTIOSWL/v13/css/easy-responsive-tabs.css",
+		"/D/MOTIOSWL/v13/pms.html",
+		"/D/MOTIOSWL/v13/downloads.html",
+		"/C/wamp/www/dist/test.html",
+		"/C/wamp/www/whpmd/productlist.html",
+		"/C/wamp/www/whpmd/JS/main.js",
+		"/C/wamp/www/whpmd/CSS/mian.css",
+		"/C/wamp/www/dist/css/material.css",
+		"/C/wamp/www/whpmd/whpmd.html",
+		"/C/Users/admin/Desktop/bootstrap-material-design-master/bootstrap-material-design-master/dist/test.html",
+		"/C/Users/admin/Desktop/Stall_Allotent/index.html",
+		"/C/wamp/www/whp/whpmd.html",
+		"/C/wamp/www/whp/fonts/0/fonts.css",
+		"/C/Users/admin/Desktop/v26/26oct - Copy/mailernew.html",
+		"/C/Users/admin/Desktop/showhide.js",
+		"/C/Users/admin/Desktop/tab.html",
+		"//kwms/D/wamp/www/chrozon/html/js/microsite.js",
+		"//kwms/D/wamp/www/chrozon/html_n/js/select_catagory.js",
+		"//kwms/D/wamp/www/chrozon/html_n/js/nav.js",
+		"//kwms/D/wamp/www/chrozon/html/js/spjs.js",
+		"//kwms/D/wamp/www/chrozon/html/js/nav.js",
+		"/D/Kalpesh/Chrozon/js/spjs.js",
+		"/D/Kalpesh/Chrozon/js/nav.js",
+		"/C/wamp/www/whp/owl-carousel/owl.carousel.js",
+		"/C/wamp/www/whp/owl-carousel/owl.carousel.min.js",
+		"/C/wamp/www/whp/owl-carousel/owl.theme.css",
+		"/C/wamp/www/whp/owl-carousel/owl.carousel.css",
+		"/C/wamp/www/whp/owl-carousel/owl.transitions.css",
+		"/C/wamp/www/hero/hero/milestone.html",
+		"/C/wamp/www/ct/login.php",
+		"/C/wamp/www/gcint/v2/index.html",
+		"/C/wamp/www/hero/hero/company_profile.html",
+		"/C/wamp/www/hero/hero/why_hero.html",
+		"/C/wamp/www/hero/hero/css/style.css",
+		"/C/wamp/www/hero/hero/index.html",
+		"/C/wamp/www/hero/hero/css/western_lube.css",
+		"/C/wamp/www/gcint/v1/contactus.html",
+		"/C/wamp/www/hero/hero/contact_us.html",
+		"/C/wamp/www/hero/hero/infrastructure.html",
+		"/C/wamp/www/hero/hero/happening_wlc.html",
+		"/C/wamp/www/hero/hero/forth_coming_events.html"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"style=\"float: right;padding-right: 25px;\"",
+			"td",
+			"tr",
+			"r",
+			"<td",
+			"li",
+			"h",
+			"head",
+			"padding-right: 25px;",
+			"padding-left",
+			"data",
+			"td",
+			"7px",
+			"span",
+			"class=\"showjobinterest",
+			"td",
+			"p>",
+			"* ",
+			"p",
+			"h3",
+			"select",
+			"28",
+			"track",
+			"foreign exchange facilities",
+			"deadline",
+			"What is the deadline for International Visitor registration online?",
+			"mandatory",
+			"Which are the mandatory documents requir",
+			"How do inter",
+			"Can an end",
+			"Who can attend IIJS?",
+			"current",
+			":hover span",
+			"p>",
+			"<p",
+			"p",
+			"cpbuffer",
+			"cpbiffer",
+			"</li>",
+			"navright",
+			"hover",
+			"<span></span>",
+			"oswa",
+			"<br>\n              <span>",
+			"33.3333%",
+			"web design manchester",
+			"col-md-4 col-sm-4",
+			"http://www.morganfeeney.com",
+			"col-md-4",
+			"one-third",
+			"src",
+			"href",
+			"h2",
+			"cp",
+			"oswa",
+			"div",
+			"990",
+			"999",
+			"<div class=\"col-md-3 col-sm-4 col-xs-12\">",
+			"768",
+			"<div class=\"col-md-3 col-sm-4 col-xs-12\">",
+			"mlh",
+			"<div class=\"col-md-3 col-sm-4 col-xs-6\">",
+			"<div class=\"col-md-3 col-sm-4 col-xs-6\"></div>",
+			"<div class=\"col-md-\"></div>",
+			"fancybox",
+			"<a class=\"fancybox\"",
+			"data-fancybox-group",
+			"borders",
+			"cle",
+			"loop",
+			"bottom",
+			"992",
+			"768",
+			"cologo",
+			"active",
+			"111",
+			"float",
+			"maps",
+			".active",
+			"maps1",
+			"tbb",
+			"p{",
+			"212px",
+			"50px",
+			"280px",
+			"data-fancybox-group",
+			"5",
+			"40px",
+			"24px",
+			"data-fancybox-group",
+			"fancybox",
+			"a",
+			"7",
+			"accr",
+			"jpg",
+			"fancybox",
+			">\n",
+			"fancybox",
+			"gallery",
+			"featimg",
+			"body > div.container-fluid.tribg > div > div.col-md-4.nopadding > img",
+			"width: 50%",
+			"width:50%",
+			"ral",
+			"data",
+			"accr",
+			"toggle",
+			"acc",
+			"toggle",
+			"hidden",
+			"target",
+			"collapse",
+			"nopadding",
+			"innerm",
+			"branded",
+			"FORMAT ",
+			"FORMAT FOR EXPORT PROMOTION TOUR ON COMPANY’S LETTERHEAD ",
+			"declaration",
+			"p{",
+			"projinfo",
+			"floor",
+			".new",
+			"background",
+			"p{",
+			"featimg",
+			"class",
+			"p{"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"",
+			"th",
+			"propic grow",
+			"buybtn p2 minibufferv2",
+			"proprice pp2 minibufferv2",
+			"proname pn2 minibufferv2",
+			"colspan=\"3\"",
+			"<div class=\"col-md-6\" style=\"padding:5px 0px;\">ADD TO WISHLIST</div>",
+			"<div class=\"col-md-6\" style=\"padding:5px 0px;\">ADD TO CART</div>",
+			"<div class=\"col-md-6\" style=\"padding:0px 5px;\">ADD TO CART</div>",
+			"minibuffer",
+			"slideDown",
+			"lg",
+			"hero_logo",
+			"col-md-12",
+			"<li class=\"list-group-item\">",
+			"0.5s",
+			"1s",
+			"2s",
+			"2",
+			"<tr><td>",
+			"border-bottom-color",
+			".slideUp",
+			"Company Type",
+			"Sub Category",
+			"State",
+			"100",
+			"500",
+			"up",
+			"",
+			"h6",
+			"0.2s",
+			"0.5s",
+			"height: 35px;",
+			"lg",
+			"",
+			"col-md-2 col-sm-4",
+			"topheadmenu well",
+			"4",
+			"8",
+			"1",
+			"",
+			"4",
+			"44",
+			"4",
+			"8",
+			"4",
+			"13",
+			"1"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7614,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7088,
+								7088
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2106.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "css/mystyle.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14179,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5704,
+								5704
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1683.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 21.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 76.0
+	},
+	"pinned_build_system": "",
+	"project": "jobready.sublime-project",
+	"replace":
+	{
+		"height": 38.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"mystyle",
+				"css\\mystyle.css"
+			],
+			[
+				"index",
+				"index.php"
+			],
+			[
+				"",
+				"bliss.html"
+			],
+			[
+				"pro",
+				"C:\\wamp\\www\\hero\\hero\\product_gallery.html"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+		"last_automatic_layout":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		]
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 50.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+		"max_columns": 2
+	}
+}

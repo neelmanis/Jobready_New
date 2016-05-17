@@ -49,14 +49,17 @@ $(document).ready(function(){
 	$registration_type=$row['registration_type'];
    ?>
    <div class="textfield">
-    Admin &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="registration_type" value="A" <?php if($registration_type=='A')	{echo "checked";}?> />
+    Recruiter &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="registration_type" value="A" <?php if($registration_type=='A')	{echo "checked";}?> />
     </div>
     <div class="textfield">
-	Superadmin<input type="radio" name="registration_type"  value="SA" <?php if($registration_type=='SA'){echo "checked";}?> />
+	Admin<input type="radio" name="registration_type"  value="SA" <?php if($registration_type=='SA'){echo "checked";}?> />
     </div>
   <div class="textfield">
   	  <input type="hidden" name="action" id="" value="addRecruiter"/>
       <input type="text" name="name" onfocus="if(this.value=='Name')value='';" onblur="if(this.value=='')value='Name';" value="<?php echo ($registration_id ? getUserName($conn,$row['id']) : 'Name');?>" />
+    </div>
+	<div class="textfield">
+      <input type="text" name="company" onfocus="if(this.value=='Company')value='';" onblur="if(this.value=='')value='Company';" value="<?php echo ($registration_id ? getCompanyName($conn,$row['id']) : 'Company');?>" />
     </div>
     <div class="textfield">
       <input type="text" name="designation" onfocus="if(this.value=='Designation')value='';" onblur="if(this.value=='')value='Designation';" value="<?php echo ($registration_id ? getDesignation($conn,$row['id']) : 'Designation');?>" />

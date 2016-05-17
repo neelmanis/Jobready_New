@@ -5,13 +5,20 @@ include('header.php');
 $savedetails=$_POST['savedetails'];
 if($savedetails=='saveapp')
 {
-$subject=trim($_POST['subject']);
+$subject=trim(strtoupper($_POST['subject']));
 $sub_status=trim($_POST['sub_status']);
+
+$sqlx="SELECT area_of_interest from master_interest_area  WHERE area_of_interest='$subject'";
+$result = mysql_query($sqlx);
+$mysqlrow=mysql_fetch_array($result);
+$getAoi=$mysqlrow['area_of_interest'];
 
 if(empty($subject))
 {$signup_error="Please Enter Subject";}
 elseif(preg_match('/^[0-9 .\-]+$/i', $subject)) 
 {$signup_error= 'Subject Name is not valid';}
+elseif($getAoi == $subject)
+{$signup_error="Interest Area Already Exist";}
 else{
 $sqlx="INSERT INTO `master_interest_area`(`id`, `post_date`, `area_of_interest`, `status`) VALUES ('',NOW(),'$subject','$sub_status')";
 $mysqlresults = mysql_query($sqlx)or die(mysql_error());

@@ -102,7 +102,10 @@ while($row1=$result1->fetch_assoc())
                 <div class="info">
                   <div class="head">Prefered Location</div>
                   <div class="dvdr">:</div>
-                  <div class="det"><?php echo ucfirst(getCityName($conn,$row['preffered_location']));?></div>
+                  <div class="det">
+				  <?php if($row['preffered_location']==0) { echo "No Preference"; } else {?>				  
+				  <?php echo ucfirst(getCityName($conn,$row['preffered_location']));?> <?php } ?>
+				  </div>
                 </div>
                 <div class="info">
                   <div class="head">Brief Profile</div>
@@ -204,7 +207,7 @@ while($row1=$result1->fetch_assoc())
                         <td data-title="Education"><?php echo getEducation($conn,$row['education']);?></td>
                         <td data-title="Institutions"><?php echo getCollege($conn,$row['college']);?></td>
                         <td data-title="Year"><?php echo $row['year_of_completion'];?></td>
-                        <td data-title="%"><?php echo $row['percentage'];?>%</td>
+                        <td data-title="%"><?php echo $row['percentage'];?></td>
                         <td data-title="Major"><?php echo $row['specialization'];?></td>
                         <td data-title="Remove"><img src="images/remove_iocn.png" class="deleteEdu <?php echo $row['id'];?>" style="cursor:pointer;"  /></td>
                       </tr>

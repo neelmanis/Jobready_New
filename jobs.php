@@ -20,7 +20,8 @@ $(document).ready(function() {
 
     "bLengthChange": false,
 
-	"iDisplayLength": 10
+	"iDisplayLength": 10,
+	"order": [[0, "desc"]]
 
 	});
 
@@ -30,7 +31,8 @@ $(document).ready(function() {
 
     "bLengthChange": false,
 
-	"iDisplayLength": 10
+	"iDisplayLength": 10,
+	"order": [[0, "desc"]]
 
 	});
 
@@ -47,6 +49,7 @@ $(document).ready(function() {
       <table class="table-bordered-other table-striped table-condensed-other cf" id="example">
         <thead>
           <tr>
+			<th> Date </th>
             <th> Job Code </th>
             <th> Job Description </th>
             <th> Designation</th>
@@ -61,9 +64,12 @@ $(document).ready(function() {
             $num1=$result1->num_rows;
 
 			while($row1=$result1->fetch_assoc()){
+			    $post_date=$row1['post_date'];
+				$date=date('Y-m-d',strtotime($post_date));
 
         ?>
           <tr>
+		   <td data-title="Date" align="center"><?php echo $date;?></td>
             <td data-title="Job Code" align="center"><?php echo getJobDetails($conn,$row1['job_id'],'job_code');?></td>
             <td data-title="Job Description" align="center"><?php echo getJobDetails($conn,$row1['job_id'],'job_desc');?></td>
             <td data-title="Designation" align="center"><?php echo getJobDetails($conn,$row1['job_id'],'designation');?></td>
@@ -80,6 +86,7 @@ $(document).ready(function() {
       <table class="table-bordered-other table-striped table-condensed-other cf" id="example1">
         <thead>
           <tr>
+		  <th> Date </th>
             <th> Job Code </th>
             <th> Job Description </th>
             <th> Designation</th>
@@ -88,15 +95,14 @@ $(document).ready(function() {
         </thead>
         <tbody>
           <?php 
-
-            $result=$conn->query("select * from job_student_job_interest where registration_id='$registration_id'");
-
+            $result=$conn->query("select * from job_student_job_interest where registration_id='$registration_id' and employer_acceptance='P'");
             $num=$result->num_rows;
-
 			while($row=$result->fetch_assoc()){
-
+				$post_date=$row['post_date'];
+				$date=date('Y-m-d',strtotime($post_date));
         ?>
           <tr>
+		  <td data-title="Date" align="center"><?php echo $date;?></td>
             <td data-title="Job Code" align="center"><?php echo getJobDetails($conn,$row['job_id'],'job_code');?></td>
             <td data-title="Job Description" align="center"><?php echo getJobDetails($conn,$row['job_id'],'job_desc');?></td>
             <td data-title="Designation" align="center"><?php echo getJobDetails($conn,$row['job_id'],'designation');?></td>
@@ -112,7 +118,7 @@ $(document).ready(function() {
   <div class="clear"></div>
 </div>
 <!-- -------------------------------- container ends ------------------------------ -->
-<div class="ad_banner"><a href="#"><img src="images/ad_banner.jpg" alt="" /></a></div>
+
 <?php include("footer.php");?>
 </body>
 </html>

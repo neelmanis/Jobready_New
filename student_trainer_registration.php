@@ -207,12 +207,13 @@ while($interest_row=$interest_result->fetch_assoc())
 					?>
                       <option value="<?php echo $city_row['id'];?>" <?php if($city_row['id']==$preffered_location)echo 'selected="selected"';?> ><?php echo $city_row['city'];?></option>
                       <?php }?>
+					  <option value="0" <?php if($preffered_location==0)echo 'selected="selected"';?> >No Preference </option>
                     </select>
                   </div>
                 </div>
                 <div class="textfield_1"> <span>Profile Brief<sup>*</sup></span>
                   <div class="fields">
-                    <textarea name="brief_profile" id="brief_profile"><?php echo $brief_profile;?></textarea>
+                    <textarea name="brief_profile" id="brief_profile"><?php echo preg_replace("/(<br\s*\/?>\s*)+/", '',$brief_profile);?></textarea>
                   </div>
                 </div>
                 <div class="textfield_1 mar_left"> <span>Skills / Kew words<sup>*</sup></span>
@@ -308,7 +309,7 @@ while($interest_row=$interest_result->fetch_assoc())
                       <th> education </th>
                       <th> institutions </th>
                       <th> year </th>
-                      <th> %</th>
+                      <th> % / CGPA</th>
                       <th> major </th>
                       <th> remove </th>
                     </tr>
@@ -408,7 +409,7 @@ while($interest_row=$interest_result->fetch_assoc())
                       <td data-title="Education"><?php echo $row['employer_name'];?></td>
                       <td data-title="Start Month"><?php echo $row['start_month'];?></td>
                       <td data-title="Start year"><?php echo $row['start_year'];?></td>
-                      <td data-title="Last Designation"><?php echo $row['last_designation'];?>Last Designation</td>
+                      <td data-title="Last Designation"><?php echo $row['last_designation'];?></td>
                       <td data-title="Remove"><a href="#"><img src="images/remove_iocn.png" class="deleteEmp <?php echo $row['id'];?>"  /></a></td>
                     </tr>
                    <?php }?>

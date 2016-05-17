@@ -142,5 +142,18 @@ $questCt++;
 }
 ?>
 <!-- -------------------------------- container ends ------------------------------ -->
+<script type="text/javascript">
+$(function(){
+var questCt='<?php echo $questCt;?>'; 
+var sumLimit='<?php echo $sumLimit;?>';
+if(questCt<sumLimit)
+{
+	alert("there is some technical problem..Kndly try after some time.");
+	setTimeout(function() {
+             window.location = "exam_score.php";
+          },1000);
+}
+});
+</script>
 <?php include("footer.php");?>
 </body></html>

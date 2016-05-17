@@ -22,18 +22,24 @@ jQuery(function($) {
     });
 });
 </script>
+<script type="text/javascript" src="js/html5gallery.js"></script>
 <!-- -------------------------------- home content starts ------------------------------ -->
 <div class="home_container_wrap fade_anim">
   <div class="home_container">
+    <div class="home_video"> 
+  <div style="display:none;" class="html5gallery" data-skin="horizontal" data-responsive="true" data-width="605" data-height="350">
     <?php
 	$current_date = date('m-d-Y');
-	$sql="SELECT * FROM `master_video` WHERE status='1' ORDER BY id DESC LIMIT 1";
+	$sql="SELECT * FROM `master_video` WHERE status='1' ORDER BY id DESC LIMIT 5";
 	$result=$conn->query($sql);
 	while($rows=$result->fetch_assoc())
 	{
     ?>
-    <div class="home_video"> <?php echo $rows['link'];?> </div>
+          <a href="http://www.youtube.com/embed/<?php echo $rows['link'];?> "><img src="http://img.youtube.com/vi/<?php echo $rows['link'];?>/2.jpg" alt="Youtube Video"></a>
     <?php } ?>
+          </div>
+      
+    </div>
     <!-- -------------------------------- job content starts ------------------------------ -->
     <div class="current_opening">
       <?php 
@@ -51,7 +57,7 @@ jQuery(function($) {
 		  while($rows=$result->fetch_assoc())
 		  {$uid=$rows['id'];
 			  ?>
-        <li id="job-up" class="paginate"><a href="job_profile.php?id=<?php echo $uid;?>"><span><?php echo $rows['designation'];?></span></a><?php echo $rows['designation'];?> - <?php echo $rows['co_profile'];?></li>
+        <li id="job-up" class="paginate"><a href="job_profile.php?id=<?php echo $uid;?>" target="_blank"><span><?php echo $rows['designation'];?></span></a><?php echo $rows['designation'];?> - <?php echo $rows['co_profile'];?></li>
         <?php } ?>
       </ul>
       <div class="clear"></div>
@@ -180,5 +186,12 @@ jQuery(function($) {
 </div>
 <!-- -------------------------------- container ends ------------------------------ -->
 <?php include("footer.php");?>
+
+<script type="text/javascript">
+  jQuery(window).resize(function(event) {
+    location.reload();
+  });
+</script>
+
 </body>
 </html>

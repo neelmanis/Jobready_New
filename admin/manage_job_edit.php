@@ -87,12 +87,13 @@ $(document).ready(function () {
 <!-- Keyword over -->
 
 <?php
-$neelxz="SELECT `id`, `job_code`, `designation`, `keyword`, `job_desc`, `co_profile`, `salary_from`, `salary_to`, `job_from`, `job_to`, `area_of_interest`, `job_location`,`status` FROM `master_job` WHERE `id`= $getuid";
+$neelxz="SELECT `id`, `job_code`, `designation`,`job_title`, `keyword`, `job_desc`, `co_profile`, `salary_from`, `salary_to`, `job_from`, `job_to`, `area_of_interest`, `job_location`,`min_exp`,`no_job`,`status` FROM `master_job` WHERE `id`= $getuid";
 $result = mysql_query($neelxz);
 while($mysqlrow=mysql_fetch_array($result))
 { //print_r($mysqlrow);
 $job_code=$mysqlrow['job_code'];
 $job_designation=$mysqlrow['designation'];
+$job_title=$mysqlrow['job_title'];
 $job_keyword=$mysqlrow['keyword'];
 $job_description=$mysqlrow['job_desc'];
 $co_profile=$mysqlrow['co_profile'];
@@ -102,6 +103,8 @@ $job_from=$mysqlrow['job_from'];
 $job_to=$mysqlrow['job_to'];
 $aoi=$mysqlrow['area_of_interest'];
 $get_location=$mysqlrow['job_location'];
+$min_exp=$mysqlrow['min_exp'];
+$no_job=$mysqlrow['no_job'];
 $status=$mysqlrow['status'];
 if($mysqlrow['status']=="1"){$active="selected";}
 if($mysqlrow['status']=="0"){$inactive="selected";}
@@ -114,6 +117,7 @@ if($savedetails=='saveapp')
 {
 $job_code=trim($_POST['job_code']);
 $job_designation=trim($_POST['job_designation']);
+$job_title=trim($_POST['job_title']);
 $job_keyword=trim($_POST['job_keyword']);
 $job_description=trim($_POST['job_description']);
 $co_profile=trim($_POST['co_profile']);
@@ -123,9 +127,11 @@ $job_from=trim($_POST['job_from']);
 $job_to=trim($_POST['job_to']);
 $aoi=trim($_POST['aoi']);
 $job_location=trim($_POST['job_location']);
+$min_exp=trim($_POST['min_exp']);
+$no_job=trim($_POST['no_job']);
 $job_status=trim($_POST['job_status']);
 
-$neelx="UPDATE `master_job` SET `modified_date`=NOW(),`job_code`='$job_code',`designation`='$job_designation',`keyword`='$job_keyword',`job_desc`='$job_description',`co_profile`='$co_profile',`salary_from`='$salary_from',`salary_to`='$salary_to',`job_from`='$job_from',`job_to`='$job_to',`area_of_interest`='$aoi',`job_location`='$job_location',`status`='$job_status' WHERE `id` ='$getuid' " ;
+$neelx="UPDATE `master_job` SET `modified_date`=NOW(),`job_code`='$job_code',`designation`='$job_designation',`job_title`='$job_title',`keyword`='$job_keyword',`job_desc`='$job_description',`co_profile`='$co_profile',`salary_from`='$salary_from',`salary_to`='$salary_to',`job_from`='$job_from',`job_to`='$job_to',`area_of_interest`='$aoi',`job_location`='$job_location',`min_exp`='$min_exp',`no_job`='$no_job',`status`='$job_status' WHERE `id` ='$getuid' " ;
 $mysqlresults = mysql_query($neelx)or die(mysql_error());
 //print $neelx;
 if($mysqlresults){
@@ -147,8 +153,11 @@ header('location:manage_job.php');
 </div>
 </div>
 <div class="row">
-<div class="span12">
+<div class="span6">
 <b>Keywords :</b> <input type="text" class="input-xlarge" name="job_keyword" id="job_keyword" data-role="tagsinput" value="<?php echo $job_keyword ;?>" required>
+</div>
+<div class="span6">
+<b>Job Title :</b> <input type="text" class="form-control" name="job_title" value="<?php echo $job_title;?>" Placeholder="Please Enter Designation" required />
 </div>
 </div>
 <div class="row">
@@ -163,10 +172,10 @@ header('location:manage_job.php');
 </div>
 <div class="row">
 <div class="span6">
-<b>Salary Range :</b> <input type="text" class="form-control" name="salary_from" value="<?php echo $salary_from; ?>" Placeholder="Please Enter Salary" required>       
+<b>Salary Range :</b> <input type="text" class="form-control" name="salary_from" value="<?php echo $salary_from; ?>" Placeholder="Please Enter Salary" />       
 </div>
 <div class="span6">
-<input type="text" class="form-control" name="salary_to" value="<?php echo $salary_to; ?>" Placeholder="Please Enter Salary" required/>
+<input type="text" class="form-control" name="salary_to" value="<?php echo $salary_to; ?>" Placeholder="Please Enter Salary" />
 </div>
 </div>
 <div class="row">
@@ -174,7 +183,7 @@ header('location:manage_job.php');
 <b>Job From :</b> <input type="text" class="form-control" name="job_from" id="job_from" value="<?php echo $job_from; ?>" Placeholder="Job From" required>  
 </div>
 <div class="span6">
-<b>Reporting To :</b> <input type="text" class="form-control" name="job_to" id="job_to" value="<?php echo $job_to; ?>" Placeholder="Reporting To" required />
+<b>Reporting To :</b> <input type="text" class="form-control" name="job_to" id="job_to" value="<?php echo $job_to; ?>" Placeholder="Reporting To" />
 </div>
 </div>
 <div class="row">
@@ -206,6 +215,12 @@ $query = mysql_query("select * from master_city where status=1");
 	
 </div>
 <div class="row">
+<div class="span6">
+<b>Min. Experience :</b> <input type="number" class="form-control" name="min_exp" id="min_exp" value="<?php echo $min_exp; ?>" Placeholder="Min. Experience" required />
+</div>
+<div class="span6">
+<b>No. Of Jobs :</b> <input type="number" class="form-control" name="no_job" id="no_job" value="<?php echo $no_job; ?>" Placeholder="No. Of Jobs" required />
+</div>
 <div class="span6">
 <b>Status :</b> <select class="form-control" name="job_status">
 <option value="1" <?php echo $active;?>>Active</option>

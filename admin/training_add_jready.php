@@ -1,6 +1,13 @@
 <?php 
 include('header.php');  
 ?>
+<!-- Keyword start -->
+<link href="tag/bootstrap-tagsinput.css" rel="stylesheet">
+<script src="tag/bootstrap-tagsinput-angular.min.js"></script>
+<script src="tag/bootstrap-tagsinput-angular.js"></script>
+<script src="tag/bootstrap-tagsinput.min.js"></script>
+<script src="tag/bootstrap-tagsinput.js"></script>
+<!-- Keyword over -->
 
 <?php
 $savedetails=$_POST['savedetails'];
@@ -10,6 +17,7 @@ if($savedetails=='saveapp')
 $aoi=trim($_POST['aoi']);
 $trainer_name=trim($_POST['trainer_name']);
 $description=trim($_POST['training_description']);
+$job_keyword=trim($_POST['job_keyword']);
 $status=trim($_POST['status']);
 
 $file_name = $_FILES['file_upload']['name'];
@@ -24,7 +32,7 @@ if($file_size>2097152)
 { echo "Your uploaded file size is more than 2MB so please reduce the file size and then upload.<BR>"; }
 elseif(move_uploaded_file($file_tmp,$path)){
 	
-$sql="INSERT INTO `job_training_list`(`id`, `registration_id`, `admin_id`, `area_of_interest`,`title`, `description`, `doc`, `post_date`,`status`) VALUES ('','','$gotuid','$aoi','$trainer_name','$description','$img',NOW(),'$status')";
+$sql="INSERT INTO `job_training_list`(`id`, `registration_id`, `admin_id`, `area_of_interest`,`title`, `description`,`job_keyword`, `doc`, `post_date`,`status`) VALUES ('','','$gotuid','$aoi','$trainer_name','$description','$job_keyword','$img',NOW(),'$status')";
 $result=mysql_query($sql);
 if($sql){
 header("Location:training_offered_jobready.php");
@@ -62,6 +70,11 @@ echo "<option value='".$getID ."'>$areas_of_interest</option>";
 <div class="row">
 <div class="span12">
 <b>Description :</b> <textarea class="form-control" name="training_description" rows="5" id="training_description" style="margin: 0px 0px 10px; width: 933px; height: 100px;" Placeholder="Please Enter Training description" required><?php echo $training_description ;?></textarea>  
+</div>
+</div>
+<div class="row">
+<div class="span12">
+<b>Keywords :</b> <input type="text" class="input-xlarge" name="job_keyword" id="job_keyword" Placeholder="Please Enter Keywords" data-role="tagsinput" value="<?php echo $job_keyword ;?>" required>  
 </div>
 </div>
 <div class="row">

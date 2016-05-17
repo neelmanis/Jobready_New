@@ -4,15 +4,22 @@ ob_start();
 //echo "---><br/>".$username.$gotuid;
 $getuid=$_REQUEST['uid'];
 ?>
-
+<!-- Keyword start -->
+<link href="tag/bootstrap-tagsinput.css" rel="stylesheet">
+<script src="tag/bootstrap-tagsinput-angular.min.js"></script>
+<script src="tag/bootstrap-tagsinput-angular.js"></script>
+<script src="tag/bootstrap-tagsinput.min.js"></script>
+<script src="tag/bootstrap-tagsinput.js"></script>
+<!-- Keyword over -->
 <?php
-$neelxz=" SELECT `id`, `area_of_interest`,`title`, `description`, `doc`, `status` FROM `job_training_list` WHERE `id`= $getuid";
+$neelxz="SELECT `id`, `area_of_interest`,`title`, `description`,`job_keyword`, `doc`, `status` FROM `job_training_list` WHERE `id`= $getuid";
 $result = mysql_query($neelxz);
 while($mysqlrow=mysql_fetch_array($result))
 { //print_r($mysqlrow);
 $description=$mysqlrow['description'];
 $aoi=$mysqlrow['area_of_interest'];
 $trainer_name=$mysqlrow['title'];
+$job_keyword=$mysqlrow['job_keyword'];
 $doc=$mysqlrow['doc'];
 $status=$mysqlrow['status'];
 if($mysqlrow['status']=="1"){$active="selected";}
@@ -23,10 +30,11 @@ if($mysqlrow['status']=="0"){$inactive="selected";}
 <?php
 $savedetails=$_POST['savedetails'];
 if($savedetails=='saveapp')
-{
+{ print_r($_POST);
 $aoi=trim($_POST['aoi']);
 $admin_trainer_name=trim($_POST['trainer_name']);
 $description=trim($_POST['training_description']);
+$job_keyword=trim($_POST['job_keyword']);
 $status=trim($_POST['status']);
 
 $file_name = $_FILES['file_upload']['name']; 
@@ -44,14 +52,14 @@ $path="../upload/training_doc/".$img; // WE are Getting Document from main Folde
 
 if($file_name!=''){
 move_uploaded_file($file_tmp,$path);
-$neelx="UPDATE `job_training_list` SET `modified_date`=NOW(),`doc`='$img',`status`='$status' WHERE `id`= $getuid";  
+echo $neelx="UPDATE `job_training_list` SET `modified_date`=NOW(),`doc`='$img',`status`='$status' WHERE `id`= $getuid";  
 $mysqlresult=mysql_query($neelx); 
 if($mysqlresult){
 header("Location:training_offered_jobready.php");
 }
 } 
 
-$new1="UPDATE `job_training_list` SET `modified_date`=NOW(),`area_of_interest`='$aoi',`title`='$admin_trainer_name',`description`='$description',`status`='$status' WHERE `id`= $getuid"; 
+$new1="UPDATE `job_training_list` SET `modified_date`=NOW(),`area_of_interest`='$aoi',`title`='$admin_trainer_name',`description`='$description',`job_keyword`='$job_keyword',`status`='$status' WHERE `id`= $getuid"; 
 $mysqlresult=mysql_query($new1);
 if($mysqlresult){
 header("Location:training_offered_jobready.php");
@@ -93,6 +101,11 @@ $neelxz = fetch('SELECT `id`,`area_of_interest`, `status` FROM `master_interest_
 <div class="row">
 <div class="span12">
 <b>Description :</b> <textarea class="form-control" name="training_description" rows="5" id="training_description" style="margin: 0px 0px 10px; width: 933px; height: 100px;" Placeholder="Please Enter Training description" required><?php echo $description ;?></textarea>  
+</div>
+</div>
+<div class="row">
+<div class="span12">
+<b>Keywords :</b> <input type="text" class="input-xlarge" name="job_keyword" id="job_keyword" Placeholder="Please Enter Keywords" data-role="tagsinput" value="<?php echo $job_keyword ;?>" required>  
 </div>
 </div>
 <div class="row">

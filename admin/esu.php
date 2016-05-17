@@ -1,82 +1,61 @@
-<?php 
+<?php
 include('header.php');  
-ob_start();
 //echo "---><br/>".$username.$gotuid;
-$esuid='1';
 ?>
-<!-- ckeditor start -->
-<!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>-->
-<script src="//cdn.ckeditor.com/4.4.4/full/ckeditor.js"></script>
-<!-- ckeditor over -->
-
 <?php
-$neelxz="SELECT `id`,`title`, `desc`, `status` FROM `cms_editor` WHERE `id`= $esuid";
-$result = mysql_query($neelxz);
-while($mysqlrow=mysql_fetch_array($result))
-{ //print_r($mysqlrow);
-$title=$mysqlrow['title'];
-$content=$mysqlrow['desc'];
-$status=$mysqlrow['status'];
-if($mysqlrow['status']=="1"){$active="selected";}
-if($mysqlrow['status']=="0"){$inactive="selected";}
-}
-?>
-
-<?php
-$savedetails=$_POST['savedetails'];
-if($savedetails=='saveapp')
-{ //print_r($_POST);
-$title=trim($_POST['title']);
-$status=trim($_POST['status']);
-$content=trim($_POST['content']);
-
-$new1="UPDATE `cms_editor` SET `modified_date`=NOW(),`title`='$title',`desc`='$content',`status`='$status' WHERE `id`= $esuid";
-$mysqlresult=mysql_query($new1);
-if($mysqlresult){
-header("Location:esu.php");
-}}
+$action=$_REQUEST['action'];
+$getid=$_REQUEST['id'];
+$status=$_REQUEST['status'];
+if (($action=='active') && ($getid!=''))
+{
+$sqly="UPDATE `cms_editor` SET `modified_date`=NOW(),`status`='$status' where id='$getid'";
+$active_result = mysql_query($sqly)or die(mysql_error());
+if($active_result)
+{ header('location:esu.php'); } else {  die('Error: ' . mysql_error()); }
+} 
 ?>
 
 <div class="container">
-<h4 class="page-header">
-<span class="glyphicon glyphicon-user"></span>&nbsp;Employment Scenario Updates<?php if(isset($signup_error)){ echo '<span style="color: red;" />'.$signup_error.'</span>';} ?></h4>
+<div class="margin-top">
+<div class="row">	
+<div class="span12">	
+<div class="alert alert-info">Employment Scenario Updates </div>
+<a href="esu_add.php" ><i class="fa fa-plus"></i>&nbsp;<strong>Add Employment Scenario Updates</strong></a>
+<table cellpadding="0" cellspacing="0" border="0" class="table  table-bordered" id="example">
+<thead>
+<tr>
+<th>ID</th>                                            
+<th>Post Date</th> 
+<th width="300">Title</th>                                                    
+<th>Action</th>
+</tr>
+</thead>
 
-<form action=""  method="POST" name="newapp" id="newapp" enctype="multipart/form-data"/>
-<input type="hidden" name="savedetails" value="saveapp">
-<div class="row">
-<div class="col-md-6">
-<b>Title :</b> <input type="text" class="form-control" name="title" value="<?php echo $title; ?>"/>
-</div>
-</div>
-<div class="row">
-<div class="col-md-6">
-<b>Description :</b> <textarea name="content" class="ckeditor" id="content"><?php echo $content;?></textarea>
-</div><br/>
-</div>
-<div class="row">
-<div class="col-md-6">
-<b>Status :</b> <select class="form-control" name="status">
-<option value="1" <?php echo $active;?>>Active</option>
-<option value="0" <?php echo $inactive;?>>Inactive</option>
-</select>
-</div>
-</div>
-<button class="btn btn-success" name="savestory" value="Save Details" onclick="save_story(); return false;">
-<i class="icon-save"></i>&nbsp;Update</button>
-</form>        
-</div>
+<tbody>
+<?php 
+$neelx="SELECT * FROM `cms_editor` WHERE 1";
+$result = mysql_query($neelx)or die(mysql_error());
+while($row=mysql_fetch_array($result))
+{ //print_r($row);
+$getid=$row['id'];
+$title=$row['title'];
+?>
+<tr>
+<td><?php echo $getid; ?></td>                              
+<td ><?php echo $row['post_date']; ?></td>
+<td ><?php echo $row['title']; ?></td>
+<?php $status=$row['status']; ?>
+<td width="150">
+ <?php if($status == 1) { ?> <a href="esu.php?id=<?php echo $getid; ?>&status=0&action=active" onClick="return(window.confirm('Are you sure you want to Deactivate.'));" class="btn btn-success">Active</a><?php } else { ?><a  href="esu.php?id=<?php echo $getid; ?>&status=1&action=active" onClick="return(window.confirm('Are you sure you want to Activate.'));" class="btn btn-warning">Inactive</a><?php } ?>
 
-<!-- ckeditor script -->
-<script>
-CKEDITOR.replace( 'content', {
-filebrowserBrowseUrl: 'ckfinder/ckfinder.html',
-filebrowserImageBrowseUrl: 'ckfinder/ckfinder.html?Type=Files',
-filebrowserImageBrowseUrl: 'ckfinder/ckfinder.html?Type=Images',
-filebrowserFlashBrowseUrl: 'ckfinder/ckfinder.html?Type=Flash',
-filebrowserUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-filebrowserImageUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-filebrowserFlashUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
-});
-</script>
-<?php  ob_end_flush(); ?>
-<?php include('footer.php'); ?>
+&nbsp;<a title="View" href="esu_edit.php?uid=<?php echo $getid;?>" class="btn btn-info">Edit</a> 
+</td>									
+</tr>
+<?php  }  ?>                           
+</tbody>
+</table>
+</div>		
+</div>
+</div>
+</div>
+<?php include('footer.php') ?>

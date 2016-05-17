@@ -4,27 +4,34 @@
 $registration_id=$_SESSION['registration_id'];
 if(isset($_POST['reset']))
 {
-	$_SESSION['gender']='';
-	$_SESSION['education']='';
+	$_SESSION['keyword']='';
+	$_SESSION['designation']='';
+	$_SESSION['city']='';
 	$_SESSION['area_of_interest']='';
 }
 else
 { 
 	if(isset($_POST['search'])){
-		$_SESSION['gender']=$_POST['gender'];
-		$_SESSION['education']=$_POST['education'];
+		$_SESSION['keyword']=$_POST['keyword'];
+		$_SESSION['designation']=$_POST['designation'];
+		$_SESSION['city']=$_POST['city'];
 		$_SESSION['area_of_interest']=$_POST['area_of_interest'];
 		
 	}
 }
-$sql="select a.id,a.type_of_actor,b.fname,b.gender,c.education,d.area_of_interest from job_registration a,job_profile b,job_education_profile c,job_area_of_interest d where a.id=b.registration_id and a.type_of_actor='S' and a.status='1'";
-if(isset($_SESSION['gender']) && $_SESSION['gender']!='')
-{	$gender=$_POST['gender'];
-	$sql.=" and b.gender like '%$gender%'";
+$sql="select a.id,a.type_of_actor,b.fname,b.city,c.education,d.area_of_interest,e.last_designation from job_registration a,job_profile b,job_education_profile c,job_area_of_interest d,job_employment_profile e where a.id=b.registration_id and a.type_of_actor='S' and a.status='1'";
+
+if(isset($_SESSION['keyword']) && $_SESSION['keyword']!='')
+{	$keyword=$_POST['keyword'];
+	$sql.=" and (b.gender like '%$keyword%' || b.fname like '%$keyword%' || b.city in (select id from master_city where city='$keyword'))";
 }
-if(isset($_SESSION['education']) && $_SESSION['education']!='')
-{	$education=$_POST['education'];
-	$sql.=" and c.education='$education'";
+if(isset($_SESSION['city']) && $_SESSION['city']!='')
+{	$city=$_POST['city'];
+	$sql.=" and b.city='$city'";
+}
+if(isset($_SESSION['designation']) && $_SESSION['designation']!='')
+{	$designation=$_POST['designation'];
+	$sql.=" and e.last_designation ='$designation'";
 }
 if(isset($_SESSION['area_of_interest']) && $_SESSION['area_of_interest']!='')
 {   $area_of_interest=$_POST['area_of_interest'];
@@ -38,8 +45,8 @@ $sql.=" group by a.id order by a.id desc";
 $(document).ready(function(){
 $('.showcandidateinterest').live('click',function(){
 var clas=$(this).attr('class').split(' ');
-var employer_registraion_id=clas[1];
-var registration_id=clas[2];	
+var registration_id=clas[1];	
+var employer_registraion_id=clas[2];
 	if(confirm("Are you sure you want to contact?")){
 		$.ajax({
 				type:"POST",
@@ -48,8 +55,12 @@ var registration_id=clas[2];
 				dataType:"JSON",
 				success:function(data)
 				{
-					alert(data);
+					//alert(data);
 					//console.log(data);
+					if(data.error_msg=='Success')
+					alert('You have succesfully Contacted');
+				else
+					alert('Some Technical Problem. Contact Admininstrator');
 					//window.location.href=data.url;
 				}
 			});
@@ -89,31 +100,31 @@ jQuery(function($) {
     <table class="table-bordered table-striped table-condensed cf">
       <thead>
         <tr bgcolor="#868686" style="color:#fff;">
-          <th> Gender </th>
-          <th> Qualification </th>
+          <th> Keyword </th>
+          <th> Designation </th>
+          <th> Location </th>
           <th> Area Of Interest</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td data-title="Gender">
-          <select name="gender" id="gender">
-				<option value="">Select Gender</option>
-				<option value="Male" <?php if($_SESSION['gender']=="Male"){?> selected="selected"<?php }?>>Male</option>
-                <option value="Female" <?php if($_SESSION['gender']=="Female"){?> selected="selected"<?php }?>>Female</option>
-			</select>
+          <td data-title="Keyword">
+          	<input type="text" name="keyword" id="keyword" value="<?php echo $_SESSION['keyword'];?>" />
           </td>
-          <td data-title="Qualification">
-		  	<select name="education" id="education">
-				<option value="">Select Qualification</option>
-				<?php 
-					$result=$conn->query("select * from master_education where status=1");
-					while($row=$result->fetch_assoc()){
-				?>
-				<option value="<?php echo $row['id'];?>" <?php if($_SESSION['education']==$row['id']){?> selected="selected"<?php }?>><?php echo $row['education'];?></option>
-			<?php }?>
-			</select>
+          <td data-title="Designation">
+         	 <input type="text" name="designation" id="designation" value="<?php echo $_SESSION['designation'];?>" />
           </td>
+          <td data-title="Location">
+            <select name="city" id="city">
+               <option value="">---Locations---</option>
+                <?php 
+                	$city_result=$conn->query("select * from master_city where status=1");
+                	while($city_row=$city_result->fetch_assoc()){
+                ?>
+              	<option value="<?php echo $city_row['id'];?>" <?php if($city_row['id']==$_SESSION['city'])echo 'selected="selected"';?> ><?php echo $city_row['city'];?></option>
+              <?php }?>
+            </select>
+		  </td>
           <td data-title="Area Of Interest">
 		  <select name="area_of_interest" id="area_of_interest">
             <option value="">---Select Area Of Interest---</option>
@@ -139,8 +150,8 @@ jQuery(function($) {
     <table class="table-bordered-job table-striped table-condensed-job cf">
       <thead>
         <th> Candidate Name </th>
-          <th> Gender </th>
-          <th> Qualification </th>
+          <th> Last Designation </th>
+          <th> Loaction </th>
           <th> Area Of Interest</th>
           <th></th>
         </tr>
@@ -153,9 +164,24 @@ jQuery(function($) {
         ?>
 	  
         <tr class="paginate">
-          <td data-title="Candidate Name"><a href="candidate_trainer_profile.php?registration_id=<?php echo $row['id'];?>"><?php echo $row['fname'];?></a></td>
-          <td data-title="Gender"><?php echo $row['gender'];?></td>
-          <td data-title="Qualification"><?php echo getUserEducation($conn,$row['id']);?></td>
+        <!--<td data-title="Candidate Name"><a href="candidate_trainer_profile.php?registration_id=<?php echo $row['id'];?>"><?php echo $row['fname'];?></a></td>-->
+		  <?php if(isset($_SESSION['registration_id'])):?>
+          	<?php if(actor_type($conn,$registration_id)=="F"):?>
+              <td data-title="">
+                <a href="candidate_trainer_profile.php?registration_id=<?php echo $row['id'];?>"><?php echo $row['fname'];?></a>
+              </td>
+          	<?php else:?>
+            	<td data-title="">
+                	<a href="#" onclick="return(window.confirm('Only Employer can contact..!!'));" ><?php echo $row['fname'];?></a>
+                </td>
+		<?php endif ;else : ?>
+		<td data-title="Action">
+        	<a class="fancybox fancybox.ajax fade" href="login_signup_form.php?redirect_url=<?php echo basename($_SERVER['PHP_SELF']);?>"><?php echo $row['fname'];?></a>
+         </td>
+		<?php endif;?>		  
+		  
+          <td data-title="Designation"><?php echo $row['last_designation'];?></td>
+          <td data-title="Location"><?php echo getCityName($conn,$row['city']);?></td>
           <td data-title="Area of Interest"><?php echo getUserInterest($conn,$row['id']);?></td>
         
 		  <?php if(isset($_SESSION['registration_id'])):?>
@@ -166,7 +192,7 @@ jQuery(function($) {
           	<?php else:?>
             	<td data-title="">
                 	<a href="#" onclick="return(window.confirm('Only Employer can contact..!!'));" class="contact">Contact</a>
-              </td>
+                </td>
 		<?php endif ;else : ?>
 		<td data-title="Action">
         	<a class="fancybox fancybox.ajax fade" href="login_signup_form.php?redirect_url=<?php echo basename($_SERVER['PHP_SELF']);?>">Show Interest</a>

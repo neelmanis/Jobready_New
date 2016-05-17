@@ -13,6 +13,26 @@ while($row1=$result1->fetch_assoc())
 	$interest.=getInterest($conn,$row1['area_of_interest']).",";
 }
 ?>
+<script src="js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css"/>
+<script type="text/javascript">
+
+$(document).ready(function() {
+    $('#example').DataTable({
+    "bLengthChange": false,
+	"bFilter": false,
+	"iDisplayLength": 10
+	});
+
+	$('#example1').DataTable({
+    "bLengthChange": false,
+	"bFilter": false,
+	"iDisplayLength": 10
+	});
+
+});
+
+</script>
 <!-- -------------------------------- container starts ------------------------------ -->
 <div class="page_title"><span>Profile Details</span></div>
 <div class="inner_conainer">
@@ -29,55 +49,7 @@ while($row1=$result1->fetch_assoc())
     </div>
     <div class="clear"></div>
   </div>
-  
-  <div class="trainer_feedback">
-    <h5>Personal Information</h5>
-    <div>
-            <div class="quest_box fade_anim">
-              <div class="info_wrap">
-                <div class="info">
-                  <div class="head">Gender</div>
-                  <div class="dvdr">:</div>
-                  <div class="det"><?php echo ucfirst($row['gender']);?></div>
-                </div>
-                <div class="info">
-                  <div class="head">DOB</div>
-                  <div class="dvdr">:</div>
-                  <div class="det"><?php echo ucfirst($row['dob']);?></div>
-                </div>
-                <div class="info">
-                  <div class="head">Address 1</div>
-                  <div class="dvdr">:</div>
-                  <div class="det"><?php echo ucfirst($row['address1']);?></div>
-                </div>
-                <div class="info">
-                  <div class="head">Address 2</div>
-                  <div class="dvdr">:</div>
-                  <div class="det"><?php echo ucfirst($row['address2']);?></div>
-                </div>
-                <?php if($row['address3']!=""){?>
-                <div class="info">
-                  <div class="head">Address 3</div>
-                  <div class="dvdr">:</div>
-                  <div class="det"><?php echo ucfirst($row['address3']);?></div>
-                </div>
-                <?php }?>
-                <div class="info">
-                  <div class="head">PIN Code</div>
-                  <div class="dvdr">:</div>
-                  <div class="det"><?php echo ucfirst($row['pincode']);?></div>
-                </div>
-                <div class="info">
-                  <div class="head">City/Town</div>
-                  <div class="dvdr">:</div>
-                  <div class="det"><?php echo ucfirst(getCityName($conn,$row['city']));?></div>
-                </div>
-                <div class="clear"></div>
-              </div>
-              <div class="clear"></div>
-            </div>
-          </div>
-  </div>
+ 
   <div class="trainer_feedback">
     <h5>Profile</h5>
     <div>
@@ -91,7 +63,8 @@ while($row1=$result1->fetch_assoc())
                 <div class="info">
                   <div class="head">Prefered Location</div>
                   <div class="dvdr">:</div>
-                  <div class="det"><?php echo ucfirst(getCityName($conn,$row['preffered_location']));?></div>
+                  <div class="det">
+				  <?php if($row['preffered_location']==0) { echo "No Preference"; } else {?><?php echo ucfirst(getCityName($conn,$row['preffered_location']));?> <?php } ?></div>
                 </div>
                 <div class="info">
                   <div class="head">Brief Profile</div>
@@ -109,80 +82,70 @@ while($row1=$result1->fetch_assoc())
             </div>
           </div>
   </div>
-  <div class="trainer_feedback">
-    <h5>Educational Info</h5>
-    <div>
-            <div class="quest_box  fade_anim">
-              <div class="clear"></div>
-              <div class="table_main" id="no-more-tables">
-                <table class="table-bordered table-striped table-condensed cf">
-                  <thead>
-                    <tr bgcolor="#868686" style="color:#fff;">
-                      <th> education </th>
-                      <th> institutions </th>
-                      <th> year </th>
-                      <th> %</th>
-                      <th> major </th>
-                    </tr>
-                  </thead>
-                  <tbody id="educationalDetails">
-                  <?php 
-					$result=$conn->query("select * from job_education_profile where registration_id='$registration_id'");
-					while($row=$result->fetch_assoc()){
-				  ?>
-                    <tr>
-                      <td data-title="Education"><?php echo getEducation($conn,$row['education']);?></td>
-                      <td data-title="Institutions"><?php echo getCollege($conn,$row['college']);?></td>
-                      <td data-title="Year"><?php echo $row['year_of_completion'];?></td>
-                      <td data-title="%"><?php echo $row['percentage'];?>%</td>
-                      <td data-title="Major"><?php echo $row['specialization'];?></td>
-                    </tr>
-                   <?php }?>
-                  </tbody>
-                </table>
-                <div class="clear"></div>
-              </div>
-            </div>
-            <div class="clear"></div>
-          </div>
-  </div>
-  <div class="trainer_feedback">
-    <h5>Employment Info</h5>
-    <div>
-            <div class="quest_box  fade_anim">
-              <div class="clear"></div>
-              <div class="table_main" id="no-more-tables">
-                <table class="table-bordered table-striped table-condensed cf">
-                  <thead>
-                     <tr bgcolor="#868686" style="color:#fff;">
-                      <th> Employer Name </th>
-                      <th> Start Month </th>
-                      <th> Start year </th>
-                      <th>Last Designation </th>
-                    </tr>
-                  </thead>
-                  <tbody id="employmentDetails">
-                  <?php 
-					$result=$conn->query("select * from job_employment_profile where registration_id='$registration_id'");
-					while($row=$result->fetch_assoc()){
-				  ?>
-                    <tr>
-                      <td data-title="Education"><?php echo $row['employer_name'];?></td>
-                      <td data-title="Start Month"><?php echo $row['start_month'];?></td>
-                      <td data-title="Start year"><?php echo $row['start_year'];?></td>
-                      <td data-title="Last Designation"><?php echo $row['last_designation'];?></td>
+  
+<div class="trainer_feedback">
+<h5>Training List</h5>
+    <div class="table_main_other table_job" id="no-more-tables-other">
+      <div class="clear"></div>
+      <table class="table-bordered-other table-striped table-condensed-other cf" id="example">
+        <thead>
+          <tr>
+			<th> Date </th>
+            <th> Training </th>
+          </tr>
+        </thead>
+        <tbody>
+<?php 
+$result1=$conn->query("select title,post_date from job_training_list where registration_id='$registration_id' and status='1'");
+while($row1=$result1->fetch_assoc()){
+$post_date=$row1['post_date'];
+$date=date('d-m-Y',strtotime($post_date));
+?>
+<tr>
+<td data-title="Date" align="center"><?php echo $date;?></td>
+<td data-title="Title" align="center"><?php echo $row1['title'];?></td>
+</tr>
+<?php }?>
+</tbody>
+</table>
+<div class="clear"></div>
+</div>
+<div class="clear"></div>
+</div>
 
-                    </tr>
-                   <?php }?>
-                  </tbody>
-                </table>
-                <div class="clear"></div>
-              </div>
-            </div>
-            <div class="clear"></div>
-          </div>
-  </div>
-  <div class="clear"></div>
+<div class="trainer_feedback">
+<h5>Feedback</h5>
+    <div class="table_main_other table_job" id="no-more-tables-other">
+      <div class="clear"></div>
+      <table class="table-bordered-other table-striped table-condensed-other cf" id="example1">
+        <thead>
+          <tr>
+			<th> Date </th>
+            <th> Candidate </th>
+			<th> Feedback </th>
+          </tr>
+        </thead>
+        <tbody>
+<?php 
+$result1=$conn->query("select registration_id,trainer_id,feed_description,status,post_date from master_feedback where trainer_id='$registration_id' and status='1'");
+while($row1=$result1->fetch_assoc()){
+$post_date=$row1['post_date'];
+$date=date('d-m-Y',strtotime($post_date));
+?>
+<tr>
+<td data-title="Date" align="center"><?php echo $date;?></td>
+<td data-title="Title" align="center"><?php echo getUserName($conn,$row1['registration_id']);?></td>
+<td data-title="Description" align="center"><?php echo $row1['feed_description'];?></td>
+</tr>
+<?php }?>
+</tbody>
+</table>
+<div class="clear"></div>
+</div>
+<div class="clear"></div>
+</div>
+  
+<div class="clear"></div>
 </div>
 <!-- -------------------------------- container ends ------------------------------ -->
 <?php include("footer.php");?>

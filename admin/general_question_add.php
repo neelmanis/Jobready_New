@@ -40,7 +40,7 @@ $sqly="INSERT INTO `master_general_question`(`id`, `sub_id`, `post_date`,`questi
 $mysqlresults = mysql_query($sqly)or die(mysql_error());
  //print $sqly;
 if($mysqlresults){
-header('location:general_question.php');
+header('location:general_question.php?action=view');
 ?>
 <?php
 }}}
@@ -57,7 +57,8 @@ header('location:general_question.php');
 <select class="form-control" name="subject">
 <option value="">--Select Subject--</option>
 <?php
-$sqlx="SELECT `id`, `subject`, `is_compulsory`, `status` FROM `master_subject_list` WHERE `status`='1' AND is_compulsory='1' ORDER BY subject ASC";
+$sqlx="SELECT `id`, `subject`, `is_compulsory`, `status` FROM `master_subject_list` WHERE `status`='1' ORDER BY subject ASC";
+//$sqlx="SELECT `id`, `subject`, `is_compulsory`, `status` FROM `master_subject_list` WHERE `status`='1' AND is_compulsory='1' ORDER BY subject ASC";
 /*$sqlx="SELECT `id`, `area_of_interest`, `is_compulsory`, `status` FROM `master_interest_area` WHERE `status`=1 ORDER BY area_of_interest ASC"; */
 $result = mysql_query($sqlx);
 while($mysqlrow=mysql_fetch_array($result))

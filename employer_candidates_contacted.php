@@ -11,7 +11,8 @@ include("menu.php");
 $(document).ready(function() {
     $('#example').DataTable({
     "bLengthChange": false,
-	"iDisplayLength": 10
+	"iDisplayLength": 10,
+	"order": [[0, "desc"]]
 	});
 });
 </script>
@@ -20,7 +21,7 @@ $(document).ready(function(){
 $('.candidatecontact').live('click',function(){
 var clas=$(this).attr('class').split(' ');
 var id=clas[2];	
-	if(confirm("Are you sure you want to contact ?")){
+	if(confirm("Are you sure you want to Interviewed ?")){
 		$.ajax({
 				type:"POST",
 				url:"employer_job_inc.php",
@@ -50,12 +51,12 @@ var id=clas[2];
       <table class="table-bordered-job table-striped table-condensed-job cf" id="example">
         <thead>
           <tr>
+			<th> Date </th>
             <th> Jobcode </th>
             <th> Candidate Name </th>
             <th> Contact</th>
-            <!--<th> JobbReady Score</th>-->
             <th> Interviewed </th>
-			<th> Offered </th>
+			<th> Feedback </th>
           </tr>
         </thead>
         <tbody>
@@ -65,16 +66,18 @@ var id=clas[2];
 			while($row=$result->fetch_assoc()){
 			$candidate_interviewed=$row['candidate_interviewed'];
 			$candidate_offered=$row['candidate_offered'];
-				
+			$post_date=$row['post_date'];
+			$date=date('d-m-Y',strtotime($post_date));							
         ?>
           <tr>
+			<td data-title="Date"><?php echo $date;?></td>
             <td data-title="Jobcode"><?php echo getJobDetails($conn,$row['job_id'],'job_code');?></td>
             <td data-title="Candidate Name"><a href="candidate_trainer_profile.php?registration_id=<?php echo $row['registration_id'];?>"><?php echo getUserName($conn,$row['registration_id']);?></a></td>
             <td data-title="Contact"><?php echo getUserMobile($conn,$row['registration_id']);?></td>
             <!--<td data-title="JobbReady Score">85%</td>-->
             <!--<td data-title=""><a href="#">Contacted</a></td>-->
 			<td data-title=""><?php if($candidate_interviewed == "Y") { ?><a href="#" class="contact">Interviewed</a><?php } else { ?><a href="#" class="contact candidatecontact <?php echo $row['id'];?>">Contact</a> <?php } ?>			</td>
-			<td data-title="offer"><?php if($candidate_offered == "Y") { ?><a href="#" class="contact">Done</a><?php } else { ?><a class="contact fancybox fancybox.ajax fade" href="employer_offered_inc.php?uid=<?php echo $row['id'];?>">Offer</a> <?php } ?>			</td>
+			<td data-title="offer" align="center" ><?php if($candidate_offered == "Y") { ?><!--<a href="#" class="feedback_icon" ><img src="images/active.png" border="0" title="Feedback Done"/></a>--><?php } else { ?><a class="feedback_icon fancybox fancybox.ajax fade" href="employer_offered_inc.php?uid=<?php echo $row['id'];?>"><img src="images/feedback_icon.png" border="0" title="Give Feedback"/></a> <?php } ?> <a class="feedback_icon fancybox fancybox.ajax fade" href="view_feedback.php?employer_registraion_id=<?php echo $row['employer_registraion_id'];?>&candidate_id=<?php echo $row['registration_id'];?>"  class="feedback_icon" ><img src="images/view_icon.png" /> </a>  </td>
 			<!--<td data-title="Offer"><a class="fancybox fancybox.ajax fade" href="employer_offered_inc.php?uid=<?php echo $row['id'];?>">Offer</a></td>-->
           </tr>
           <?php }?>

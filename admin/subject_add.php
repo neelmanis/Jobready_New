@@ -11,12 +11,17 @@ $duration=trim($_POST['duration']);
 $limit=trim($_POST['limit']);
 $sub_status=trim($_POST['sub_status']);
 
+$sqlx="SELECT subject from master_subject_list  WHERE subject='$subject'";
+$result = mysql_query($sqlx);
+$mysqlrow=mysql_fetch_array($result);
+$getSubject=$mysqlrow['subject'];
+
 if(empty($subject))
 {$signup_error="Please Enter Subject";}
 elseif(preg_match('/^[0-9 .\-]+$/i', $subject)) 
 {$signup_error= 'Subject Name is not valid';}
-/*elseif(empty($limit))
-{$signup_error="Please Enter Limit";}*/
+elseif($getSubject == $subject)
+{$signup_error="Subject Already Exist";}
 else{
 $sqlx="INSERT INTO `master_subject_list`(`id`, `post_date`, `subject`, `is_compulsory`, `duration`, `limit`, `status`) VALUES ('',NOW(),'$subject','$is_com','$duration','$limit','$sub_status')";
 $mysqlresults = mysql_query($sqlx)or die(mysql_error());

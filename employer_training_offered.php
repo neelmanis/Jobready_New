@@ -26,7 +26,8 @@ $(document).ready(function() {
       <table class="table-bordered-job table-striped table-condensed-job cf" id="example">
         <thead>
           <tr>
-            <th width="18%"> Training Category </th>
+			<th width="12%"> Date </th>
+            <th width="15%"> Training Category </th>
             <th width="23%"> Title</th>
 			<th width="23%"> Trainer Email</th>
             <th width="40%"> Brief Description</th>
@@ -40,8 +41,11 @@ $(document).ready(function() {
 			$result1=$conn->query("SELECT * FROM `job_training_list` WHERE admin_id!=0 and status=1");
 			while($row1=$result1->fetch_assoc()){
 				$mail=getAdminEmail($conn,$row1['admin_id']);
+				$post_date=$row1['post_date'];
+				$date=date('d-m-Y',strtotime($post_date));
 		?>
           <tr>
+			<td data-title="Date"><?php echo $date;?></td>
             <td data-title="Training Category"><?php echo getInterest($conn,$row1['area_of_interest']);?></td>
             <td data-title="Name of the Program"><?php echo $row1['title'];?></td>
 			<td data-title="Email"><?php echo $mail;?></td>

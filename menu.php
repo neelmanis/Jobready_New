@@ -25,12 +25,15 @@ else{$url="select_actor.php";}
                 <div id='cssmenu'>
                         <ul>
                             <li><a href='index.php'>home</a></li>
-                            <li><a href='corporate.php'>Corporate</a></li>
                             <li><a href='#'>Our Services</a>							
 							<ul>
 								<li><a href="search_for_training.php">Search For Training</a></li>
 								<li><a href="search_for_job.php">Search For Job</a></li>
+                                <?php if($actor_type=='F') {?>
                                 <li><a href="search_for_candidate.php">Search For Candidate</a></li>
+                                <?php } else {?>
+                                <li><a href="#" onclick="return(window.confirm('This service is only for Employer'));">Search For Candidate</a></li>
+                                <?php }?>
 								<li><a href="employee_verification.php">Employee verification</a></li>
 							</ul>
 							</li>
@@ -46,11 +49,10 @@ else{$url="select_actor.php";}
 								<li><a href="tips.php">Interview Tips</a></li>
 								<li><a href="skw.php">Soft skills at Work </a></li>
                                 <li><a href="sample_cv.php">Sample CVs</a></li>
-								<li><a href="#">Trainings</a></li>
 								<li><a href="sha.php">Self help Articles</a></li>
 							</ul>
 						   </li>
-                           <li><a href='contact_us.php'>Contact</a> </li>
+                           <li><a href='contact_us.php'>Contact Us</a> </li>
                         </ul>
                     </div>	
               </div>

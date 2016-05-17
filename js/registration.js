@@ -6,8 +6,14 @@ college=$('#college').val();
 if(college==""){alert("Select College");$('#college').focus();return false}
 year_of_completion=$('#year_of_completion').val();
 if(year_of_completion==""){alert("Select year of completion");$('#year_of_completion').focus();return false}
+
 percentage=$('#percentage').val();
 if(percentage==""){alert("Enter Percentage");$('#percentage').focus();return false}
+else{
+	var per =/^[0-9 ]{1,20}$/;
+	if(!per.test($("#percentage").val()))
+	{	alert("Please Enter Only Numbers");	$("#percentage").focus();return false;}	}	
+
 specialization=$('#specialization').val();
 if(specialization==""){alert("Select Specialization");$('#specialization').focus();return false}
 $.ajax({

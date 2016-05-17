@@ -139,7 +139,11 @@
 
 .dashboard_right{width:auto; min-height:300px; height:auto; /*background:#090;*/ margin-left:165px; border:1px solid #595959; padding:30px; margin-bottom:15px;}
 .dashboard_right .dashbox_wrap{ /*background:#FC3;*/ display:table; margin:0 -16px;} 
+
 .dashboard_right .dashbox{width:338px; height:170px; display:inline-block; margin:16px; padding:15px; vertical-align:top; color:#fff; position:relative; font-size:12px; line-height:18px;}
+
+.dashboard_right .dashbox p { text-align:left !important; }
+
 .dashboard_right .dashbox:hover{ -moz-box-shadow:0px 0px 10px #838383; -webkit-box-shadow: 0px 0px 10px #838383; box-shadow: 0px 0px 10px #838383;}
 .dashboard_right .dashbox:last-child, .dashboard_right .dashbox:secondlast-child{margin-bottom:0;}
 .dashboard_right .dashbox .title{font-size:18px; border-bottom:1px solid #fff; display:block; text-transform:uppercase; padding-bottom:10px; margin-bottom:15px;}
@@ -384,6 +388,10 @@ ul.media li img{width:120px; height:100px; margin-right:15px; border:1px solid #
 ul.media li .name{font-size:14px; display:block; margin-bottom:10px; font-weight:bold;}
 ul.media li .name span{display:inline-block; float:right; font-size:12px; color:#999;} 
 ul.media li .name a{ margin-left:50px; color:#000;}
+
+ul.media li .skw{font-size:14px; display:block; margin-bottom:10px; font-weight:bold;}
+ul.media li .skw span{display:inline-block; float:right; font-size:12px; color:#999;} 
+ul.media li .skw a{color:#000;}
 
 @media all and (max-width:400px){
 .form_wrap .textfield select{width:115%;}

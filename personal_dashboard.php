@@ -30,7 +30,7 @@
 
 					if($i<$num)
 
-						$intrest.= getInterest($conn,$row['area_of_interest']).",";
+						$intrest.= getInterest($conn,$row['area_of_interest']).", ";
 
 					else
 
@@ -85,24 +85,11 @@
           <div class="clear"></div>
         </div>
         <?php }?>
-        <p><strong>Available Trainer Summary :</strong></p>
-        <?php 
-		/*..............................Further Training List....................................*/
-		$user_interest=getUserInterestId($conn,$registration_id);
-		$result1=$conn->query("select * from job_training_list where area_of_interest in(".$user_interest.") order by post_date desc limit 1");
-		while($row1=$result1->fetch_assoc()){
-		?>
-        <div class="trainiing">
-          <div class="name"><?php echo getUserName($conn,$row1['registration_id']);?></div>
-          <span>- </span>
-          <div class="name"><?php echo getInterest($conn,$row1['area_of_interest']);?></div>
-          <div class="clear"></div>
-        </div>
-        <?php }?>
+        
         <a class="more" href="personal_trainings.php"></a> </div>
       <div class="dashbox purple_bg">
         <div class="title"><img src="images/icon_jobs_big.png" />jobs</div>
-        <p><strong>Company Showing Interest Your Profile:</strong></p>
+        <p><strong>Company Showing Interest In Your Profile:</strong></p>
         <div class="job">
           <ul class="marquee_1">
             <?php 

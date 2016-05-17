@@ -103,12 +103,15 @@ while($row1=$result1->fetch_assoc())
                   <div class="head">Prefered Location</div>
                   <div class="dvdr">:</div>
                   <!-- <div class="det"><?php echo ucfirst($row['preffered_location']);?></div>-->
-                  <div class="det"><?php echo ucfirst(getCityName($conn,$row['preffered_location']));?></div>
+                  <div class="det">
+				  <?php if($row['preffered_location']==0) { echo "No Preference"; } else {?>				  
+				  <?php echo ucfirst(getCityName($conn,$row['preffered_location']));?> <?php } ?>
+				  </div>
                 </div>
                 <div class="info">
                   <div class="head">Brief Profile</div>
                   <div class="dvdr">:</div>
-                  <div class="det"><?php echo ucfirst($row['brief_profile']);?></div>
+			      <div class="det"><?php echo $row['brief_profile'];?></div>
                 </div>
                 <div class="info">
                   <div class="head">Skills / Kew words</div>
@@ -213,7 +216,7 @@ while($row1=$result1->fetch_assoc())
                         <td data-title="Education"><?php echo getEducation($conn,$row['education']);?></td>
                         <td data-title="Institutions"><?php echo getCollege($conn,$row['college']);?></td>
                         <td data-title="Year"><?php echo $row['year_of_completion'];?></td>
-                        <td data-title="%"><?php echo $row['percentage'];?>%</td>
+                        <td data-title="%"><?php echo $row['percentage'];?></td>
                         <td data-title="Major"><?php echo $row['specialization'];?></td>
                         <td data-title="Remove"><img src="images/remove_iocn.png" class="deleteEdu <?php echo $row['id'];?>"  /></td>
                       </tr>
@@ -298,7 +301,7 @@ while($row1=$result1->fetch_assoc())
                       <td data-title="Education"><?php echo $row['employer_name'];?></td>
                       <td data-title="Start Month"><?php echo $row['start_month'];?></td>
                       <td data-title="Start year"><?php echo $row['start_year'];?></td>
-                      <td data-title="Last Designation"><?php echo $row['last_designation'];?>Last Designation</td>
+                      <td data-title="Last Designation"><?php echo $row['last_designation'];?></td>
                       <td data-title="Remove"><a href="#"><img src="images/remove_iocn.png" class="deleteEmp <?php echo $row['id'];?>"  /></a></td>
                     </tr>
                    <?php }?>

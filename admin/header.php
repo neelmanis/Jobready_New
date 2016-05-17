@@ -93,7 +93,7 @@ $(function(){
 			  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manage Exam <b class="caret"></b></a>
 			  <ul class="dropdown-menu">
 			  <li>
-			  <a href="general_question.php">&nbsp;Manage Questions</a>
+			  <a href="general_question.php?action=view">&nbsp;Manage Questions</a>
 			  </li>			  
 			  <!--<li><a href="#">&nbsp;Manage Tests</a></li>
 			  <li><a href="#">&nbsp;Manage Results</a></li>-->
@@ -121,7 +121,6 @@ $(function(){
 				  <li><a href="ques_ans.php">Interview Tips</a></li>
 				  <li><a href="skw.php">Soft skills at Work</a></li>
 				  <li><a href="sample_cv.php">Sample CVs</a></li>
-				  <li><a href="#">Trainings</a></li>
 				  <li><a href="sha.php">Self help Articles</a></li>
 				</ul>
 			  </li>

@@ -18,10 +18,11 @@ $savedetails=$_POST['savedetails'];
 if($savedetails=='saveapp')
 { //print_r($_POST);
 $question=mysql_real_escape_string($_POST['question']);
-$true_ans=mysql_real_escape_string($_POST['answer']);
+//$true_ans=mysql_real_escape_string($_POST['answer']);
+$true_ans = ereg_replace( "\n","<br/>", $_POST['answer']);
 $status=trim($_POST['status']);
 
-echo $neelx="UPDATE `cms_quest_ans` SET `modified_date`=NOW(),`question`='$question',`true_ans`='$true_ans',`status`='$status' WHERE `id`= $id";
+$neelx="UPDATE `cms_quest_ans` SET `modified_date`=NOW(),`question`='$question',`true_ans`='$true_ans',`status`='$status' WHERE `id`= $id";
 $mysqlresults = mysql_query($neelx)or die(mysql_error());
  //print $neelx;
 if($mysqlresults){
@@ -37,12 +38,12 @@ header('location:ques_ans.php');
 <input type="hidden" name="savedetails" value="saveapp">
 <div class="row">
 <div class="col-md-6">
-<b>Enter Question :</b> <textarea class="input-xxlarge" name="question" rows="3" id="question" placeholder="Enter Question" required><?php echo $question;?></textarea>
+<b>Enter Question :</b> <textarea class="input-xxlarge" name="question" rows="3" id="question" placeholder="Enter Question" required><?php echo preg_replace("/(<br\s*\/?>\s*)+/", '',$question);?></textarea>
 </div>
 </div>
 <div class="row">
 <div class="col-md-6">
-<b>Enter Answer :</b> &nbsp;&nbsp;&nbsp;<textarea class="input-xxlarge" name="answer" rows="5" id="answer" placeholder="Enter Answer Here.."><?php echo $true_ans;?></textarea>
+<b>Enter Answer :</b> &nbsp;&nbsp;&nbsp;<textarea class="input-xxlarge" name="answer" rows="5" id="answer" placeholder="Enter Answer Here.."><?php echo preg_replace("/(<br\s*\/?>\s*)+/", '',$true_ans);?></textarea>
 </div>
 </div>
 

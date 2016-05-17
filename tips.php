@@ -27,28 +27,54 @@ ddaccordion.init({
 
 </script>
 <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx accordian ends  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+<link type="text/css" rel="stylesheet" href="css/simplePagination.css" />
+<script src="js/jquery.simplePagination.js"></script>
+<!--<script type="text/javascript" src="js/jquery.pajinate.js"></script>-->
+<script>
+jQuery(function($) {
+    var pageParts = $(".paginate");
+    var numPages = pageParts.length;
+    var perPage = 10;
+    pageParts.slice(perPage).hide();
+    $("#page-nav").pagination({
+        items: numPages,
+        itemsOnPage: perPage,
+        cssStyle: "light-theme",
+        onPageClick: function(pageNum) {
+            var start = perPage * (pageNum - 1);
+            var end = start + perPage;
+            pageParts.hide()
+                     .slice(start, end).show();
+        }
+    });
+});
+</script>
 <div class="page_title"><span> Interview tips </span></div>
-<?php 
-$result=$conn->query("select id,question,true_ans,status from cms_quest_ans where status='1'");
-while($row=$result->fetch_assoc())
-{
-$id=$row['id'];		
-$question=$row['question'];	
-$true_ans=$row['true_ans'];	
-$status=$row['status'];	
-?>
 <div class="inner_conainer">
-<div class="arrowlistmenu"> 
-<div class="main_accord"> 
-<div class="menuheader expandable"><strong><span class="quest">Q.<?php echo $id; ?></span> <?php echo $question; ?></strong></div>
-<div class="categoryitems accord_detail">
-<div class="ans">Ans.</div><?php echo $true_ans; ?>
+  <div class="arrowlistmenu">
+	<?php 
+    $result=$conn->query("select id,question,true_ans,status from cms_quest_ans where status='1'");
+    while($row=$result->fetch_assoc())
+    {
+    $id=$row['id'];		
+    $question=$row['question'];	
+    $true_ans=$row['true_ans'];	
+    $status=$row['status'];	
+    ?>
+    <div class="main_accord paginate">
+      <div class="menuheader expandable"><strong><span class="quest">
+	  Q.<?php echo preg_replace("/(<br\s*\/?>\s*)+/", '',$id);?></span>
+<?php echo preg_replace("/(<br\s*\/?>\s*)+/", '',$question);?></strong></div>
+      	<div class="categoryitems accord_detail">
+        	<div class="ans">Ans.</div>
+        	<?php echo $true_ans; ?> </div>
+       	</div>
+       <div class="clear"></div>
+      <?php } ?>
+      <div id="page-nav"></div>
+  </div>
 </div>
-<?php } ?>
-</div>
-<div class="clear"></div>    
-</div>
-</div>	
 <!-- -------------------------------- container ends ------------------------------ -->
 <?php include("footer.php");?>
-</body></html>
+</body>
+</html>

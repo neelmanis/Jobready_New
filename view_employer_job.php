@@ -90,9 +90,14 @@ $location=$row['job_location'];
         <?php echo $row['designation'];?>
         </div>
       </div>
-      <div class="textfield_1"> <span>keywords</span>:
+	  <div class="textfield"> <span>Job Title</span>:
         <div class="fields">
-	<?php echo $row['keyword'];?>
+          <?php echo $row['job_title'];?>
+        </div>
+      </div>
+      <div class="textfield mar_left"> <span>keywords</span>:
+        <div class="fields">
+		<?php echo $row['keyword'];?>
         </div>
       </div>
       <div class="textfield_1"> <span>Job description</span>:
@@ -140,9 +145,15 @@ $location=$row['job_location'];
       </div>
 	  <div class="textfield"> <span>Min. Experience</span>:
         <div class="fields">
-          <?php echo $row['min_exp'];?>
+          <?php echo $row['min_exp'];?> Years
         </div>
-      </div><br/>
+      </div>
+	  <div class="textfield mar_left"> <span>No. Of Jobs</span>:
+        <div class="fields">
+        <?php echo $row['no_job'];;?>
+        </div>
+      </div>
+	  <br/>
 	  <div class="apply"><a href='javascript:history.back(1);'>Back</a></div>
         <div class="clear"></div>
 		

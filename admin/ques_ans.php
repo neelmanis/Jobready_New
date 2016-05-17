@@ -39,7 +39,8 @@ $id=$row['id'];
 ?>
 <tr>
 <td><?php echo $id; ?></td>                              
-<td><?php echo $row['question']; ?></td>
+<td><?php echo preg_replace("/(<br\s*\/?>\s*)+/", '',$row['question']);?>
+<!--<?php echo $row['question']; ?>--></td>
 <!--<td><?php echo $row['true_ans']; ?></td>-->
 <?php $status=$row['status']; ?>
 <td width="150">

@@ -29,7 +29,7 @@ elseif($file_size>2097152)
 elseif(empty($content)) 
 { $signup_error="Please Choose Description";}
 elseif(move_uploaded_file($file_tmp,$path)){
-$neelx="INSERT INTO `cms_skw`(`id`, `post_date`,`title`, `image`, `desc`, `status`) VALUES ('',NOW(),'$title','$img','$content','$status')";
+echo $neelx="INSERT INTO `cms_skw`(`id`, `post_date`,`title`, `image`, `desc`, `status`) VALUES ('',NOW(),'$title','$img','$content','$status')";
 $mysqlresult=mysql_query($neelx);
 if($mysqlresult){
 header("Location:skw.php");

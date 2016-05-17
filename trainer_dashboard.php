@@ -29,7 +29,7 @@ $num=$result->num_rows;
         </div>
         <div class="posted_job">
           <?php while($row=$result->fetch_assoc()){?>
-          <p><?php echo getInterest($conn,$row['area_of_interest']);?></p>
+          <p><?php echo $row['title'];?></p>
           <?php  } ?>
           <div class="clear"></div>
         </div>

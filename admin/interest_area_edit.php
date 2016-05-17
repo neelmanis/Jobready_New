@@ -19,7 +19,7 @@ if($mysqlrow['status']=="0"){$inactive="selected";}
 $savedetails=$_POST['savedetails'];
 if($savedetails=='saveapp')
 {
-$subject=trim($_POST['subject']);
+$subject=trim(strtoupper($_POST['subject']));
 $sub_status=trim($_POST['sub_status']);
 if(preg_match('/^[0-9 .\-]+$/i', $subject))
 {$signup_error= 'Subject Name is not valid';}
